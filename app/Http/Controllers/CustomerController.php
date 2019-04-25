@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Customer;
+use App\Location;
+use Carbon\Carbon;
 
 class CustomerController extends Controller
 {
@@ -13,7 +16,8 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        //
+        $customers = Customer::all();
+        return view('customers.index', compact('customers'));
     }
 
     /**
@@ -23,7 +27,8 @@ class CustomerController extends Controller
      */
     public function create()
     {
-        //
+        $locations = Location::all();
+        return view('customers.create', compact('customers','locations'));
     }
 
     /**
