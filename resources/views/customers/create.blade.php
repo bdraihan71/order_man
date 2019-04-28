@@ -5,7 +5,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">Users</div>
+                    <div class="card-header">Customers</div>
                     <div class="card-body">
                     <form method="post" action="{{route('users.store')}}">
                             @csrf
@@ -25,7 +25,7 @@
                             <input class="form-control" type="text" name="profession" value="{{old('profession')}}"></input>
                             <br>
 
-                            <label>Role</label>
+                            <label>Location</label>
                             <select class="form-control" name="location_id">
                                 @foreach($locations as $location)
                                     @if(old('location_id') == $location->id)

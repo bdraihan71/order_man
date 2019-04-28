@@ -28,7 +28,7 @@ class CustomerController extends Controller
     public function create()
     {
         $locations = Location::all();
-        return view('customers.create', compact('customers','locations'));
+        return view('customers.create', compact('locations'));
     }
 
     /**
@@ -39,7 +39,20 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'location_id' => 'required|exists:location_id',
+        ]);
+
+        Customer::create([
+            'name' => $request->name,
+            'primary_contact_number' => $request->primary_contact_number,
+            'secondary_contact_number' => $request->secondary_contact_number,
+            'profession'  => $request->profession,
+            'location_id' => $request->location_id,
+        ]);
+
+        return redirect(route('customers.index'));
     }
 
     /**
@@ -59,9 +72,10 @@ class CustomerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Customer $customer)
     {
-        //
+        $locations = Location::all();
+        return view('customers.edit', compact('customer', 'locations'));
     }
 
     /**
@@ -71,9 +85,18 @@ class CustomerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Customer $customer)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'location_id' => 'required|exists:locations,id',
+        ]);
+
+        $customer->name = $request->name;
+        $customer->location_id = $request->location_id;
+        $customer->save();
+
+        return redirect(route('customers.index'));
     }
 
     /**
@@ -82,8 +105,9 @@ class CustomerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Customer $customer)
     {
-        //
+        $customer->delete();
+        return redirect(route('customers.index'));
     }
 }
