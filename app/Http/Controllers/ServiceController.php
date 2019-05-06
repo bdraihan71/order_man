@@ -16,8 +16,8 @@ class ServiceController extends Controller
 
     public function create()
     {
-        $subcategorys = Subcategory::all();
-        return view('service.create', compact('subcategorys'));
+        $subcategories = Subcategory::all();
+        return view('service.create', compact('subcategories'));
     }
 
     public function store(Request $request)

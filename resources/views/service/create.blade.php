@@ -12,7 +12,7 @@
 
             <label>Subcategory</label>
             <select class="form-control" name="subcategory_id">
-              @foreach($subcategorys as $subcategory)
+              @foreach($subcategories as $subcategory)
               @if(old('subcategory_id') == $subcategory->id)
               <option selected value="{{$subcategory->id}}">{{$subcategory->name}}</option>
               @else
