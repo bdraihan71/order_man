@@ -25,7 +25,7 @@
                                 <td>{{ $customer->primary_contact_number }}</td>
                                 <td>{{ $customer->secondary_contact_number }}</td>
                                 <td>{{ $customer->profession }}</td>
-                                <td>{{ $customer->location_id }}</td>
+                                <td>{{ $customer->location->name }}</td>
                                 <td>
                                     <a class="button" href="{{route('customers.edit', ['customer' => $customer->id])}}">Edit</a>
                                 </td>

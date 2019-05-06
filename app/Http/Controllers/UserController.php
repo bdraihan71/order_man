@@ -43,12 +43,6 @@ class UserController extends Controller
         return redirect(route('users.index'));
     }
 
-   
-    public function show($id)
-    {
-        //
-    }
-
  
     public function edit(User $user)
     {

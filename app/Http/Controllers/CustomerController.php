@@ -20,7 +20,7 @@ class CustomerController extends Controller
     public function create()
     {
         $locations = Location::all();
-        return view('customers.create', compact('customers','locations'));
+        return view('customers.create', compact('locations'));
     }
 
     
@@ -42,12 +42,6 @@ class CustomerController extends Controller
         return redirect(route('customers.index'));
     }
 
-   
-    public function show($id)
-    {
-        //
-    }
-
     public function edit(Customer $customer)
     {
         $locations = Location::all();
@@ -60,8 +54,8 @@ class CustomerController extends Controller
         $request->validate([
             'name' => 'required',
             'primary_contact_number' => 'required',
-            'secondary_contact_number' => 'required',
-            'profession'  => 'required',
+            'secondary_contact_number' => 'nullable',
+            'profession'  => 'nullable',
             'location_id' => 'required|exists:locations,id',
         ]);
 
