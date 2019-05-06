@@ -11,8 +11,10 @@ class OrdersTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('orders')->insert([
-            'customer_id' => 1,
-        ]);
+        for ($i = 1; $i <= 10; $i++) {
+            DB::table('orders')->insert([
+                'customer_id' => $i,
+            ]);
+        }
     }
 }
