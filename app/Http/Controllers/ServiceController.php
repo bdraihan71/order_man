@@ -30,10 +30,10 @@ class ServiceController extends Controller
         ]);
 
         Service::create([
-            'subcategory_id' => $request->subcategory_id,
-            'title' => $request->title,
-            'description' => $request->description,
-            'price' => 100*$request->price,
+            'subcategory_id' => $request->get('subcategory_id'),
+            'title' => $request->get('title'),
+            'description' => $request->get('description'),
+            'price' => 100 * $request->get('price'),
         ]);
 
         return redirect(route('services.index'));
@@ -41,9 +41,9 @@ class ServiceController extends Controller
 
     public function edit($id)
     {
-        $subcategorys = Subcategory::all();
+        $subcategories = Subcategory::all();
         $service = Service::find($id);
-        return view('service.edit', compact('service', 'subcategorys'));
+        return view('service.edit', compact('service', 'subcategories'));
     }
 
 
@@ -53,14 +53,14 @@ class ServiceController extends Controller
             'subcategory_id' => 'required',
             'title' => 'required',
             'description' => 'required',
-            'price' => 'required',
+            'price' => 'required|numeric',
         ]);
 
         $service = Service::find($id);
         $service->subcategory_id = $request->get('subcategory_id');
         $service->title = $request->get('title');
         $service->description = $request->get('description');
-        $service->price = $request->get('price');
+        $service->price = 100 * $request->get('price');
         $service->save();
 
         return redirect(route('services.index'));
