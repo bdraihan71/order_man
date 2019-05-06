@@ -14,20 +14,22 @@
                         <tr>
                             <td>Title</td>
                             <td>Description</td>
-                            <td>Price</td>
+                            <td>Subcategory</td>
+                            <td>price</td>
                             <td>Actions</td>
                         </tr>
                         @foreach ($services as $service)
                         <tr>
                             <td>{{ $service->title }}</td>
                             <td>{{ $service->description }}</td>
+                            <td>{{ $service->subcategory->name }}</td>
                             <td>{{ $service->price/100 }}</td>
                             <td style="width:20%">
                                 <a class="btn btn-info" href="{{route('services.edit', ['service' => $service->id])}}">Edit</a>
                                 <form action="{{ route('services.destroy', $service->id)}}" onclick="return confirm('Are you sure?')" method="post" style="display: inline;">
                                     @csrf
                                     @method('delete')
-                                    <button  class="btn btn-danger" type="submit">delete</button>
+                                    <button class="btn btn-danger" type="submit">delete</button>
                                 </form>
                             </td>
                         </tr>

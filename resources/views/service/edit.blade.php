@@ -13,11 +13,11 @@
             <label>Subcategory</label>
             <select class="form-control" name="subcategory_id">
               @foreach($subcategories as $subcategory)
-              @if(old('subcategory_id') == $subcategory->id)
-              <option selected value="{{$service->subcategory->id}}">{{$service->subcategory->name}}</option>
-              @else
-              <option value="{{$subcategory->id}}">{{$subcategory->name}}</option>
-              @endif
+                @if(old('subcategory_id') == $subcategory->id)
+                  <option selected value="{{$service->subcategory->id}}">{{$service->subcategory->name}}</option>
+                @else
+                  <option value="{{$subcategory->id}}">{{$subcategory->name}}</option>
+                @endif
               @endforeach
             </select>
             <br>
