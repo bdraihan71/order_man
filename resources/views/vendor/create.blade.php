@@ -78,7 +78,7 @@
             <br>
 
             <label>Added By</label>
-            <input class="form-control" type="number" name="added_by" value="{{old('added_by')}}"></input>
+            <input class="form-control" type="number" name="added_by" value="{{Auth::user()->id}}"></input>
             <br>
 
             <label>Add Note</label>
@@ -86,7 +86,15 @@
             <br>
 
             <label>Reviewed By</label>
-            <input class="form-control" type="number" name="reviewed_by" value="{{old('reviewed_by')}}"></input>
+            <select class="form-control" name="reviewed_by">
+              @foreach($users as $user)
+                @if(old('reviewed_by') == $user->id)
+                  <option selected value="{{$user->id}}">{{$user->name}}</option>
+                @else
+                  <option value="{{$user->id}}">{{$user->name}}</option>
+                @endif
+              @endforeach
+            </select>
             <br>
 
             <label>Review Note</label>
