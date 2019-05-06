@@ -20,6 +20,6 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('users', 'UserController');
 Route::resource('orders', 'OrderController');
-Route::resource('services', 'ServiceController');
+Route::resource('services', 'ServiceController')->except(['show']);
 Route::resource('vendors', 'VendorController');
 Route::resource('customers', 'CustomerController');
