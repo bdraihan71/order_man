@@ -21,5 +21,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('users', 'UserController');
 Route::resource('orders', 'OrderController');
 Route::resource('services', 'ServiceController');
-Route::resource('vendors', 'VendorController');
+Route::resource('vendors', 'VendorController')->except(['show']);
 Route::resource('customers', 'CustomerController');
