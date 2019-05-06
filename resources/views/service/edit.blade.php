@@ -7,9 +7,9 @@
       <div class="card">
         <div class="card-header">Service</div>
         <div class="card-body">
-          <form method="post" action="{{route('services.store')}}">
+          <form method="post" action="{{route('services.update', $service->id)}}">
             @csrf
-
+            @method('patch')
             <label>Subcategory</label>
             <select class="form-control" name="subcategory_id">
               @foreach($subcategorys as $subcategory)
