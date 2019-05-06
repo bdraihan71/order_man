@@ -7,7 +7,7 @@
                 <div class="card">
                     <div class="card-header">Customers</div>
                     <div class="card-body">
-                    <form method="post" action="{{route('users.store')}}">
+                    <form method="post" action="{{route('customers.store')}}">
                             @csrf
                             <label>Name</label>
                             <input class="form-control" type="text" name="name" value="{{old('name')}}"></input>
