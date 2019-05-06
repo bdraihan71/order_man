@@ -26,14 +26,14 @@ class ServiceController extends Controller
             'subcategory_id' => 'required',
             'title' => 'required',
             'description' => 'required',
-            'price' => 'required',
+            'price' => 'required|numeric',
         ]);
 
         Service::create([
             'subcategory_id' => $request->subcategory_id,
             'title' => $request->title,
             'description' => $request->description,
-            'price' => $request->price,
+            'price' => 100*$request->price,
         ]);
 
         return redirect(route('services.index'));
