@@ -75,10 +75,9 @@
 
             <label>Review By Service</label>
             <input class="form-control" type="number" name="review_by_service" value="{{old('review_by_service')}}"></input>
-            <br>
+          
 
-            <label>Added By</label>
-            <input class="form-control" type="number" name="added_by" value="{{Auth::user()->id}}"></input>
+            <input class="form-control" type="hidden" name="added_by" value="{{Auth::user()->id}}"></input>
             <br>
 
             <label>Add Note</label>

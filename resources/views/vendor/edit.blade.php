@@ -87,9 +87,7 @@
             <input class="form-control" type="text" name="add_note" value="{{$vendor->add_note}}"></input>
             <br>
 
-            <label>Reviewed By</label>
-            <input class="form-control" type="number" name="reviewed_by" value="{{$vendor->reviewed_by}}"></input>
-            <br>
+            z
 
             <label>Review Note</label>
             <input class="form-control" type="text" name="review_note" value="{{$vendor->review_note}}"></input>
