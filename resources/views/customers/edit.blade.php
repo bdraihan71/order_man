@@ -18,16 +18,24 @@
                             <br>
 
                             <label>Primary Phone Number</label>
-                            <input disabled class="form-control" type="int" value="{{$customer->primary_contact_number}}" name="primary_contact_number"></input>
+                            <input class="form-control" type="int" value="{{$customer->primary_contact_number}}" name="primary_contact_number"></input>
                             <br>
 
-                            <label>Role</label>
+                            <label>Secondary Phone Number</label>
+                            <input class="form-control" type="int" value="{{$customer->secondary_contact_number}}" name="secondary_contact_number"></input>
+                            <br>
+
+                            <label>Profession</label>
+                            <input class="form-control" type="int" value="{{$customer->profession}}" name="profession"></input>
+                            <br>
+
+                            <label>Location</label>
                             <select class="form-control" name="location_id">
                                 @foreach($locations as $location)
                                     @if($location->id == $customer->location->id)
-                                        <option selected value="{{$location->id}}"></option>
+                                        <option selected value="{{$location->id}}">{{ $location->name }}</option>
                                     @else
-                                        <option value="{{$location->id}}"></option>
+                                        <option value="{{$location->id}}">{{ $location->name }}</option>
                                     @endif
                                 @endforeach
                             </select>
