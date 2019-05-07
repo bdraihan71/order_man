@@ -29,6 +29,10 @@ class OrderController extends Controller
 
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'customer_id' => 'required'
+        ]);
+
         $order = Order::create([
             'customer_id' => $request->customer_id,
         ]);
@@ -38,6 +42,16 @@ class OrderController extends Controller
 
     public function addItem(Request $request, Order $order)
     {
+        $this->validate($request, [
+            'order_id' => 'required|exists:orders,id',
+            'service_id' => 'required|exists:services,id',
+            'service_price' => 'required|integer',
+            'service_commission' => 'required|integer',
+            'vendor_id' => 'required|exists:vendors,id',
+            'delivery_time' => 'required',
+            'type' => 'required'
+        ]);
+
         $cancel = null;
         $booked = null;
         $fullfill = null;
@@ -107,6 +121,10 @@ class OrderController extends Controller
 
     public function update(Request $request, Order $order)
     {
+        $this->validate($request, [
+            'customer_id' => 'required'
+        ]);
+        
         $order->customer_id = $request->customer_id;
         $order->save();
 
@@ -115,6 +133,16 @@ class OrderController extends Controller
 
     public function updateItem(Request $request, OrderItem $item)
     {
+        $this->validate($request, [
+            'order_id' => 'required|exists:orders,id',
+            'service_id' => 'required|exists:services,id',
+            'service_price' => 'required|integer',
+            'service_commission' => 'required|integer',
+            'vendor_id' => 'required|exists:vendors,id',
+            'delivery_time' => 'required',
+            'type' => 'required'
+        ]);
+
         $cancel = null;
         $booked = null;
         $fullfill = null;
