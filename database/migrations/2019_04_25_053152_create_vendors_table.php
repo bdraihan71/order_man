@@ -15,6 +15,7 @@ class CreateVendorsTable extends Migration
     {
         Schema::create('vendors', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->softDeletes();
             $table->text('company_name');
             $table->text('office_address');
             $table->text('trade_license_number')->nullable();
