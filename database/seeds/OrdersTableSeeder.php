@@ -13,7 +13,7 @@ class OrdersTableSeeder extends Seeder
     {
         for ($i = 1; $i <= 10; $i++) {
             DB::table('orders')->insert([
-                'customer_id' => $i,
+                'customer_id' => rand(1,2),
             ]);
         }
     }

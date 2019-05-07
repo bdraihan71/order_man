@@ -61,7 +61,7 @@
                         <div class="row mb-3">
                             <div class="col-md-12">
                                 Booking Time: <br>
-                                <input type="datetime-local" name="booked_at" class="form-control" value="{{ str_replace(' ', 'T', Carbon\Carbon::now()->toDateTimeString()) }}" placeholder="Booked At">
+                                <input type="datetime-local" name="booked_at" class="form-control" value="{{ explode(':', str_replace(' ', 'T', Carbon\Carbon::now()->toDateTimeString()))[0].':'.explode(':', str_replace(' ', 'T', Carbon\Carbon::now()->toDateTimeString()))[1].':00' }}" placeholder="Booked At">
                             </div>
                         </div>
         
@@ -93,4 +93,27 @@
             <div class="col-mb-3"></div>
         </div>
     </form>
+
+    @foreach ($order->items as $item)
+    <div class="row mb-3">
+        <div class="col-md-3">
+            {{ $item->service->title }}
+        </div>
+        <div class="col-md-2">
+            {{ $item->service_price }}
+        </div>
+        <div class="col-md-2">
+            {{ $item->service_commission }}
+        </div>
+        <div class="col-md-2">
+            {{ ucfirst($item->type) }}
+        </div>
+        <div class="col-md-2">
+            {{ $item->delivery_time }}
+        </div>
+        <div class="col-md-1">
+            <a href="{{ route('delete-item', ['item' => $item->id]) }}"><i class='fa fas fa-trash'></i></a>
+        </div>
+    </div>
+    @endforeach
 @endsection
