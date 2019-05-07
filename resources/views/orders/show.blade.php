@@ -12,6 +12,12 @@
         </div>
     </div>
 
+    <div class="row mb-4">
+        <div class="col-md-12 text-center">
+            <a href="{{ route('add-item-to-order', ['order' => $order->id]) }}" class="btn btn-success w-75">Add Item</a>
+        </div>
+    </div>
+
     @foreach ($order->items as $item)
         <div class="row mb-4">
             <div class="col-md-3">

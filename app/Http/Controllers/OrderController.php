@@ -40,6 +40,11 @@ class OrderController extends Controller
         return view('orders.add-items', compact('order'));
     }
 
+    public function getAddItem(Request $request, Order $order)
+    {
+        return view('orders.add-items', compact('order'));
+    }
+
     public function addItem(Request $request, Order $order)
     {
         $this->validate($request, [
@@ -47,7 +52,6 @@ class OrderController extends Controller
             'service_id' => 'required|exists:services,id',
             'service_price' => 'required|integer',
             'service_commission' => 'required|integer',
-            'vendor_id' => 'required|exists:vendors,id',
             'delivery_time' => 'required',
             'type' => 'required'
         ]);
@@ -76,21 +80,11 @@ class OrderController extends Controller
         $item = OrderItem::create([
             'order_id' => $request->order_id,
             'service_id' => $request->service_id,
-            'vendor_id' => $request->vendor_id,
             'service_price' => $request->service_price,
             'service_commission' => $request->service_commission,
             'review' => $request->review,
             'delivery_time' => $request->delivery_time,
-            'booked_at' => $booked,
             'booked_by' => $request->booked_by,
-            'comment_by_category_manager' => $request->comment_by_category_manager,
-            'booking_note' => $request->booking_note,
-            'cancelled_at' => $cancel,
-            'cancelled_by' => $request->cancelled_by,
-            'cancellation_note' => $request->cancellation_note,
-            'fullfilled_at' => $fullfill,
-            'fullfilled_by' => $request->fullfilled_by,
-            'fullfillment_note' => $request->fullfillment_note,
             'type' => $request->type,
         ]);
 
@@ -138,7 +132,6 @@ class OrderController extends Controller
             'service_id' => 'required|exists:services,id',
             'service_price' => 'required|integer',
             'service_commission' => 'required|integer',
-            'vendor_id' => 'required|exists:vendors,id',
             'delivery_time' => 'required',
             'type' => 'required'
         ]);
