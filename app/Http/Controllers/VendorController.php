@@ -62,8 +62,9 @@ class VendorController extends Controller
 
     public function edit($id)
     {
+        $users = User::all();
         $vendor = Vendor::find($id);
-        return view('vendor.edit', compact('vendor'));
+        return view('vendor.edit', compact('vendor', 'users'));
     }
 
     public function update(Request $request, $id)

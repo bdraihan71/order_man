@@ -77,17 +77,25 @@
 
             <label>Review By Service</label>
             <input class="form-control" type="number" name="review_by_service" value="{{$vendor->review_by_service}}"></input>
-            <br>
-
-            <label>Added By</label>
-            <input class="form-control" type="number" name="added_by" value="{{$vendor->added_by}}"></input>
+            
+            <input class="form-control" type="hidden" name="added_by" value="{{$vendor->added_by}}"></input>
             <br>
 
             <label>Add Note</label>
             <input class="form-control" type="text" name="add_note" value="{{$vendor->add_note}}"></input>
             <br>
 
-            z
+            <label>Reviewed By</label>
+            <select class="form-control" name="reviewed_by">
+              @foreach($users as $user)
+                @if(old('reviewed_by') == $user->id)
+                  <option selected value="{{$user->id}}">{{$user->name}}</option>
+                @else
+                  <option value="{{$user->id}}">{{$user->name}}</option>
+                @endif
+              @endforeach
+            </select>
+            <br>
 
             <label>Review Note</label>
             <input class="form-control" type="text" name="review_note" value="{{$vendor->review_note}}"></input>
