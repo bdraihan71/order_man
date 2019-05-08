@@ -14,4 +14,12 @@ class Vendor extends Model
     public function services(){
         return $this->hasMany('App\Service');
     }
+
+    public function reviewer(){
+        return $this->belongsTo('App\User', 'reviewed_by');
+    }
+
+    public function creator(){
+        return $this->belongsTo('App\User', 'added_by');
+    }
 }
