@@ -47,14 +47,14 @@
                         <div class="row mb-3">
                             <div class="col-md-12">
                                 Delivery Time: <br>
-                                <input type="datetime-local" name="delivery_time" class="form-control" value="{{ str_replace(' ', 'T', $item->delivery_time) }}" placeholder="Delivery Time">
+                                <input type="datetime-local" name="delivery_time" class="form-control" value="{{ explode(':', str_replace(' ', 'T', $item->delivery_time))[0].':'.explode(':', str_replace(' ', 'T', $item->delivery_time))[1].':00' }}" placeholder="Delivery Time">
                             </div>
                         </div>
 
                         <div class="row mb-3">
                             <div class="col-md-12">
                                 Booking Time: <br>
-                                <input type="datetime-local" name="booked_at" class="form-control" value="{{ str_replace(' ', 'T', $item->booked_at) }}" placeholder="Booked At">
+                                <input type="datetime-local" name="booked_at" class="form-control" value="{{ explode(':', str_replace(' ', 'T', $item->booked_at))[0].':'.explode(':', str_replace(' ', 'T', $item->booked_at))[1].':00' }}" placeholder="Booked At">
                             </div>
                         </div>
 

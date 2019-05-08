@@ -22,7 +22,7 @@
 
         <div class="row mb-2">
             <div class="col-md-12 text-center">
-                <a href="#" class="btn btn-success w-50 float-left">Create Customer</a>
+                <a href="{{ route('customers.create') }}" target="_blank" class="btn btn-success w-50 float-left">Create Customer</a>
                 <button class="btn btn-primary w-50 float-left">Create Order</button>
             </div>
         </div>

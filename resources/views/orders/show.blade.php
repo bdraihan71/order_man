@@ -5,7 +5,7 @@
         <div class="col-md-12">
             <h1>Order no: {{ $order->id }}</h1> <br>
             <h3>
-                Customer: {{ $order->customer_id }}
+                Customer: {{ $order->customer->name }}
                 <a href="{{ route('delete-order', ['order' => $order->id]) }}" class="float-right ml-3"><i class="fa fas fa-trash"></i></a>
                 <a href="{{ route('orders.edit', ['order' => $order->id]) }}" class="float-right"><i class='far fa-edit'></i></a>
             </h3>
@@ -22,9 +22,6 @@
         <div class="row mb-4">
             <div class="col-md-3">
                 {{ $item->service->title }}
-            </div>
-            <div class="col-md-3">
-                {{ $item->vendor->company_name }}
             </div>
             <div class="col-md-2">
                 {{ $item->service_price }}
@@ -53,7 +50,7 @@
             </div>
         </div>
 
-        <div class="row mb-4">
+        {{-- <div class="row mb-4">
             <div class="col-md-2">
                 Booked By: {{ $item->bookedBy->name }}
             </div>
@@ -63,8 +60,8 @@
             <div class="col-md-8">
                 Booking Note: {{ $item->booking_note }}
             </div>
-        </div>
-        <div class="row mb-4">
+        </div> --}}
+        {{-- <div class="row mb-4">
             <div class="col-md-2">
                 Cancelled By: {{ $item->cancelledBy->name }}
             </div>
@@ -74,8 +71,8 @@
             <div class="col-md-8">
                 Cancellation Note: {{ $item->cancellation_note }}
             </div>
-        </div>
-        <div class="row mb-4">
+        </div> --}}
+        {{-- <div class="row mb-4">
             <div class="col-md-2">
                 Fullfilled By: {{ $item->fullfilledBy->name }}
             </div>
@@ -85,7 +82,7 @@
             <div class="col-md-8">
                 Fullfillment Note: {{ $item->fullfillment_note }}
             </div>
-        </div>
+        </div> --}}
         <hr>
     @endforeach
 @endsection

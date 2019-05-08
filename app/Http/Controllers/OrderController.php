@@ -128,7 +128,6 @@ class OrderController extends Controller
     public function updateItem(Request $request, OrderItem $item)
     {
         $this->validate($request, [
-            'order_id' => 'required|exists:orders,id',
             'service_id' => 'required|exists:services,id',
             'service_price' => 'required|integer',
             'service_commission' => 'required|integer',
