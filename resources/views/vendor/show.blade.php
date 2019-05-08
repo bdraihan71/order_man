@@ -113,7 +113,7 @@
           <span>
             <h5>Added By:</h5>
           </span>
-          <P>{{$vendor->added_by}}</P>
+          <P>{{$vendor->creator->name}}</P>
           <br>
 
           <span>
@@ -125,7 +125,7 @@
           <span>
             <h5>Reviewed By:</h5>
           </span>
-          <P>{{$vendor->reviewed_by}}</P>
+          <P>{{$vendor->reviewer->name}}</P>
           <br>
 
           <span>
