@@ -39,6 +39,12 @@ class ServiceController extends Controller
         return redirect(route('services.index'));
     }
 
+    public function show($id)
+    {
+        $service = Service::find($id);
+        return view('service.show', compact('service'));
+    }
+
     public function edit($id)
     {
         $subcategories = Subcategory::all();

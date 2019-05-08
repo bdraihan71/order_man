@@ -21,6 +21,6 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('users', 'UserController');
     Route::resource('orders', 'OrderController');
     Route::resource('services', 'ServiceController');
-    Route::resource('vendors', 'VendorController')->except(['show']);
+    Route::resource('vendors', 'VendorController');
     Route::resource('customers', 'CustomerController');
 });
