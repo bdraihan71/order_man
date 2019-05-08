@@ -38,6 +38,12 @@ class CategoryController extends Controller
         return redirect(route('categories.index'));
     }
 
+    public function show($id)
+    {
+        $category = Category::find($id);
+        return view('categories.show', compact('category'));
+    }
+
  
     public function edit(Category $category)
     {

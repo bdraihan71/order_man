@@ -42,6 +42,12 @@ class CustomerController extends Controller
         return redirect(route('customers.index'));
     }
 
+    public function show($id)
+    {
+        $customer = Customer::find($id);
+        return view('customers.show', compact('customer'));
+    }
+
     public function edit(Customer $customer)
     {
         $locations = Location::all();

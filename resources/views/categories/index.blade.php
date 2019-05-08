@@ -21,7 +21,13 @@
                                 <td>{{ $category->name }}</td>
                                 <td>{{ $category->description }}</td>
                                 <td>
-                                    <a class="button" href="{{route('categories.edit', ['category' => $category->id])}}">Edit</a>
+                                <a class="btn btn-primary" href="{{route('categories.show', ['category' => $category->id])}}">View</a>
+                                <a class="btn btn-info" href="{{route('categories.edit', ['category' => $category->id])}}">Edit</a>
+                                <form action="{{ route('categories.destroy', $category->id)}}" onclick="return confirm('Are you sure?')" method="post" style="display: inline;">
+                                    @csrf
+                                    @method('delete')
+                                    <button class="btn btn-danger" type="submit">delete</button>
+                                </form>
                                 </td>
                             </tr>
                         @endforeach

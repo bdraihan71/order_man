@@ -19,7 +19,13 @@
                             <tr>
                                 <td>{{ $location->name }}</td>
                                 <td>
-                                    <a class="button" href="{{route('locations.edit', ['location' => $location->id])}}">Edit</a>
+                                    <a class="btn btn-primary" href="{{route('locations.show', ['location' => $location->id])}}">View</a>
+                                    <a class="btn btn-info" href="{{route('locations.edit', ['location' => $location->id])}}">Edit</a>
+                                    <form action="{{ route('locations.destroy', $location->id)}}" onclick="return confirm('Are you sure?')" method="post" style="display: inline;">
+                                    @csrf
+                                    @method('delete')
+                                    <button class="btn btn-danger" type="submit">delete</button>
+                                </form>
                                 </td>
                             </tr>
                         @endforeach

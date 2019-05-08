@@ -23,7 +23,13 @@
                                 <td>{{ $subcategory->category->name }}</td>
                                 <td>{{ $subcategory->description }}</td>
                                 <td>
-                                    <a class="button" href="{{route('subcategories.edit', ['subcategory' => $subcategory->id])}}">Edit</a>
+                                <a class="btn btn-primary" href="{{route('subcategories.show', ['subcategory' => $subcategory->id])}}">View</a>
+                                <a class="btn btn-info" href="{{route('subcategories.edit', ['subcategory' => $subcategory->id])}}">Edit</a>
+                                <form action="{{ route('subcategories.destroy', $subcategory->id)}}" onclick="return confirm('Are you sure?')" method="post" style="display: inline;">
+                                    @csrf
+                                    @method('delete')
+                                    <button class="btn btn-danger" type="submit">delete</button>
+                                </form>
                                 </td>
                             </tr>
                         @endforeach

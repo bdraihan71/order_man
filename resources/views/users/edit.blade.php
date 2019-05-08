@@ -4,7 +4,6 @@
 <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
-                <a href="/users">Users</a>
                 <div class="card">
                     <div class="card-header">Edit User</div>
 
