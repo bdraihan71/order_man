@@ -26,6 +26,9 @@
           <a class="text-muted nav-link text-dark float-right" href="/orders">Order</a>
           <a class="text-muted nav-link text-dark float-right" href="/services">Service</a>
           <a class="text-muted nav-link text-dark float-right" href="/users">User</a>
+          <a class="text-muted nav-link text-dark float-right" href="/categories">Category</a>
+          <a class="text-muted nav-link text-dark float-right" href="/subcategories">Subcategory</a>
+          <a class="text-muted nav-link text-dark float-right" href="/locations">Location</a>
       </div>
       @endauth
     </nav>
