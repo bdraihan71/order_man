@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Carbon\Carbon;
 use App\Order;
 use App\Service;
-// use App\Customer;
+use App\Customer;
 use App\User;
 use App\OrderItem;
 
@@ -15,15 +15,12 @@ class OrderController extends Controller
     public function index()
     {
         $orders = Order::orderBy('created_at', 'DESC')->paginate(10);
-
         return view('orders.index', compact('orders'));
     }
 
     public function create()
     {
-        // $customers = Customer::all();
-        $customers = User::all();
-
+        $customers = Customer::all();
         return view('orders.create', compact('customers'));
     }
 
@@ -37,11 +34,13 @@ class OrderController extends Controller
             'customer_id' => $request->customer_id,
         ]);
 
-        return view('orders.add-items', compact('order'));
+        return redirect(route('add-item-to-order', $order->id));
     }
 
     public function getAddItem(Request $request, Order $order)
     {
+   
+
         return view('orders.add-items', compact('order'));
     }
 
@@ -84,15 +83,18 @@ class OrderController extends Controller
             'service_commission' => $request->service_commission,
             'review' => $request->review,
             'delivery_time' => $request->delivery_time,
+            'vendor_id' => $request->vendor_id,
             'booked_by' => $request->booked_by,
             'type' => $request->type,
         ]);
 
-        if ($request->continue) {
-            return view('orders.add-items', compact('order'));
-        } else {
-            return redirect(route('orders.index'));
-        }
+        return view('orders.add-items', compact('order'));
+
+        // if ($request->continue) {
+        //     return view('orders.add-items', compact('order'));
+        // } else {
+        //     return view('orders.add-items', compact('order'));
+        // }
     }
 
     public function show(Order $order)

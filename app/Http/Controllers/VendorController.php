@@ -60,6 +60,13 @@ class VendorController extends Controller
         return redirect(route('vendors.index'));
     }
 
+    public function show($id)
+    {
+        $vendor = Vendor::find($id);
+        return view('vendor.show', compact('vendor'));
+    }
+
+
     public function edit($id)
     {
         $users = User::all();

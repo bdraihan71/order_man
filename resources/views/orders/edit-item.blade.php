@@ -33,6 +33,20 @@
                         </div>
 
                         <div class="row mb-3">
+                            <div class="col-md-12 text-center">
+                                <select name="vendor_id" class="form-control">
+                                    <option value="{{ $item->vendor_id }}">{{ $item->vendor->company_name }}</option>
+                                    @foreach (App\Vendor::all() as $vendor)
+                                        @if ($item->vendor_id != $vendor->id)
+                                            <option value="{{ $vendor->id }}">{{ $vendor->company_name }}</option>
+                                        @endif
+                                    @endforeach
+                                </select>
+                                <a href="{{ route('vendors.create') }}" class="btn btn-primary w-50">Create Vendor</a>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
                             <div class="col-md-12">
                                 <input type="number" name="service_price" value="{{ $item->service_price }}" class="form-control" placeholder="Price">
                             </div>

@@ -1,5 +1,10 @@
 @extends('layouts.app')
 
+@php
+    $booking_time = explode(':', str_replace(' ', 'T', Carbon\Carbon::now()->toDateTimeString()))[0].':'.explode(':', str_replace(' ', 'T', Carbon\Carbon::now()->toDateTimeString()))[1].':00';
+
+    $delivery_time = str_replace(' ', 'T', Carbon\Carbon::parse('tomorrow 9 AM')->toDateTimeString());
+@endphp
 @section('content')
     <script>
         function noContinue () {
@@ -38,45 +43,55 @@
                                 <a href="{{ route('services.create') }}" class="btn btn-primary w-50">Create Service</a>
                             </div>
                         </div>
-        
+
                         <div class="row mb-3">
-                            <div class="col-md-12">
-                                <input type="number" name="service_price" class="form-control" placeholder="Price">
+                            <div class="col-md-12 text-center">
+                                <select name="vendor_id" class="form-control">
+                                    <option value="">Please select a Vendor</option>
+                                    @foreach (App\Vendor::all() as $vendor)
+                                        <option value="{{ $vendor->id }}">{{ $vendor->company_name }}</option>
+                                    @endforeach
+                                </select>
+                                <a href="{{ route('vendors.create') }}" class="btn btn-primary w-50">Create Vendor</a>
                             </div>
                         </div>
         
                         <div class="row mb-3">
                             <div class="col-md-12">
-                                <input type="number" name="service_commission" class="form-control" placeholder="Commission">
+                                <input type="number" name="service_price"  value="{{old('service_price')}}" class="form-control" placeholder="Price">
+                            </div>
+                        </div>
+        
+                        <div class="row mb-3">
+                            <div class="col-md-12">
+                                <input type="number" name="service_commission" value="{{old('service_commission')}}"  class="form-control" placeholder="Commission">
                             </div>
                         </div>
         
                         <div class="row mb-3">
                             <div class="col-md-12">
                                 Delivery Time: <br>
-                                <input type="datetime-local" name="delivery_time" class="form-control" value="{{ str_replace(' ', 'T', Carbon\Carbon::parse('tomorrow 9 AM')->toDateTimeString()) }}" placeholder="Delivery Time">
+                                <input type="datetime-local" name="delivery_time" class="form-control" value="{{ old('delivery_time') === null ? $delivery_time : old('delivery_time')  }}" placeholder="Delivery Time">
                             </div>
                         </div>
         
                         <div class="row mb-3">
                             <div class="col-md-12">
                                 Booking Time: <br>
-                                <input type="datetime-local" name="booked_at" class="form-control" value="{{ explode(':', str_replace(' ', 'T', Carbon\Carbon::now()->toDateTimeString()))[0].':'.explode(':', str_replace(' ', 'T', Carbon\Carbon::now()->toDateTimeString()))[1].':00' }}" placeholder="Booked At">
+                                <input type="datetime-local" name="booked_at" class="form-control" value="{{ old('booked_at') === null ? $booking_time : old('booked_at') }}" placeholder="Booked At">
                             </div>
                         </div>
         
                         <div class="row mb-3">
                             <div class="col-md-12">
-                                <input type="number" name="review" class="form-control" max="5" min="0" placeholder="Review">
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <div class="col-md-12">
                                 <select name="type" class="form-control">
-                                    <option value="">Please select a type</option>
-                                    <option value="household">Household</option>
-                                    <option value="corporate customer">Corporate Customer</option>
+                                    @if(old('type') == "household")
+                                        <option value="household" selected>Household</option>
+                                        <option value="corporate customer">Corporate Customer</option>
+                                    @else
+                                        <option value="household" >Household</option>
+                                        <option value="corporate customer" selected>Corporate Customer</option>
+                                    @endif
                                 </select>
                             </div>
                         </div>
@@ -111,8 +126,11 @@
         <div class="col-md-2">
             {{ $item->delivery_time }}
         </div>
+        <div class="col-md-2">
+            {{ $item->vendor->company_name }}
+        </div>
         <div class="col-md-1">
-            <a href="{{ route('delete-item', ['item' => $item->id]) }}"><i class='fa fas fa-trash'></i></a>
+            <a onclick="return confirm('Are you sure you want to delete this item?');" href="{{ route('delete-item', ['item' => $item->id]) }}"><i class='fa fas fa-trash'></i></a>
         </div>
     </div>
     @endforeach

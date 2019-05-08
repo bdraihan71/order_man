@@ -22,7 +22,7 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('users', 'UserController');
     Route::resource('orders', 'OrderController');
     Route::resource('services', 'ServiceController');
-    Route::resource('vendors', 'VendorController')->except(['show']);
+    Route::resource('vendors', 'VendorController');
     Route::resource('customers', 'CustomerController');
 
     Route::get('/orders/{order}/add-item', 'OrderController@getAddItem')->name('add-item-to-order');
@@ -32,4 +32,8 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/orders/{order}/edit', 'OrderController@update')->name('update-order');
     Route::get('/orders/{order}/delete', 'OrderController@destroy')->name('delete-order');
     Route::get('/orders/{item}/delete-item', 'OrderController@destroyItem')->name('delete-item');
+    
+    Route::resource('categories', 'CategoryController');
+    Route::resource('subcategories', 'SubcategoryController');
+    Route::resource('locations', 'LocationController');
 });

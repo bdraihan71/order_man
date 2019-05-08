@@ -6,7 +6,7 @@
             <h1>Order no: {{ $order->id }}</h1> <br>
             <h3>
                 Customer: {{ $order->customer->name }}
-                <a href="{{ route('delete-order', ['order' => $order->id]) }}" class="float-right ml-3"><i class="fa fas fa-trash"></i></a>
+                <a onclick="return confirm('Are you sure you want to delete this item?');" href="{{ route('delete-order', ['order' => $order->id]) }}" class="float-right ml-3"><i class="fa fas fa-trash"></i></a>
                 <a href="{{ route('orders.edit', ['order' => $order->id]) }}" class="float-right"><i class='far fa-edit'></i></a>
             </h3>
         </div>
@@ -33,7 +33,7 @@
                 {{ $item->review }}
             </div>
             <div class="col-md-1">
-                <a href="{{ route('delete-item', ['item' => $item->id]) }}" class="float-right ml-3"><i class='fa fas fa-trash'></i></a>
+                <a onclick="return confirm('Are you sure you want to delete this item?');" href="{{ route('delete-item', ['item' => $item->id]) }}" class="float-right ml-3"><i class='fa fas fa-trash'></i></a>
                 <a href="{{ route('edit-order-item', ['item' => $item->id]) }}" class="float-right"><i class='far fa-edit'></i></a>
             </div>
         </div>
@@ -47,6 +47,9 @@
             </div>
             <div class="col-md-8">
                 Comment By Category Manager: {{ $item->comment_by_category_manager }}
+            </div>
+            <div class="col-md-8">
+                Vendor: {{ $item->vendor->company_name }}
             </div>
         </div>
 

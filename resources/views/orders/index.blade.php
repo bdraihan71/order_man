@@ -35,6 +35,9 @@
                             <div class="col-md-2">
                                 {{ $item->delivery_time }}
                             </div>
+                            <div class="col-md-2">
+                                Vendor: {{ $item->vendor->company_name }}
+                            </div>
                         </div>
                     @endforeach
                 @endif
