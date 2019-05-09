@@ -26,4 +26,9 @@ class User extends Authenticatable
     {
         return $this->belongsTo('App\Role');
     }
+
+    public function manages()
+    {
+        return $this->belongsToMany('App\Subcategory');
+    }
 }

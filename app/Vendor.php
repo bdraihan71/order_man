@@ -11,7 +11,13 @@ class Vendor extends Model
 
     use SoftDeletes;
 
-    public function services(){
+    public function services()
+    {
         return $this->hasMany('App\Service');
+    }
+
+    public function orderitems()
+    {
+        return $this->hasMany('App\OrderItem');
     }
 }

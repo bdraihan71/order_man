@@ -15,5 +15,10 @@ class Subcategory extends Model
     {
         return $this->hasMany('App\Service');
     }
+
+    public function managers()
+    {
+        return $this->belongsToMany('App\User');
+    }
 }
                 
