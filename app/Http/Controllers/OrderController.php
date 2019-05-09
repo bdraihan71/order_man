@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Carbon\Carbon;
 use App\Order;
 use App\Service;
-// use App\Customer;
+use App\Customer;
 use App\User;
 use App\OrderItem;
 
@@ -21,8 +21,7 @@ class OrderController extends Controller
 
     public function create()
     {
-        // $customers = Customer::all();
-        $customers = User::all();
+        $customers = Customer::all();
 
         return view('orders.create', compact('customers'));
     }
@@ -102,8 +101,7 @@ class OrderController extends Controller
 
     public function edit(Order $order)
     {
-        // $customers = Customer::all();
-        $customers = User::all();
+        $customers = Customer::all();
 
         return view('orders.edit', compact('order', 'customers'));
     }
