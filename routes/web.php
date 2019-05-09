@@ -32,4 +32,9 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/orders/{order}/edit', 'OrderController@update')->name('update-order');
     Route::get('/orders/{order}/delete', 'OrderController@destroy')->name('delete-order');
     Route::get('/orders/{item}/delete-item', 'OrderController@destroyItem')->name('delete-item');
+
+    route::get('/managers', 'SubcatManagerController@index')->name('subcatman.index');
+    route::get('/managers/{user}', 'SubcatManagerController@show')->name('subcatman.show');
+    route::post('/managers/{user}', 'SubcatManagerController@add')->name('subcatman.add');
+    route::get('/managers/{user}/{subcat}', 'SubcatManagerController@remove')->name('subcatman.remove');
 });

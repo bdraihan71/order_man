@@ -24,6 +24,7 @@
       <a class="navbar-brand text-info display-1" href="/">Order Man</a>
       @auth
       <div class="float-right display-inline">
+          <a class="text-muted nav-link text-dark float-right" href="{{ route('subcatman.index') }}">Subcategory Managers</a>
           <a class="text-muted nav-link text-dark float-right" href="/customers">Customer</a>
           <a class="text-muted nav-link text-dark float-right" href="/vendors">Vendor</a>
           <a class="text-muted nav-link text-dark float-right" href="/orders">Order</a>
