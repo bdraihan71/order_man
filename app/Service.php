@@ -11,9 +11,14 @@ class Service extends Model
     
     protected $guarded = [];
 
-
-    public function vendors(){
+    public function vendors()
+    {
         return $this->hasMany('App\Vendor');
+    }
+
+    public function orders()
+    {
+        return $this->hasMany('App\OrderItem');
     }
 
     public function subcategory()

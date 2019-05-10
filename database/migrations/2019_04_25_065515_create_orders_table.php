@@ -16,6 +16,13 @@ class CreateOrdersTable extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('customer_id');
+            $table->timestamp('booked_at')->nullable();
+            $table->integer('booked_by')->nullable();
+            $table->text('booking_note')->nullable();
+            $table->integer('action')->nullable();
+            $table->timestamp('action_at')->nullable();
+            $table->text('action_note')->nullable();
+            $table->integer('action_by')->nullable();
             $table->timestamps();
         });
     }
