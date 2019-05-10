@@ -32,6 +32,8 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/orders/{order}/edit', 'OrderController@update')->name('update-order');
     Route::get('/orders/{order}/delete', 'OrderController@destroy')->name('delete-order');
     Route::get('/orders/{item}/delete-item', 'OrderController@destroyItem')->name('delete-item');
+    Route::get('/order/{order}/action', 'OrderController@action')->name('order.action');
+    Route::post('/order/{order}/action', 'OrderController@takeAction')->name('order.action');
     
     Route::resource('categories', 'CategoryController');
     Route::resource('subcategories', 'SubcategoryController');

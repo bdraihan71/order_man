@@ -12,7 +12,15 @@
     @foreach($orders as $order)
         <div class="card mb-4">
             <div class="card-header">
-                Order No: {{ $order->id }} for {{ $order->customer->name }} <a href="{{ route('orders.show', ['order' => $order->id]) }}" class="btn btn-primary float-right">Show</a>
+            <div class="row">
+                <div class="col-md-10">
+                    Order No: {{ $order->id }} for {{ $order->customer->name }}
+                </div>
+                <div class="col-md-2">
+                    {{ $order->action == null ? "Booked" : ($order->action < 0 ? "Cancelled" : "Provided") }}
+                    <a href="{{ route('orders.show', ['order' => $order->id]) }}" class="btn btn-primary float-right">Show</a>
+                </div>
+            </div>
             </div>
             <div class="card-body">
                 @if (count($order->items) == 0)

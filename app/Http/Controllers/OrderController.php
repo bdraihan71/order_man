@@ -32,6 +32,9 @@ class OrderController extends Controller
 
         $order = Order::create([
             'customer_id' => $request->customer_id,
+            'booked_at' => Carbon::now()->toDateTimeString(),
+            'booked_by' => auth()->user()->id,
+            'booking_note' => $request->booking_note
         ]);
 
         return redirect(route('add-item-to-order', $order->id));
@@ -118,10 +121,12 @@ class OrderController extends Controller
     public function update(Request $request, Order $order)
     {
         $this->validate($request, [
-            'customer_id' => 'required'
+            'customer_id' => 'required',
+            'booking_note' => 'nullable'
         ]);
         
         $order->customer_id = $request->customer_id;
+        $order->booking_note = $request->booking_note;
         $order->save();
 
         return redirect(route('orders.show', ['id' => $order->id]));
@@ -187,5 +192,26 @@ class OrderController extends Controller
         $item->delete();
 
         return back();
+    }
+
+    public function action(Request $request, Order $order)
+    {
+        return view('orders.action', compact('order'));
+    }
+
+    public function takeAction(Request $request, Order $order)
+    {
+        $this->validate($request, [
+            'action' => 'required',
+            'action_note' => 'nullable'
+        ]);
+
+        $order->action = $request->action;
+        $order->action_note = $request->action_note;
+        $order->action_by = auth()->user()->id;
+        $order->action_at = Carbon::now()->toDateTimeString();
+        $order->save();
+
+        return redirect(route('orders.show', ['order' => $order->id]));
     }
 }

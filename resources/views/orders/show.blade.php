@@ -2,15 +2,33 @@
 
 @section('content')
     <div class="row mb-4">
-        <div class="col-md-12">
+        <div class="col-md-11">
             <h1>Order no: {{ $order->id }}</h1> <br>
             <h3>
                 Customer: {{ $order->customer->name }}
-                <a onclick="return confirm('Are you sure you want to delete this item?');" href="{{ route('delete-order', ['order' => $order->id]) }}" class="float-right ml-3"><i class="fa fas fa-trash"></i></a>
-                <a href="{{ route('orders.edit', ['order' => $order->id]) }}" class="float-right"><i class='far fa-edit'></i></a>
             </h3>
         </div>
+        <div class="col-md-1">
+            {{ $order->action == null ? "Booked" : ($order->action < 0 ? "Cancelled" : "Provided") }}
+            <a onclick="return confirm('Are you sure you want to delete this item?');" href="{{ route('delete-order', ['order' => $order->id]) }}" class="float-right ml-3"><i class="fa fas fa-trash"></i></a>
+            <a href="{{ route('orders.edit', ['order' => $order->id]) }}" class="float-right"><i class='far fa-edit'></i></a>
+            <a href="{{ route('order.action', ['order' => $order->id]) }}" class="btn btn-primary float-right">Take Action</a>
+        </div>
     </div>
+
+    <div class="row mb-4">
+        <div class="col-md-12">
+            Booking Note: {{ $order->booking_note == null ? "Booking note not provided" : ($order->booking_note == "Booking Comment" ? "Booking note not provided" : $order->booking_note) }}
+        </div>
+    </div>
+
+    @if ($order->action != null)
+        <div class="row mb-4">
+            <div class="col-md-12">
+                {{ $order->action < 0 ? "Cancellation" : "Completion" }} Note: {{ $order->action_note == null ? "Action note not provided" : ($order->action_note == "Action Comment" ? "Action note not provided" : $order->action_note ) }}
+            </div>
+        </div>
+    @endif
 
     <div class="row mb-4">
         <div class="col-md-12 text-center">

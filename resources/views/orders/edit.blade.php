@@ -23,6 +23,12 @@
         </div>
 
         <div class="row mb-2">
+            <div class="col-md-12">
+                <textarea name="booking_note" class="form-control" cols="30" rows="5">{{ $order->booking_note != null ? $order->booking_note : "Booking note not provided" }}</textarea>
+            </div>
+        </div>
+
+        <div class="row mb-2">
             <div class="col-md-12 text-center">
                 <button class="btn btn-primary w-75">Update Order</button>
             </div>

@@ -19,12 +19,10 @@ class CreateOrdersTable extends Migration
             $table->timestamp('booked_at')->nullable();
             $table->integer('booked_by')->nullable();
             $table->text('booking_note')->nullable();
-            $table->timestamp('cancelled_at')->nullable();
-            $table->text('cancellation_note')->nullable();
-            $table->integer('cancelled_by')->nullable();
-            $table->timestamp('fullfilled_at')->nullable();
-            $table->text('fullfillment_note')->nullable();
-            $table->integer('fullfilled_by')->nullable();
+            $table->integer('action')->nullable();
+            $table->timestamp('action_at')->nullable();
+            $table->text('action_note')->nullable();
+            $table->integer('action_by')->nullable();
             $table->timestamps();
         });
     }

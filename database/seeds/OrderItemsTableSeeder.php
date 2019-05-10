@@ -24,16 +24,7 @@ class OrderItemsTableSeeder extends Seeder
                     'vendor_id'=> 1,
                     'delivery_time'=> Carbon\Carbon::now(),
                     'comment_by_category_manager'=> 'djcvjdsh',
-                    'cancelled_at'=> Carbon\Carbon::now(),
-                    'cancellation_note'=> '123123',
-                    'cancelled_by'=> 2,
-                    'fullfilled_at'=> Carbon\Carbon::now(),
-                    'fullfillment_note'=> '123123',
-                    'fullfilled_by'=> 1,
                     'type' => 'household',
-                    'booked_at' => Carbon\Carbon::now(),
-                    'booked_by' => 1,
-                    'booking_note' => 'Some note'
                 ]);
             }
         }

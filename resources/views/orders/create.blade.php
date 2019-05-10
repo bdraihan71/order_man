@@ -20,6 +20,12 @@
             </div>
         </div>
 
+        <div class="row mb-3">
+            <div class="col-md-12">
+                <textarea name="booking_note" class="form-control" cols="30" rows="5">Booking Comment</textarea>
+            </div>
+        </div>
+
         <div class="row mb-2">
             <div class="col-md-12 text-center">
                 <a href="{{ route('customers.create') }}" target="_blank" class="btn btn-success w-50 float-left">Create Customer</a>
