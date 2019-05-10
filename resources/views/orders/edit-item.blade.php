@@ -67,14 +67,13 @@
 
                         <div class="row mb-3">
                             <div class="col-md-12">
-                                Booking Time: <br>
-                                <input type="datetime-local" name="booked_at" class="form-control" value="{{ explode(':', str_replace(' ', 'T', $item->booked_at))[0].':'.explode(':', str_replace(' ', 'T', $item->booked_at))[1].':00' }}" placeholder="Booked At">
+                                <input type="number" name="review" class="form-control" max="5" min="0" value="{{ $item->review }}" placeholder="Review">
                             </div>
                         </div>
 
                         <div class="row mb-3">
                             <div class="col-md-12">
-                                <input type="number" name="review" class="form-control" max="5" min="0" value="{{ $item->review }}" placeholder="Review">
+                                <input type="text" name="comment_by_category_manager" class="form-control" value="{{ $item->comment_by_category_manager }}" placeholder="Comment by Category Manager">
                             </div>
                         </div>
 

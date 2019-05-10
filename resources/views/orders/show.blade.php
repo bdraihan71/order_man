@@ -31,6 +31,7 @@
             </div>
             <div class="col-md-1">
                 {{ $item->review }}
+                <i class= "fas fa-star"></i>
             </div>
             <div class="col-md-1">
                 <a onclick="return confirm('Are you sure you want to delete this item?');" href="{{ route('delete-item', ['item' => $item->id]) }}" class="float-right ml-3"><i class='fa fas fa-trash'></i></a>
