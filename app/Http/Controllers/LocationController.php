@@ -35,6 +35,12 @@ class LocationController extends Controller
         return redirect(route('locations.index'));
     }
 
+    public function show($id)
+    {
+        $location = Location::find($id);
+        return view('locations.show', compact('location'));
+    }
+
  
     public function edit(Location $location)
     {

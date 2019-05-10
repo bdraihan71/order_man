@@ -38,6 +38,12 @@ class SubcategoryController extends Controller
         return redirect(route('subcategories.index'));
     }
 
+    public function show($id)
+    {
+        $subcategory = Subcategory::find($id);
+        return view('subcategories.show', compact('subcategory'));
+    }
+
     public function edit(Subcategory $subcategory)
     {
         $categories = Category::all();
