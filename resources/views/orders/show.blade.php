@@ -5,7 +5,7 @@
         <div class="col-md-11">
             <h1>Order no: {{ $order->id }}</h1> <br>
             <h3>
-                Customer: {{ $order->customer->name }}
+                Customer: {{ $order->customer->name }} <span class="float-right">Booked at: {{ $order->booked_at }}</span>
             </h3>
         </div>
         <div class="col-md-1">

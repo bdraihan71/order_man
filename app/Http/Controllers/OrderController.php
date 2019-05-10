@@ -58,22 +58,7 @@ class OrderController extends Controller
             'type' => 'required'
         ]);
 
-        $cancel = null;
-        $booked = null;
-        $fullfill = null;
         $delivery = null;
-
-        if ($request->cancelled_at != null) {
-            $cancel = Carbon::parse($request->cancelled_at)->toDateTimeString();
-        }
-        
-        if ($request->booked_at != null) {
-            $booked = Carbon::parse($request->booked_at)->toDateTimeString();
-        }
-
-        if ($request->fullfilled_at != null) {
-            $fullfill = Carbon::parse($request->fullfilled_at)->toDateTimeString();
-        }
 
         if ($request->delivery_time != null) {
             $delivery = Carbon::parse($request->delivery_time)->toDateTimeString();
@@ -87,17 +72,14 @@ class OrderController extends Controller
             'review' => $request->review,
             'delivery_time' => $request->delivery_time,
             'vendor_id' => $request->vendor_id,
-            'booked_by' => $request->booked_by,
             'type' => $request->type,
         ]);
 
-        return view('orders.add-items', compact('order'));
-
-        // if ($request->continue) {
-        //     return view('orders.add-items', compact('order'));
-        // } else {
-        //     return view('orders.add-items', compact('order'));
-        // }
+        if ($request->continue == 1) {
+            return view('orders.add-items', compact('order'));
+        } else {
+            return view('orders.show', compact('order'));
+        }
     }
 
     public function show(Order $order)
@@ -127,6 +109,7 @@ class OrderController extends Controller
         
         $order->customer_id = $request->customer_id;
         $order->booking_note = $request->booking_note;
+        $order->booked_by = auth()->user()->id;
         $order->save();
 
         return redirect(route('orders.show', ['id' => $order->id]));
@@ -142,38 +125,13 @@ class OrderController extends Controller
             'type' => 'required'
         ]);
 
-        $cancel = null;
-        $booked = null;
-        $fullfill = null;
-
-        if ($request->cancelled_at != null) {
-            $cancel = Carbon::parse($request->cancelled_at)->toDateTimeString();
-        }
-        
-        if ($request->booked_at != null) {
-            $booked = Carbon::parse($request->booked_at)->toDateTimeString();
-        }
-
-        if ($request->fullfilled_at != null) {
-            $fullfill = Carbon::parse($request->fullfilled_at)->toDateTimeString();
-        }
-
         $item->service_id = $request->service_id;
         $item->vendor_id = $request->vendor_id;
         $item->service_price = $request->service_price;
         $item->service_commission = $request->service_commission;
         $item->review = $request->review;
         $item->delivery_time = $request->delivery_time;
-        $item->booked_at =  $booked;
-        $item->booked_by = $request->booked_by;
         $item->comment_by_category_manager = $request->comment_by_category_manager;
-        $item->booking_note = $request->booking_note;
-        $item->cancelled_at =  $cancel;
-        $item->cancelled_by = $request->cancelled_by;
-        $item->cancellation_note = $request->cancellation_note;
-        $item->fullfilled_at =  $fullfill;
-        $item->fullfilled_by = $request->fullfilled_by;
-        $item->fullfillment_note = $request->fullfillment_note;
         $item->type = $request->type;
         $item->save();
 
