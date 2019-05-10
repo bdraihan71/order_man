@@ -89,8 +89,7 @@ class OrderController extends Controller
 
     public function edit(Order $order)
     {
-        // $customers = Customer::all();
-        $customers = User::all();
+        $customers = Customer::all();
 
         return view('orders.edit', compact('order', 'customers'));
     }
