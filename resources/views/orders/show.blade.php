@@ -67,7 +67,7 @@
                 <small>Comment By Category Manager:</small> {{ $item->comment_by_category_manager }}
             </div>
             <div class="col-md-2">
-                <small>Vendor:</small> {{ $item->vendor->company_name }}
+                <small>Vendor:</small> {{ $item->vendor == null ? "Vendor not selected" : $item->vendor->company_name }}
             </div>
         </div>
 
