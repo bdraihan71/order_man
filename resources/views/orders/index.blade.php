@@ -64,7 +64,7 @@
                                 {{ $item->delivery_time }}
                             </div>
                             <div class="col-md-2">
-                                Vendor: {{ $item->vendor->company_name }}
+                                Vendor: {{ $item->vendor == null ? "Vendor not selected" : $item->vendor->company_name }}
                             </div>
                         </div>
                     @endforeach
