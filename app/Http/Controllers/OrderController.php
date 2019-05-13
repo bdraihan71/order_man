@@ -55,6 +55,7 @@ class OrderController extends Controller
             'service_price' => 'required|integer',
             'service_commission' => 'required|integer',
             'delivery_time' => 'required',
+            'vendor_id' => 'required|exists:vendors,id',
             'type' => 'required'
         ]);
 
@@ -120,6 +121,7 @@ class OrderController extends Controller
             'service_id' => 'required|exists:services,id',
             'service_price' => 'required|integer',
             'service_commission' => 'required|integer',
+            'vendor_id' => 'required|exists:vendors,id',
             'delivery_time' => 'required',
             'type' => 'required'
         ]);
