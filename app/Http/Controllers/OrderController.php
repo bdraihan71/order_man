@@ -42,9 +42,8 @@ class OrderController extends Controller
 
     public function getAddItem(Request $request, Order $order)
     {
-   
-
-        return view('orders.add-items', compact('order'));
+        $users = User::where('role_id', 2)->get();
+        return view('orders.add-items', compact('order', 'users'));
     }
 
     public function addItem(Request $request, Order $order)
@@ -55,7 +54,8 @@ class OrderController extends Controller
             'service_price' => 'required|integer',
             'service_commission' => 'required|integer',
             'delivery_time' => 'required',
-            'type' => 'required'
+            'type' => 'required',
+            'category_manager' => 'required'
         ]);
 
         $delivery = null;
@@ -72,6 +72,7 @@ class OrderController extends Controller
             'review' => $request->review,
             'delivery_time' => $request->delivery_time,
             'vendor_id' => $request->vendor_id,
+            'category_manager' => $request->category_manager,
             'type' => $request->type,
         ]);
 

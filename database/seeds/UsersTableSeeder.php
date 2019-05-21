@@ -26,5 +26,13 @@ class UsersTableSeeder extends Seeder
             'password' => bcrypt('bangladesh'),
             'role_id' => 2,
         ]);
+
+        DB::table('users')->insert([
+            'name' => 'Tasnim',
+            'email' => 'tasnim@amarsheba.com',
+            'email_verified_at' => new DateTime,
+            'password' => bcrypt('bangladesh'),
+            'role_id' => 2,
+        ]);
     }
 }
