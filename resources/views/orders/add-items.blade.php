@@ -99,7 +99,7 @@
                         <div class="row mb-3">
                             <div class="col-md-12 text-center">
                                 <select name="reference_id" class="form-control">
-                                    <option value="">Please select a reference</option>
+                                    <option value="">Please select a Reference</option>
                                     @foreach ($references as $reference)
                                         <option value="{{ $reference->id }}">{{ $reference->name }}</option>
                                     @endforeach
