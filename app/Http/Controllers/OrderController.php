@@ -9,6 +9,7 @@ use App\Service;
 use App\Customer;
 use App\User;
 use App\OrderItem;
+use App\Reference;
 
 class OrderController extends Controller
 {
@@ -42,9 +43,8 @@ class OrderController extends Controller
 
     public function getAddItem(Request $request, Order $order)
     {
-   
-
-        return view('orders.add-items', compact('order'));
+        $references = Reference::all();
+        return view('orders.add-items', compact('order','references'));
     }
 
     public function addItem(Request $request, Order $order)
@@ -55,6 +55,7 @@ class OrderController extends Controller
             'service_price' => 'required|integer',
             'service_commission' => 'required|integer',
             'delivery_time' => 'required',
+            'reference_id' => 'required',
             'type' => 'required'
         ]);
 
@@ -72,6 +73,7 @@ class OrderController extends Controller
             'review' => $request->review,
             'delivery_time' => $request->delivery_time,
             'vendor_id' => $request->vendor_id,
+            'reference_id' => $request->reference_id,
             'type' => $request->type,
         ]);
 
