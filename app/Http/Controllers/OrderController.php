@@ -124,6 +124,7 @@ class OrderController extends Controller
             'service_price' => 'required|integer',
             'service_commission' => 'required|integer',
             'delivery_time' => 'required',
+            'reference_id' => 'required',
             'type' => 'required'
         ]);
 
@@ -135,6 +136,7 @@ class OrderController extends Controller
         $item->delivery_time = $request->delivery_time;
         $item->comment_by_category_manager = $request->comment_by_category_manager;
         $item->type = $request->type;
+        $item->reference_id = $request->reference_id;
         $item->save();
 
         return redirect(route('orders.show', ['id' => $item->order->id]));

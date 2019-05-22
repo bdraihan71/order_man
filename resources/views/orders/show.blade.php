@@ -63,8 +63,11 @@
             <div class="col-md-2">
                 <small>Type:</small> {{ $item->type }}
             </div>
-            <div class="col-md-5">
+            <div class="col-md-3">
                 <small>Comment By Category Manager:</small> {{ $item->comment_by_category_manager }}
+            </div>
+            <div class="col-md-2">
+                <small>Reference:</small> {{ $item->reference->name }}
             </div>
             <div class="col-md-2">
                 <small>Vendor:</small> {{ $item->vendor->company_name }}

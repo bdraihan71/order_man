@@ -37,4 +37,9 @@ class OrderItem extends Model
     {
         return $this->belongsTo('App\User', 'fullfilled_by');
     }
+
+    public function reference()
+    {
+        return $this->belongsTo('App\Reference', 'reference_id');
+    }
 }

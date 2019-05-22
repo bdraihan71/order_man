@@ -91,6 +91,19 @@
                         </div>
 
                         <div class="row mb-3">
+                            <div class="col-md-12 text-center">
+                                <select name="reference_id" class="form-control">
+                                    <option value="{{ $item->reference->id  }}">{{ $item->reference->name }}</option>
+                                    @foreach (App\Reference::all() as $reference)
+                                        @if ($item->reference->id != $reference->id)
+                                            <option value="{{ $reference->id }}">{{ $reference->name  }}</option>
+                                        @endif
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
                             <div class="col-md-12">
                                 <button type="submit" class="btn btn-primary w-100 float-left" id="submit-btn">Update</button>
                             </div>
