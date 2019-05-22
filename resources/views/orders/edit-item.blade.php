@@ -28,7 +28,6 @@
                                         @endif
                                     @endforeach
                                 </select>
-                                <a href="{{ route('services.create') }}" class="btn btn-primary w-50">Create Service</a>
                             </div>
                         </div>
 
@@ -42,7 +41,6 @@
                                         @endif
                                     @endforeach
                                 </select>
-                                <a href="{{ route('vendors.create') }}" class="btn btn-primary w-50">Create Vendor</a>
                             </div>
                         </div>
 
