@@ -19,6 +19,7 @@
                             <tr>
                                 <td>{{ $reference->name }}</td>
                                 <td>
+                                <a class="btn btn-primary" href="{{route('reference.show', ['reference' => $reference->id])}}">View</a>
                                 <a class="btn btn-info" href="{{route('reference.edit', $reference->id)}}">Edit</a>
                                 <form action="{{route('reference.destroy', $reference->id)}}" onclick="return confirm('Are you sure?')" method="post" style="display: inline;">
                                     @csrf

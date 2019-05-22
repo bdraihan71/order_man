@@ -31,6 +31,12 @@ class ReferenceController extends Controller
 
         return redirect(route('reference.index'));
     }
+
+    public function show($id)
+    {
+        $reference = Reference::find($id);
+        return view('reference.show', compact('reference'));
+    }
     
     public function edit($id)
     {

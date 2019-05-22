@@ -38,8 +38,6 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('categories', 'CategoryController');
     Route::resource('subcategories', 'SubcategoryController');
     Route::resource('locations', 'LocationController');
-
-    //reference
     Route::resource('reference', 'ReferenceController');
 
 });
