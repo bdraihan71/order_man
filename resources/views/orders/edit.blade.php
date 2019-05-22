@@ -12,10 +12,10 @@
         <div class="row mb-2">
             <div class="col-md-12">
                 <select name="customer_id" class="form-control">
-                    <option value="{{ $order->customer_id }}">{{ $order->customer->name }}</option>
+                    <option value="{{ $order->customer_id }}">{{ $order->customer->name }} {{ $order->customer->primary_contact_number }}</option>
                     @foreach ($customers as $customer)
                         @if ($order->customer_id != $customer->id)
-                            <option value="{{ $customer->id }}">{{ $customer->name }}</option>
+                            <option value="{{ $customer->id }}">{{ $customer->name }} {{ $customer->primary_contact_number }}</option>
                         @endif
                     @endforeach
                 </select>
