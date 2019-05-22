@@ -5,7 +5,7 @@
         <div class="col-md-6">
             <h1>Order no: {{ $order->id }}<span class="border border-warning h4 ml-3 ">{{ $order->action == null ? "Booked" : ($order->action < 0 ? "Cancelled" : "Provided") }}</span></h1>
             <h3>
-                Customer: {{ $order->customer->name }} <span class="float-right text-primary">Booked for: {{ $order->booked_at }}</span>
+                Customer: {{ $order->customer->name }} <span class="float-right text-primary">Recieved At: {{ $order->booked_at }}</span>
             </h3>
         </div>
         <div class="col-md-6">
@@ -58,7 +58,7 @@
 
         <div class="row mb-4">
             <div class="col-md-3">
-                <small>Receive Time: </small> {{ $item->delivery_time }}
+                <small>Booked For: </small> {{ $item->delivery_time }}
             </div>
             <div class="col-md-2">
                 <small>Type:</small> {{ $item->type }}
