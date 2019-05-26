@@ -13,7 +13,6 @@
                     <table class="table table-bordered">
                         <tr>
                             <td>Title</td>
-                            <td>Description</td>
                             <td>Subcategory</td>
                             <td>price</td>
                             <td>Actions</td>
@@ -21,7 +20,6 @@
                         @foreach ($services as $service)
                         <tr>
                             <td>{{ $service->title }}</td>
-                            <td>{{ $service->description }}</td>
                             <td>{{ $service->subcategory->name }}</td>
                             <td>{{ $service->price/100 }}</td>
                             <td style="width:22%">
