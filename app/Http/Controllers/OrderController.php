@@ -42,9 +42,8 @@ class OrderController extends Controller
 
     public function getAddItem(Request $request, Order $order)
     {
-   
-
-        return view('orders.add-items', compact('order'));
+        $users = User::where('role_id', 2)->get();
+        return view('orders.add-items', compact('order', 'users'));
     }
 
     public function addItem(Request $request, Order $order)
@@ -55,7 +54,8 @@ class OrderController extends Controller
             'service_price' => 'required|integer',
             'service_commission' => 'required|integer',
             'delivery_time' => 'required',
-            'type' => 'required'
+            'type' => 'required',
+            'category_manager' => 'required'
         ]);
 
         $delivery = null;
@@ -72,6 +72,7 @@ class OrderController extends Controller
             'review' => $request->review,
             'delivery_time' => $request->delivery_time,
             'vendor_id' => $request->vendor_id,
+            'category_manager' => $request->category_manager,
             'type' => $request->type,
         ]);
 
@@ -122,7 +123,8 @@ class OrderController extends Controller
             'service_price' => 'required|integer',
             'service_commission' => 'required|integer',
             'delivery_time' => 'required',
-            'type' => 'required'
+            'type' => 'required',
+            'category_manager' => 'required'
         ]);
 
         $item->service_id = $request->service_id;
@@ -133,6 +135,7 @@ class OrderController extends Controller
         $item->delivery_time = $request->delivery_time;
         $item->comment_by_category_manager = $request->comment_by_category_manager;
         $item->type = $request->type;
+        $item->category_manager = $request->category_manager;
         $item->save();
 
         return redirect(route('orders.show', ['id' => $item->order->id]));

@@ -93,6 +93,17 @@
                                 </select>
                             </div>
                         </div>
+
+                        <div class="row mb-3">
+                            <div class="col-md-12 text-center">
+                                <select name="category_manager" class="form-control">
+                                    <option value="">Please select a category manager</option>
+                                    @foreach ($users as $user)
+                                        <option value="{{ $user->id }}">{{ $user->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
         
                         <div class="row mb-2">
                             <div class="col-md-12">

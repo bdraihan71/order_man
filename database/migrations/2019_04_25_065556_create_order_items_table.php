@@ -24,6 +24,7 @@ class CreateOrderItemsTable extends Migration
             $table->dateTime('delivery_time');
             $table->text('comment_by_category_manager')->nullable();
             $table->text('type');
+            $table->integer('category_manager');
             $table->timestamps();
         });
     }

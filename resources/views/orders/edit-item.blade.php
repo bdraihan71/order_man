@@ -89,6 +89,19 @@
                         </div>
 
                         <div class="row mb-3">
+                            <div class="col-md-12 text-center">
+                                <select name="category_manager" class="form-control">
+                                    <option value="{{ $item->user->id }}">{{ $item->user->name }}</option>
+                                    @foreach (App\User::where('role_id', 2)->get() as $user)
+                                        @if ($item->user->id != $user->id)
+                                            <option value="{{ $user->id }}">{{ $user->name }}</option>
+                                        @endif
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
                             <div class="col-md-12">
                                 <button type="submit" class="btn btn-primary w-100 float-left" id="submit-btn">Update</button>
                             </div>
