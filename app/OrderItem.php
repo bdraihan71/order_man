@@ -37,4 +37,9 @@ class OrderItem extends Model
     {
         return $this->belongsTo('App\User', 'fullfilled_by');
     }
+
+    public function user()
+    {
+        return $this->belongsTo('App\User', 'category_manager');
+    }
 }
