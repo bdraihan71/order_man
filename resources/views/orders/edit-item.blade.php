@@ -28,7 +28,6 @@
                                         @endif
                                     @endforeach
                                 </select>
-                                <a href="{{ route('services.create') }}" class="btn btn-primary w-50">Create Service</a>
                             </div>
                         </div>
 
@@ -42,7 +41,6 @@
                                         @endif
                                     @endforeach
                                 </select>
-                                <a href="{{ route('vendors.create') }}" class="btn btn-primary w-50">Create Vendor</a>
                             </div>
                         </div>
 
@@ -97,6 +95,11 @@
                                     @foreach (App\Reference::all() as $reference)
                                         @if ($item->reference->id != $reference->id)
                                             <option value="{{ $reference->id }}">{{ $reference->name  }}</option>
+                                <select name="category_manager" class="form-control">
+                                    <option value="{{ $item->user->id }}">{{ $item->user->name }}</option>
+                                    @foreach (App\User::where('role_id', 2)->get() as $user)
+                                        @if ($item->user->id != $user->id)
+                                            <option value="{{ $user->id }}">{{ $user->name }}</option>
                                         @endif
                                     @endforeach
                                 </select>

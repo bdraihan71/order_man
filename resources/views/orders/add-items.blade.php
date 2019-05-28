@@ -40,7 +40,6 @@
                                         <option value="{{ $service->id }}">{{ $service->title }}</option>
                                     @endforeach
                                 </select>
-                                <a href="{{ route('services.create') }}" class="btn btn-primary w-50">Create Service</a>
                             </div>
                         </div>
 
@@ -52,7 +51,6 @@
                                         <option value="{{ $vendor->id }}">{{ $vendor->company_name }}</option>
                                     @endforeach
                                 </select>
-                                <a href="{{ route('vendors.create') }}" class="btn btn-primary w-50">Create Vendor</a>
                             </div>
                         </div>
         
@@ -102,6 +100,10 @@
                                     <option value="">Please select a Reference</option>
                                     @foreach ($references as $reference)
                                         <option value="{{ $reference->id }}">{{ $reference->name }}</option>
+                                <select name="category_manager" class="form-control">
+                                    <option value="">Please select a category manager</option>
+                                    @foreach ($users as $user)
+                                        <option value="{{ $user->id }}">{{ $user->name }}</option>
                                     @endforeach
                                 </select>
                             </div>

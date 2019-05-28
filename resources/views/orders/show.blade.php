@@ -66,6 +66,11 @@
             <div class="col-md-3">
                 <small>Comment By Category Manager:</small> {{ $item->comment_by_category_manager }}
             </div>
+
+            <div class="col-md-2">
+                <small>Category Manager:</small> {{ $item->user->name }}
+            </div>
+
             <div class="col-md-2">
                 <small>Reference:</small> {{ $item->reference->name }}
             </div>

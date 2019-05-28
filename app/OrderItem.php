@@ -42,4 +42,9 @@ class OrderItem extends Model
     {
         return $this->belongsTo('App\Reference', 'reference_id');
     }
+    
+    public function user()
+    {
+        return $this->belongsTo('App\User', 'category_manager');
+    }
 }

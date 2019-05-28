@@ -23,6 +23,7 @@ class OrderItemsTableSeeder extends Seeder
                     'service_commission'=> 500,
                     'vendor_id'=> 1,
                     'reference_id' => 1,
+                    'category_manager' => 2,
                     'delivery_time'=> Carbon\Carbon::now(),
                     'comment_by_category_manager'=> 'djcvjdsh',
                     'type' => 'household',
