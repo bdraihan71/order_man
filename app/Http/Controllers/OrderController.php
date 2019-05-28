@@ -43,8 +43,9 @@ class OrderController extends Controller
 
     public function getAddItem(Request $request, Order $order)
     {
+        $users = User::where('role_id', 2)->get();
         $references = Reference::all();
-        return view('orders.add-items', compact('order','references'));
+        return view('orders.add-items', compact('order','references','users'));
     }
 
     public function addItem(Request $request, Order $order)
@@ -54,6 +55,7 @@ class OrderController extends Controller
             'service_id' => 'required|exists:services,id',
             'service_price' => 'required|integer',
             'service_commission' => 'required|integer',
+-           'category_manager' => 'required',
             'delivery_time' => 'required',
             'reference_id' => 'required',
             'type' => 'required'
@@ -73,6 +75,7 @@ class OrderController extends Controller
             'review' => $request->review,
             'delivery_time' => $request->delivery_time,
             'vendor_id' => $request->vendor_id,
+            'category_manager' => $request->category_manager,
             'reference_id' => $request->reference_id,
             'type' => $request->type,
         ]);
@@ -124,6 +127,7 @@ class OrderController extends Controller
             'service_price' => 'required|integer',
             'service_commission' => 'required|integer',
             'delivery_time' => 'required',
+            'category_manager' => 'required',
             'reference_id' => 'required',
             'type' => 'required'
         ]);
@@ -136,6 +140,7 @@ class OrderController extends Controller
         $item->delivery_time = $request->delivery_time;
         $item->comment_by_category_manager = $request->comment_by_category_manager;
         $item->type = $request->type;
+        $item->category_manager = $request->category_manager;
         $item->reference_id = $request->reference_id;
         $item->save();
 
