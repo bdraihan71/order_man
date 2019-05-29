@@ -19,6 +19,7 @@
 
     <title>Order Man</title>
   </head>
+
   <body>
     <nav class="navbar navbar-light nav-bg m-3">
       <a class="navbar-brand text-info display-1" href="/">Order Man</a>
@@ -32,6 +33,7 @@
           <a class="text-muted nav-link text-dark float-right" href="/categories">Category</a>
           <a class="text-muted nav-link text-dark float-right" href="/subcategories">Subcategory</a>
           <a class="text-muted nav-link text-dark float-right" href="/locations">Location</a>
+          <a class="text-muted nav-link text-dark float-right" href="/reference">Reference</a>
       </div>
       @endauth
     </nav>
@@ -50,6 +52,15 @@
     <script src="/js/jquery-3.4.0.slim.min.js"></script>
     <script src="/js/popper.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-139875940-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+  
+      gtag('config', 'UA-139875940-1');
+    </script>
     @yield('scripts')
+    
   </body>
 </html>

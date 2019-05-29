@@ -73,6 +73,7 @@
 
             <div class="col-md-2">
                 <small>Vendor:</small> {{ $item->vendor == null ? "Vendor not selected" : $item->vendor->company_name }}
+                <small>Reference:</small> {{ $item->reference->name }}
             </div>
         </div>
 

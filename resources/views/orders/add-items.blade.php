@@ -96,6 +96,10 @@
 
                         <div class="row mb-3">
                             <div class="col-md-12 text-center">
+                                <select name="reference_id" class="form-control">
+                                    <option value="">Please select a Reference</option>
+                                    @foreach ($references as $reference)
+                                        <option value="{{ $reference->id }}">{{ $reference->name }}</option>
                                 <select name="category_manager" class="form-control">
                                     <option value="">Please select a category manager</option>
                                     @foreach ($users as $user)
