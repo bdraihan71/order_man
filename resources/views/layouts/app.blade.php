@@ -32,6 +32,7 @@
           <a class="text-muted nav-link text-dark float-right" href="/categories">Category</a>
           <a class="text-muted nav-link text-dark float-right" href="/subcategories">Subcategory</a>
           <a class="text-muted nav-link text-dark float-right" href="/locations">Location</a>
+          <a class="text-muted nav-link text-dark float-right" href="/reference">Reference</a>
       </div>
       @endauth
     </nav>

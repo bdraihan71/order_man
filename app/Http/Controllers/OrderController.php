@@ -9,6 +9,7 @@ use App\Service;
 use App\Customer;
 use App\User;
 use App\OrderItem;
+use App\Reference;
 
 class OrderController extends Controller
 {
@@ -43,7 +44,8 @@ class OrderController extends Controller
     public function getAddItem(Request $request, Order $order)
     {
         $users = User::where('role_id', 2)->get();
-        return view('orders.add-items', compact('order', 'users'));
+        $references = Reference::all();
+        return view('orders.add-items', compact('order','references','users'));
     }
 
     public function addItem(Request $request, Order $order)
@@ -53,9 +55,10 @@ class OrderController extends Controller
             'service_id' => 'required|exists:services,id',
             'service_price' => 'required|integer',
             'service_commission' => 'required|integer',
+-           'category_manager' => 'required',
             'delivery_time' => 'required',
-            'type' => 'required',
-            'category_manager' => 'required'
+            'reference_id' => 'required',
+            'type' => 'required'
         ]);
 
         $delivery = null;
@@ -73,6 +76,7 @@ class OrderController extends Controller
             'delivery_time' => $request->delivery_time,
             'vendor_id' => $request->vendor_id,
             'category_manager' => $request->category_manager,
+            'reference_id' => $request->reference_id,
             'type' => $request->type,
         ]);
 
@@ -123,8 +127,9 @@ class OrderController extends Controller
             'service_price' => 'required|integer',
             'service_commission' => 'required|integer',
             'delivery_time' => 'required',
-            'type' => 'required',
-            'category_manager' => 'required'
+            'category_manager' => 'required',
+            'reference_id' => 'required',
+            'type' => 'required'
         ]);
 
         $item->service_id = $request->service_id;
@@ -136,6 +141,7 @@ class OrderController extends Controller
         $item->comment_by_category_manager = $request->comment_by_category_manager;
         $item->type = $request->type;
         $item->category_manager = $request->category_manager;
+        $item->reference_id = $request->reference_id;
         $item->save();
 
         return redirect(route('orders.show', ['id' => $item->order->id]));

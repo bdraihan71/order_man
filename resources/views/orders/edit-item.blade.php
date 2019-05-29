@@ -90,6 +90,11 @@
 
                         <div class="row mb-3">
                             <div class="col-md-12 text-center">
+                                <select name="reference_id" class="form-control">
+                                    <option value="{{ $item->reference->id  }}">{{ $item->reference->name }}</option>
+                                    @foreach (App\Reference::all() as $reference)
+                                        @if ($item->reference->id != $reference->id)
+                                            <option value="{{ $reference->id }}">{{ $reference->name  }}</option>
                                 <select name="category_manager" class="form-control">
                                     <option value="{{ $item->user->id }}">{{ $item->user->name }}</option>
                                     @foreach (App\User::where('role_id', 2)->get() as $user)

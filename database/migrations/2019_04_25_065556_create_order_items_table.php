@@ -22,6 +22,7 @@ class CreateOrderItemsTable extends Migration
             $table->integer('service_commission');
             $table->integer('vendor_id')->nullable();
             $table->dateTime('delivery_time');
+            $table->integer('reference_id');
             $table->text('comment_by_category_manager')->nullable();
             $table->text('type');
             $table->integer('category_manager');

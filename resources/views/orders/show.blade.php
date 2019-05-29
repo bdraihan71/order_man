@@ -72,6 +72,9 @@
             </div>
 
             <div class="col-md-2">
+                <small>Reference:</small> {{ $item->reference->name }}
+            </div>
+            <div class="col-md-2">
                 <small>Vendor:</small> {{ $item->vendor->company_name }}
             </div>
         </div>
