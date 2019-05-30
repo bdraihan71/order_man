@@ -36,9 +36,9 @@ $delivery_time = str_replace(' ', 'T', Carbon\Carbon::parse('tomorrow 9 AM')->to
                         <div class="col-md-12 text-center">
                             <select name="service_id" class="form-control">
                                 <option value="">Please select a Service</option>
-                                @foreach (App\Service::all() as $service)
-                                <option value="{{ $service->id }}">{{ $service->title }}</option>
-                                @endforeach
+                                    @foreach (App\Service::all() as $service)
+                                        <option value="{{ $service->id }}">{{ $service->title }}</option>
+                                    @endforeach
                             </select>
                         </div>
                     </div>
@@ -47,9 +47,9 @@ $delivery_time = str_replace(' ', 'T', Carbon\Carbon::parse('tomorrow 9 AM')->to
                         <div class="col-md-12 text-center">
                             <select name="vendor_id" class="form-control">
                                 <option value="">Please select a Vendor</option>
-                                @foreach (App\Vendor::all() as $vendor)
-                                <option value="{{ $vendor->id }}">{{ $vendor->company_name }}</option>
-                                @endforeach
+                                    @foreach (App\Vendor::all() as $vendor)
+                                        <option value="{{ $vendor->id }}">{{ $vendor->company_name }}</option>
+                                    @endforeach
                             </select>
                         </div>
                     </div>
@@ -84,11 +84,11 @@ $delivery_time = str_replace(' ', 'T', Carbon\Carbon::parse('tomorrow 9 AM')->to
                         <div class="col-md-12">
                             <select name="type" class="form-control">
                                 @if(old('type') == "household")
-                                <option value="household" selected>Household</option>
-                                <option value="corporate customer">Corporate Customer</option>
-                                @else
-                                <option value="household">Household</option>
-                                <option value="corporate customer" selected>Corporate Customer</option>
+                                    <option value="household" selected>Household</option>
+                                    <option value="corporate customer">Corporate Customer</option>
+                                    @else
+                                    <option value="household">Household</option>
+                                    <option value="corporate customer" selected>Corporate Customer</option>
                                 @endif
                             </select>
                         </div>
@@ -130,28 +130,28 @@ $delivery_time = str_replace(' ', 'T', Carbon\Carbon::parse('tomorrow 9 AM')->to
 </form>
 
 @foreach ($order->items as $item)
-<div class="row mb-3">
-    <div class="col-md-3">
-        {{ $item->service->title }}
+    <div class="row mb-3">
+        <div class="col-md-3">
+            {{ $item->service->title }}
+        </div>
+        <div class="col-md-2">
+            {{ $item->service_price }}
+        </div>
+        <div class="col-md-2">
+            {{ $item->service_commission }}
+        </div>
+        <div class="col-md-2">
+            {{ ucfirst($item->type) }}
+        </div>
+        <div class="col-md-2">
+            {{ $item->delivery_time }}
+        </div>
+        <div class="col-md-2">
+            {{ $item->vendor->company_name }}
+        </div>
+        <div class="col-md-1">
+            <a onclick="return confirm('Are you sure you want to delete this item?');" href="{{ route('delete-item', ['item' => $item->id]) }}"><i class='fa fas fa-trash'></i></a>
+        </div>
     </div>
-    <div class="col-md-2">
-        {{ $item->service_price }}
-    </div>
-    <div class="col-md-2">
-        {{ $item->service_commission }}
-    </div>
-    <div class="col-md-2">
-        {{ ucfirst($item->type) }}
-    </div>
-    <div class="col-md-2">
-        {{ $item->delivery_time }}
-    </div>
-    <div class="col-md-2">
-        {{ $item->vendor->company_name }}
-    </div>
-    <div class="col-md-1">
-        <a onclick="return confirm('Are you sure you want to delete this item?');" href="{{ route('delete-item', ['item' => $item->id]) }}"><i class='fa fas fa-trash'></i></a>
-    </div>
-</div>
 @endforeach
 @endsection

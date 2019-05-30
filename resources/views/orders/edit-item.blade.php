@@ -23,9 +23,9 @@
                             <select name="service_id" class="form-control">
                                 <option value="{{ $item->service_id }}">{{ $item->service->title }}</option>
                                 @foreach (App\Service::all() as $service)
-                                @if ($item->service_id != $service->id)
-                                <option value="{{ $service->id }}">{{ $service->title }}</option>
-                                @endif
+                                    @if ($item->service_id != $service->id)
+                                        <option value="{{ $service->id }}">{{ $service->title }}</option>
+                                    @endif
                                 @endforeach
                             </select>
                         </div>
@@ -35,10 +35,10 @@
                         <div class="col-md-12 text-center">
                             <select name="vendor_id" class="form-control">
                                 <option value="{{ $item->vendor_id }}">{{ $item->vendor->company_name }}</option>
-                                @foreach (App\Vendor::all() as $vendor)
-                                @if ($item->vendor_id != $vendor->id)
-                                <option value="{{ $vendor->id }}">{{ $vendor->company_name }}</option>
-                                @endif
+                                    @foreach (App\Vendor::all() as $vendor)
+                                        @if ($item->vendor_id != $vendor->id)
+                                            <option value="{{ $vendor->id }}">{{ $vendor->company_name }}</option>
+                                        @endif
                                 @endforeach
                             </select>
                         </div>
@@ -80,9 +80,9 @@
                             <select name="type" class="form-control">
                                 <option value="{{ $item->type }}">{{ ucfirst($item->type) }}</option>
                                 @if ($item->type == 'household')
-                                <option value="corporate customer">Corporate Customer</option>
-                                @else
-                                <option value="household">Household</option>
+                                    <option value="corporate customer">Corporate Customer</option>
+                                    @else
+                                    <option value="household">Household</option>
                                 @endif
                             </select>
                         </div>
@@ -106,9 +106,9 @@
                             <select name="category_manager" class="form-control">
                                 <option value="{{ $item->user->id }}">{{ $item->user->name }}</option>
                                 @foreach (App\User::where('role_id', 2)->get() as $user)
-                                @if ($item->user->id != $user->id)
-                                <option value="{{ $user->id }}">{{ $user->name }}</option>
-                                @endif
+                                    @if ($item->user->id != $user->id)
+                                        <option value="{{ $user->id }}">{{ $user->name }}</option>
+                                    @endif
                                 @endforeach
                             </select>
                         </div>
