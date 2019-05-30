@@ -23,7 +23,7 @@
             <br>
 
             <label>Title</label>
-            <input class="form-control" type="text" name="title" value="{{old('name')}}"></input>
+            <input class="form-control" type="text" name="title" value="{{old('title')}}"></input>
             <br>
 
             <label>Description</label>
@@ -31,7 +31,7 @@
             <br>
 
             <label>Price</label>
-            <input class="form-control" type="number" name="price" value="{{old('email')}}"></input>
+            <input class="form-control" type="number" name="price" value="{{old('price')}}"></input>
             <br>
 
             <button class="btn btn-primary" type="submit">Create Service</button>
