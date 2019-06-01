@@ -9,11 +9,11 @@
                     <div class="card-body">
                     <form method="post" action="{{route('customers.store')}}">
                             @csrf
-                            <label>Name</label>
+                            <label class="star">Name</label>
                             <input class="form-control bg-transparent" type="text" name="name" value="{{old('name')}}"></input>
                             <br>
 
-                            <label>Phone Number(Primary)</label>
+                            <label class="star">Phone Number(Primary)</label>
                             <input class="form-control bg-transparent" type="text" name="primary_contact_number" value="{{old('primary_contact_number')}}"></input>
                             <br>
 

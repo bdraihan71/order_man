@@ -9,7 +9,7 @@
                     <div class="card-body">
                     <form method="post" action="{{route('reference.store')}}">
                             @csrf
-                            <label>Name</label>
+                            <label class="star">Name</label>
                             <input class="form-control bg-transparent" type="text" name="name" value="{{old('name')}}"></input>
                             <br>
                             <button class="btn btn-info" type="submit">Create Reference</button>
