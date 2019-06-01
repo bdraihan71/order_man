@@ -2,15 +2,15 @@
 
 @section('content')
     <div class="row my-3">
-        <div class="col-md-4">
+        <div class="col-md-3 my-2">
             <h1 class="h3">All Orders</h1>
         </div>
-        <div class="col-md-4 mb-3 mt-3">
+        <div class="col-md-6 my-2">
             <form action="{{ route('orders.index') }}" method="GET">
-                <input type="text" name="item" class="form-control" placeholder="Type to search">
+                <input type="text" name="item" class="form-control bg-transparent" placeholder="Type to search">
             </form>
         </div>
-        <div class="col-md-4 text-sm-right">
+        <div class="col-md-3 text-sm-right my-2">
             <a href="{{ route('orders.create') }}" class="btn btn-outline-info">Create Order</a>
         </div>
     </div>
