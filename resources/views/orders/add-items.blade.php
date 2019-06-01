@@ -117,11 +117,14 @@ $delivery_time = str_replace(' ', 'T', Carbon\Carbon::parse('tomorrow 9 AM')->to
                     </div>
 
                     <div class="row mb-2">
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <button type="submit" class="btn btn-primary w-100 mb-2" id="submit-btn">Add More Items</button>
                         </div>
-                        <div class="col-md-6">
-                            <a href="#" class="btn btn-danger w-100" onclick="noContinue()">Done</a>
+                        <div class="col-md-4">
+                            <a href="#" class="btn btn-success w-100 mb-2" onclick="noContinue()">Done</a>
+                        </div>
+                        <div class="col-md-4">
+                            <a href="{{ route('orders.show', ['order' => $order->id]) }}" class="btn btn-danger w-100">Show order</a>
                         </div>
                     </div>
                 </div>
