@@ -49,7 +49,7 @@
                         <td> {{ $item->service_commission }}</td>
                         <td>{{ ucfirst($item->type) }}</td>
                         <td>{{ $item->delivery_time }}</td>
-                        <td>{{ $item->vendor->company_name }}</td>
+                        <td>{{ $item->vendor != null ? $item->vendor->company_name : '' }}</td>
                     </tr>
                 @endforeach
                 @endif
