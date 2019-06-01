@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class ReferencesTableSeeder extends Seeder
+class RefTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -12,12 +12,10 @@ class ReferencesTableSeeder extends Seeder
     public function run()
     {
         DB::table('references')->insert([
-           'id' => 1,
            'name' => 'Facbook',
         ]);
 
         DB::table('references')->insert([
-            'id' => 2,
             'name' => 'Website',
          ]);
     }

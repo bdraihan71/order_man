@@ -2,8 +2,13 @@
 
 @section('content')
     <div class="row mb-2 border-botttom">
-        <div class="col-md-10">
+        <div class="col-md-3">
             <h1>All Orders</h1>
+        </div>
+        <div class="col-md-7">
+            <form action="{{ route('orders.index') }}" method="GET">
+                <input type="text" name="item" class="form-control" placeholder="Type to search">
+            </form>
         </div>
         <div class="col-md-2">
             <a href="{{ route('orders.create') }}" class="btn btn-primary">Create Order</a>
@@ -64,7 +69,7 @@
                                 {{ $item->delivery_time }}
                             </div>
                             <div class="col-md-2">
-                                Vendor: {{ $item->vendor->company_name }}
+                                Vendor: {{ $item->vendor == null ? "Vendor not selected" : $item->vendor->company_name }}
                             </div>
                         </div>
                     @endforeach

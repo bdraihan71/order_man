@@ -17,4 +17,14 @@ class Order extends Model
     {
         return $this->belongsTo('App\Customer');
     }
+
+    public function bookedBy()
+    {
+        return $this->belongsTo('App\User', 'booked_by');
+    }
+
+    public function actionBy()
+    {
+        return $this->belongsTo('App\User', 'action_by');
+    }
 }
