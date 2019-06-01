@@ -21,28 +21,56 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-light nav-bg m-3">
-      <a class="navbar-brand text-info display-1" href="/">Order Man</a>
-      @auth
-      <div class="float-right display-inline">
-          <a class="text-muted nav-link text-dark float-right" href="/customers">Customer</a>
-          <a class="text-muted nav-link text-dark float-right" href="/vendors">Vendor</a>
-          <a class="text-muted nav-link text-dark float-right" href="/orders">Order</a>
-          <a class="text-muted nav-link text-dark float-right" href="/services">Service</a>
-          <a class="text-muted nav-link text-dark float-right" href="/users">User</a>
-          <a class="text-muted nav-link text-dark float-right" href="/categories">Category</a>
-          <a class="text-muted nav-link text-dark float-right" href="/subcategories">Subcategory</a>
-          <a class="text-muted nav-link text-dark float-right" href="/locations">Location</a>
-          <a class="text-muted nav-link text-dark float-right" href="/reference">Reference</a>
-      </div>
-      @endauth
-    </nav>
+      <nav class="navbar navbar-expand-lg navbar-light nav-bg m-3">
+          <a class="navbar-brand text-info display-1" href="/home">Order Man</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          @auth
+            <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav ml-auto">
+                <li class="nav-item my-auto">
+                    <a class="nav-link" href="/customers">Customer</a>
+                </li>
+                <li class="nav-item my-auto">
+                    <a class="nav-link" href="/vendors">Vendor</a>
+                </li>
+                <li class="nav-item my-auto">
+                    <a class="nav-link" href="/orders">Order</a>
+                </li>
+                <li class="nav-item my-auto">
+                    <a class="nav-link" href="/services">Service</a>
+                </li>
+                <li class="nav-item my-auto">
+                    <a class="nav-link" href="/users">User</a>
+                </li>
+                <li class="nav-item my-auto">
+                    <a class="nav-link" href="/categories">Category</a>
+                </li>
+                <li class="nav-item my-auto">
+                    <a class="nav-link" href="/subcategories">Subcategory</a>
+                </li>
+                <li class="nav-item my-auto">
+                    <a class="nav-link" href="/locations">Location</a>
+                </li>
+                <li class="nav-item my-auto">
+                    <a class="nav-link" href="/reference">Reference</a>
+                </li>
+                <li class="nav-item my-auto">
+                  <a class="nav-link">
+                    <form method="POST" action="{{route('logout')}}">
+                      @csrf
+                      <button class="btn btn-outline-info" type="submit">Logout</button>
+                    </form>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          @endauth
+        </nav>
     <hr>
     <div class="container-fluid">
-        <form method="POST" action="{{route('logout')}}">
-            @csrf
-            <button type="submit" class="text-muted nav-link text-dark float-right">Logout</button>
-        </form>
+        
       @include('layouts.messages')
       @yield('content')
     </div>

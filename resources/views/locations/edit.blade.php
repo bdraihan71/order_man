@@ -4,7 +4,7 @@
 <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
-                <div class="card">
+                <div class="card bg-transparent my-3">
                     <div class="card-header">Edit Location</div>
 
                     <div class="card-body">
@@ -13,7 +13,7 @@
                             <input type="hidden" name="_method" value="put"></input>
 
                             <label>Name</label>
-                            <input class="form-control" type="text" value="{{$location->name}}" name="name"></input>
+                            <input class="form-control bg-transparent" type="text" value="{{$location->name}}" name="name"></input>
                             <br>
 
                             <button class="btn btn-primary" type="submit">Save</button>

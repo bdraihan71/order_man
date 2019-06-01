@@ -1,81 +1,61 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="row mb-2 border-botttom">
-        <div class="col-md-3">
-            <h1>All Orders</h1>
+    <div class="row my-3">
+        <div class="col-md-4">
+            <h1 class="h3">All Orders</h1>
         </div>
-        <div class="col-md-7">
+        <div class="col-md-4 mb-3 mt-3">
             <form action="{{ route('orders.index') }}" method="GET">
                 <input type="text" name="item" class="form-control" placeholder="Type to search">
             </form>
         </div>
-        <div class="col-md-2">
-            <a href="{{ route('orders.create') }}" class="btn btn-primary">Create Order</a>
+        <div class="col-md-4 text-sm-right">
+            <a href="{{ route('orders.create') }}" class="btn btn-outline-info">Create Order</a>
         </div>
     </div>
     @foreach($orders as $order)
-        <div class="card mb-4">
-            <div class="card-header">
-                <div class="row mb-2">
-                    <div class="col-md-10">
-                        Order No: {{ $order->id }} for {{ $order->customer->name }}
-                    </div>
-                    <div class="col-md-2">
-                        {{ $order->action == null ? "Booked" : ($order->action < 0 ? "Cancelled" : "Provided") }}
-                        <a href="{{ route('orders.show', ['order' => $order->id]) }}" class="btn btn-primary float-right">Show</a>
-                    </div>
-                </div>
-                <div class="row border-top">
-                    <div class="col-md-3 mt-3">
-                        <p class="text-center small">Service</p>
-                    </div>
-                    <div class="col-md-1 mt-3">
-                        <p class="text-center small">Price</p>
-                    </div>
-                    <div class="col-md-1 mt-3">
-                        <p class="text-center small">Commission</p>
-                    </div>
-                    <div class="col-md-2 mt-3">
-                        <p class="text-center small">Customer Type</p>
-                    </div>
-                    <div class="col-md-2 mt-3">
-                        <p class="text-center small">Time</p>
-                    </div>
-                    <div class="col-md-2 mt-3">
-                        <p class="text-center small">Vendor</p>
-                    </div>
-                </div>
-            </div>
-            <div class="card-body">
+    <div class="table-responsive my-5">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col" colspan="4" class="text-info">Order No: {{ $order->id }} for {{ $order->customer->name }}</th>
+                    <th scope="col" colspan="1">{{ $order->action == null ? "Booked" : ($order->action < 0 ? "Cancelled" : "Provided") }}</th>
+                    <th scope="col" colspan="1"><a href="{{ route('orders.show', ['order' => $order->id]) }}" class="btn btn-info">Show</a></th>
+                </tr>
+            </thead>
+            <thead>
+                <tr>
+                    <th scope="col">Service</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Commission</th>
+                    <th scope="col">Customer Type</th>
+                    <th scope="col">Time</th>
+                    <th scope="col">Vendor</th>
+                </tr>
+            </thead>
+            <tbody>
                 @if (count($order->items) == 0)
-                    <h4 class="text-center">No items</h4>
+                <tr>
+                    <td colspan="6">
+                        <h1 class="text-center text-info">No items</h1>
+                    </td>
+                </tr>
                 @else
-                    @foreach ($order->items as $item)
-                        <div class="row mb-3 text-center">
-                            <div class="col-md-3">
-                                {{ $item->service->title }}
-                            </div>
-                            <div class="col-md-1">
-                                {{ $item->service_price }}
-                            </div>
-                            <div class="col-md-1">
-                                {{ $item->service_commission }}
-                            </div>
-                            <div class="col-md-2">
-                                {{ ucfirst($item->type) }}
-                            </div>
-                            <div class="col-md-2">
-                                {{ $item->delivery_time }}
-                            </div>
-                            <div class="col-md-2">
-                                Vendor: {{ $item->vendor == null ? "Vendor not selected" : $item->vendor->company_name }}
-                            </div>
-                        </div>
-                    @endforeach
+                @foreach ($order->items as $item)
+                    <tr>
+                        <td>{{ $item->service->title }}</td>
+                        <td>{{ $item->service_price }}</td>
+                        <td> {{ $item->service_commission }}</td>
+                        <td>{{ ucfirst($item->type) }}</td>
+                        <td>{{ $item->delivery_time }}</td>
+                        <td>{{ $item->vendor->company_name }}</td>
+                    </tr>
+                @endforeach
                 @endif
-            </div>
-        </div>
+            </tbody>
+        </table>
+    </div>
     @endforeach
 
     <div class="row">

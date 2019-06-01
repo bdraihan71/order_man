@@ -4,7 +4,7 @@
 <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
-                <div class="card">
+                <div class="card bg-transparent my-3">
                     <div class="card-header">Edit User</div>
 
                     <div class="card-body">
@@ -13,15 +13,15 @@
                             <input type="hidden" name="_method" value="put"></input>
 
                             <label>Name</label>
-                            <input class="form-control" type="text" value="{{$user->name}}" name="name"></input>
+                            <input class="form-control bg-transparent" type="text" value="{{$user->name}}" name="name"></input>
                             <br>
 
                             <label>Email</label>
-                            <input disabled class="form-control" type="text" value="{{$user->email}}" name="email"></input>
+                            <input disabled class="form-control bg-transparent" type="text" value="{{$user->email}}" name="email"></input>
                             <br>
 
                             <label>Role</label>
-                            <select class="form-control" name="role_id">
+                            <select class="form-control bg-transparent" name="role_id">
                                 @foreach($roles as $role)
                                     @if($role->id == $user->role->id)
                                         <option selected value="{{$role->id}}">{{$role->display_name}}</option>

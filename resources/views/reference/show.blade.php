@@ -4,7 +4,7 @@
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-md-10">
-      <div class="card">
+      <div class="card bg-transparent my-3">
         <div class="card-header">Reference</div>
         <div class="card-body">
 
@@ -20,6 +20,7 @@
           <P>{{$reference->name}}</P>
           <br>
 
+          <a href="{{route('reference.index')}}" class="btn btn-info">Reference List</a>
         </div>
       </div>
     </div>
