@@ -29,6 +29,7 @@ class CustomerController extends Controller
         $request->validate([
             'name' => 'required',
             'location_id' => 'required|exists:locations,id',
+            'primary_contact_number' => 'required'
         ]);
 
         Customer::create([
@@ -60,8 +61,6 @@ class CustomerController extends Controller
         $request->validate([
             'name' => 'required',
             'primary_contact_number' => 'required',
-            'secondary_contact_number' => 'nullable',
-            'profession'  => 'nullable',
             'location_id' => 'required|exists:locations,id',
         ]);
 

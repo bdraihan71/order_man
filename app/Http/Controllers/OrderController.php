@@ -55,9 +55,9 @@ class OrderController extends Controller
             'service_id' => 'required|exists:services,id',
             'service_price' => 'required|integer',
             'service_commission' => 'required|integer',
--           'category_manager' => 'required',
             'delivery_time' => 'required',
             'reference_id' => 'required',
+            'category_manager' => 'required',
             'type' => 'required'
         ]);
 
@@ -66,7 +66,6 @@ class OrderController extends Controller
         if ($request->delivery_time != null) {
             $delivery = Carbon::parse($request->delivery_time)->toDateTimeString();
         }
-
         $item = OrderItem::create([
             'order_id' => $request->order_id,
             'service_id' => $request->service_id,
