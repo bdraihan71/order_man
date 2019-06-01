@@ -4,20 +4,20 @@
 <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
-                <div class="card">
+                <div class="card bg-transparent my-3">
                     <div class="card-header">Categories</div>
                     <div class="card-body">
                     <form method="post" action="{{route('categories.store')}}">
                             @csrf
                             <label>Name</label>
-                            <input class="form-control" type="text" name="name" value="{{old('name')}}"></input>
+                            <input class="form-control bg-transparent" type="text" name="name" value="{{old('name')}}"></input>
                             <br>
 
                             <label>Description</label>
-                            <input class="form-control" type="text" name="description" value="{{old('description')}}"></input>
+                            <input class="form-control bg-transparent" type="text" name="description" value="{{old('description')}}"></input>
                             <br>
 
-                            <button class="btn btn-primary" type="submit">Create Category</button>
+                            <button class="btn btn-info" type="submit">Create Category</button>
                         </form>
                     </div>
                 </div>

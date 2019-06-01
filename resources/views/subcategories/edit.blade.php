@@ -4,7 +4,7 @@
 <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
-                <div class="card">
+                <div class="card bg-transparent my-3">
                     <div class="card-header">Edit Subcategory</div>
 
                     <div class="card-body">
@@ -13,11 +13,11 @@
                             <input type="hidden" name="_method" value="put"></input>
 
                             <label>Name</label>
-                            <input class="form-control" type="text" value="{{$subcategory->name}}" name="name"></input>
+                            <input class="form-control bg-transparent" type="text" value="{{$subcategory->name}}" name="name"></input>
                             <br>
 
                             <label>Category</label>
-                            <select class="form-control" name="category_id">
+                            <select class="form-control bg-transparent" name="category_id">
                                 @foreach($categories as $category)
                                     @if($category->id == $subcategory->category->id)
                                         <option selected value="{{$category->id}}">{{ $category->name }}</option>
@@ -29,7 +29,7 @@
                             <br>
 
                             <label>Description</label>
-                            <input class="form-control" type="text" value="{{$subcategory->description}}" name="description"></input>
+                            <input class="form-control bg-transparent" type="text" value="{{$subcategory->description}}" name="description"></input>
                             <br>
 
                             <button class="btn btn-primary" type="submit">Save</button>

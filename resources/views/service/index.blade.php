@@ -4,12 +4,12 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
-            <div class="card">
-                <div class="card-header">Services
-                    <a href="{{route('services.create')}}" class="btn btn-primary">Create Service</a>
+            <div class="card bg-transparent my-3">
+                <div class="card-header lead">Services
+                    <a href="{{route('services.create')}}" class="btn btn-outline-info float-right">Create Service</a>
                 </div>
 
-                <div class="card-body">
+                <div class="card-body table-responsive">
                     <table class="table table-bordered">
                         <tr>
                             <td>Title</td>
@@ -22,13 +22,13 @@
                             <td>{{ $service->title }}</td>
                             <td>{{ $service->subcategory->name }}</td>
                             <td>{{ $service->price/100 }}</td>
-                            <td style="width:22%">
-                                <a class="btn btn-primary" href="{{route('services.show', ['service' => $service->id])}}">View</a>
-                                <a class="btn btn-info" href="{{route('services.edit', ['service' => $service->id])}}">Edit</a>
+                            <td>
+                                <a class="btn btn-primary my-2" href="{{route('services.show', ['service' => $service->id])}}">View</a>
+                                <a class="btn btn-info my-2" href="{{route('services.edit', ['service' => $service->id])}}">Edit</a>
                                 <form action="{{ route('services.destroy', $service->id)}}" onclick="return confirm('Are you sure?')" method="post" style="display: inline;">
                                     @csrf
                                     @method('delete')
-                                    <button class="btn btn-danger" type="submit">delete</button>
+                                    <button class="btn btn-danger my-2" type="submit">delete</button>
                                 </form>
                             </td>
                         </tr>

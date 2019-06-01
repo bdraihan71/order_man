@@ -4,14 +4,14 @@
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-md-8">
-      <div class="card">
+      <div class="card bg-transparent my-3">
         <div class="card-header">Service</div>
         <div class="card-body">
           <form method="post" action="{{route('services.update', $service->id)}}">
             @csrf
             @method('patch')
             <label>Subcategory</label>
-            <select class="form-control" name="subcategory_id">
+            <select class="form-control bg-transparent" name="subcategory_id">
               @foreach($subcategories as $subcategory)
                 @if(old('subcategory_id') == $subcategory->id)
                   <option selected value="{{$service->subcategory->id}}">{{$service->subcategory->name}}</option>
@@ -23,18 +23,18 @@
             <br>
 
             <label>Title</label>
-            <input class="form-control" type="text" name="title" value="{{$service->title}}"></input>
+            <input class="form-control bg-transparent" type="text" name="title" value="{{$service->title}}"></input>
             <br>
 
             <label>Description</label>
-            <textarea class="form-control" id="exampleFormControlTextarea1" name="description" rows="3">{{$service->description}}</textarea>
+            <textarea class="form-control bg-transparent" id="exampleFormControlTextarea1" name="description" rows="3">{{$service->description}}</textarea>
             <br>
 
             <label>Price</label>
-            <input class="form-control" type="number" name="price" value="{{$service->price}}"></input>
+            <input class="form-control bg-transparent" type="number" name="price" value="{{$service->price}}"></input>
             <br>
 
-            <button class="btn btn-primary" type="submit">Update Service</button>
+            <button class="btn btn-info" type="submit">Update Service</button>
           </form>
         </div>
       </div>
