@@ -14,7 +14,7 @@ class AddCategoryManagerColumnToOrderItemsTable extends Migration
     public function up()
     {
         Schema::table('order_items', function (Blueprint $table) {
-            $table->integer('category_manager');
+            $table->integer('category_manager')->nullable();
         });
     }
 

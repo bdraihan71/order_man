@@ -14,7 +14,7 @@ class AddReferenceIdColumnToOrderItemsTable extends Migration
     public function up()
     {
         Schema::table('order_items', function (Blueprint $table) {
-            $table->integer('reference_id');
+            $table->integer('reference_id')->nullable();
         });
     }
 
