@@ -98,9 +98,9 @@ class OrderController extends Controller
         ]);
 
         if ($request->continue == 1) {
-            return view('orders.add-items', compact('order'));
+            return redirect(route('add-item-to-order', ['order', $order->id]));
         } else {
-            return view('orders.show', compact('order'));
+            return redirect(route('orders.show', ['order', $order->id]));
         }
     }
 
