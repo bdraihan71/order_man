@@ -4,7 +4,7 @@
 <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <div class="card bg-transparent">
+                <div class="card bg-transparent my-3">
                     <div class="card-header lead">Customers
                         <a href="{{route('customers.create')}}" class="btn btn-outline-info float-right">Create Customers</a>
                     </div>

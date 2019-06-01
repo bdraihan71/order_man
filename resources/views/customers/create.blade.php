@@ -4,7 +4,7 @@
 <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
-                <div class="card bg-transparent">
+                <div class="card bg-transparent my-3">
                     <div class="card-header">Customers</div>
                     <div class="card-body">
                     <form method="post" action="{{route('customers.store')}}">
