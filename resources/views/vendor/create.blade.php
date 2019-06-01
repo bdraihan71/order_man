@@ -9,11 +9,11 @@
         <div class="card-body">
           <form method="post" action="{{route('vendors.store')}}">
             @csrf
-            <label>Company Name</label>
+            <label class="star">Company Name</label>
             <input class="form-control bg-transparent" type="text" name="company_name" value="{{old('company_name')}}"></input>
             <br>
 
-            <label>Office Address</label>
+            <label class="star">Office Address</label>
             <input class="form-control bg-transparent" type="text" name="office_address" value="{{old('office_address')}}"></input>
             <br>
 
@@ -33,7 +33,7 @@
             <textarea class="form-control bg-transparent" id="exampleFormControlTextarea1" name="owner_current_house_address" rows="3">{{old('owner_current_house_address')}}</textarea>
             <br>
 
-            <label>Contact Number Primary</label>
+            <label class="star">Contact Number Primary</label>
             <input class="form-control bg-transparent" type="text" name="owner_contact_number_primary" value="{{old('owner_contact_number_primary')}}"></input>
             <br>
 
@@ -41,11 +41,11 @@
             <input class="form-control bg-transparent" type="text" name="owner_contact_number_secondary" value="{{old('owner_contact_number_secondary')}}"></input>
             <br>
 
-            <label>primary Contact person Position</label>
+            <label class="star">Primary Contact person Position</label>
             <input class="form-control bg-transparent" type="text" name="primary_contact_person_position" value="{{old('primary_contact_person_position')}}"></input>
             <br>
 
-            <label>Primary Contact Person Number Primary</label>
+            <label class="star">Primary Contact Person Number Primary</label>
             <input class="form-control bg-transparent" type="text" name="primary_contact_person_number_primary" value="{{old('primary_contact_person_number_primary')}}"></input>
             <br>
 
@@ -100,7 +100,7 @@
             <input class="form-control bg-transparent" type="text" name="review_note" value="{{old('review_note')}}"></input>
             <br>
 
-            <label>Margin</label>
+            <label class="star">Margin</label>
             <input class="form-control bg-transparent" type="number" name="margin" value="{{old('margin')}}"></input>
             <br>
 

@@ -39,85 +39,6 @@
         </div>
     </div>
 
-<<<<<<< HEAD
-    @foreach ($order->items as $item)
-        <div class="row mb-4">
-            <div class="col-md-5">
-                <p><Span class="small">Service -</span> {{ $item->service->title }}</p>
-            </div>
-            <div class="col-md-2">
-                <p><Span class="small">Price -</span> {{ $item->service_price }}</p>
-            </div>
-            <div class="col-md-2">
-                <p><Span class="small">Commission -</span> {{ $item->service_commission }}</p>
-            </div>
-            <div class="col-md-1">
-                <p><Span class="small">Review -</span> {{ $item->review }} <i class= "fas fa-star"></i></p>
-            </div>
-            <div class="col-md-2">
-                <Span class="small">Action -</span>
-                <a href="{{ route('edit-order-item', ['item' => $item->id]) }}"><i class='far fa-edit'></i></a>
-                <a onclick="return confirm('Are you sure you want to delete this item?');" href="{{ route('delete-item', ['item' => $item->id]) }}" class="ml-3"><i class='fa fas fa-trash'></i></a>
-            </div>
-        </div>
-
-        <div class="row mb-4">
-            <div class="col-md-3">
-                <small>Receive Time: </small> {{ Carbon\Carbon::parse($item->delivery_time)->format('d/m/Y h:i a')}}
-            </div>
-            <div class="col-md-2">
-                <small>Type:</small> {{ $item->type }}
-            </div>
-            <div class="col-md-3">
-                <small>Comment By Category Manager:</small> {{ $item->comment_by_category_manager }}
-            </div>
-
-            <div class="col-md-2">
-                <small>Category Manager:</small> {{ $item->user->name }}
-            </div>
-
-            <div class="col-md-2">
-                <small>Vendor:</small> {{ $item->vendor == null ? "Vendor not selected" : $item->vendor->company_name }}
-                <small>Reference:</small> {{ $item->reference->name }}
-            </div>
-        </div>
-
-        {{-- <div class="row mb-4">
-            <div class="col-md-2">
-                Booked By: {{ $item->bookedBy->name }}
-            </div>
-            <div class="col-md-2">
-                Booked At: {{ $item->booked_at }}
-            </div>
-            <div class="col-md-8">
-                Booking Note: {{ $item->booking_note }}
-            </div>
-        </div> --}}
-        {{-- <div class="row mb-4">
-            <div class="col-md-2">
-                Cancelled By: {{ $item->cancelledBy->name }}
-            </div>
-            <div class="col-md-2">
-                Cancelled At: {{ $item->cancelled_at }}
-            </div>
-            <div class="col-md-8">
-                Cancellation Note: {{ $item->cancellation_note }}
-            </div>
-        </div> --}}
-        {{-- <div class="row mb-4">
-            <div class="col-md-2">
-                Fullfilled By: {{ $item->fullfilledBy->name }}
-            </div>
-            <div class="col-md-2">
-                Fullfilled At: {{ $item->fullfilled_at }}
-            </div>
-            <div class="col-md-8">
-                Fullfillment Note: {{ $item->fullfillment_note }}
-            </div>
-        </div> --}}
-        <hr>
-    @endforeach
-=======
     
     <div class="table-responsive">
         <table class="table table-bordered">
@@ -158,5 +79,4 @@
             </tbody>
         </table>
     </div>
->>>>>>> c232f1df7d5929e88352ed912bd89d737c870c22
 @endsection

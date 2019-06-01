@@ -22,15 +22,15 @@
             </select>
             <br>
 
-            <label>Title</label>
+            <label class="star">Title</label>
             <input class="form-control bg-transparent" type="text" name="title" value="{{old('title')}}"></input>
             <br>
 
-            <label>Description</label>
+            <label class="star">Description</label>
             <textarea class="form-control bg-transparent" id="exampleFormControlTextarea1" name="description" rows="3">{{old('description')}}</textarea>
             <br>
 
-            <label>Price</label>
+            <label class="star">Price</label>
             <input class="form-control bg-transparent" type="number" name="price" value="{{old('price')}}"></input>
             <br>
 
