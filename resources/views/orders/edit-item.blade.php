@@ -104,7 +104,7 @@
                     <div class="row mb-3">
                         <div class="col-md-12 text-center">
                             <select name="category_manager" class="form-control bg-transparent">
-                                <option value="{{ $item->user->id }}">{{ $item->user->name }}</option>
+                                <option value="{{ $item->user->id }}">{{ $item->user == null ? 'No Manager' : $item->user->name }}</option>
                                 @foreach (App\User::where('role_id', 2)->get() as $user)
                                     @if ($item->user->id != $user->id)
                                         <option value="{{ $user->id }}">{{ $user->name }}</option>

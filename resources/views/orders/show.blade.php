@@ -65,7 +65,7 @@
                     <td>{{ $item->service_commission }}</td>
                     <td>{{ $item->delivery_time }}</td>
                     <td>{{ $item->type }}</td>
-                    <td>{{ $item->user->name }}</td>
+                    <td>{{ $item->user == null ? 'No Manager' : $item->user->name }}</td>
                     <td>{{ $item->comment_by_category_manager }}</td>
                     <td>{{ $item->reference->name }}</td>
                     <td>{{ $item->vendor->company_name }}</td>
