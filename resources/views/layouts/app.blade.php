@@ -22,9 +22,15 @@
 
   <body>
     <nav class="navbar navbar-light nav-bg m-3">
-      <a class="navbar-brand text-info display-1" href="/">Order Man</a>
+      <a class="navbar-brand text-info display-1" href="/home">Order Man</a>
       @auth
       <div class="float-right display-inline">
+          <a class="text-muted nav-link text-dark float-right">
+            <form method="POST" action="{{route('logout')}}">
+              @csrf
+              <button type="submit">Logout</button>
+            </form>
+          </a>
           <a class="text-muted nav-link text-dark float-right" href="/customers">Customer</a>
           <a class="text-muted nav-link text-dark float-right" href="/vendors">Vendor</a>
           <a class="text-muted nav-link text-dark float-right" href="/orders">Order</a>
@@ -39,10 +45,7 @@
     </nav>
     <hr>
     <div class="container-fluid">
-        <form method="POST" action="{{route('logout')}}">
-            @csrf
-            <button type="submit" class="text-muted nav-link text-dark float-right">Logout</button>
-        </form>
+        
       @include('layouts.messages')
       @yield('content')
     </div>
