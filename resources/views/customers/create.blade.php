@@ -4,29 +4,29 @@
 <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
-                <div class="card">
+                <div class="card bg-transparent">
                     <div class="card-header">Customers</div>
                     <div class="card-body">
                     <form method="post" action="{{route('customers.store')}}">
                             @csrf
                             <label>Name</label>
-                            <input class="form-control" type="text" name="name" value="{{old('name')}}"></input>
+                            <input class="form-control bg-transparent" type="text" name="name" value="{{old('name')}}"></input>
                             <br>
 
                             <label>Phone Number(Primary)</label>
-                            <input class="form-control" type="text" name="primary_contact_number" value="{{old('primary_contact_number')}}"></input>
+                            <input class="form-control bg-transparent" type="text" name="primary_contact_number" value="{{old('primary_contact_number')}}"></input>
                             <br>
 
                             <label>Phone Number(Secondary)</label>
-                            <input class="form-control" type="text" name="secondary_contact_number" value="{{old('secondary_contact_number')}}"></input>
+                            <input class="form-control bg-transparent" type="text" name="secondary_contact_number" value="{{old('secondary_contact_number')}}"></input>
                             <br>
 
                             <label>Profession</label>
-                            <input class="form-control" type="text" name="profession" value="{{old('profession')}}"></input>
+                            <input class="form-control bg-transparent" type="text" name="profession" value="{{old('profession')}}"></input>
                             <br>
 
                             <label>Location</label>
-                            <select class="form-control" name="location_id">
+                            <select class="form-control bg-transparent" name="location_id">
                                 @foreach($locations as $location)
                                     @if(old('location_id') == $location->id)
                                         <option selected value="{{$location->id}}">{{$location->name}}</option>
@@ -37,7 +37,7 @@
                             </select>
                             <br>
 
-                            <button class="btn btn-primary" type="submit">Create User</button>
+                            <button class="btn btn-info" type="submit">Create User</button>
                         </form>
                     </div>
                 </div>
