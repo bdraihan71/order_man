@@ -12,7 +12,7 @@ $delivery_time = str_replace(' ', 'T', Carbon\Carbon::parse('tomorrow 9 AM')->to
         document.getElementById('submit-btn').click();
     }
 </script>
-<div class="row mb-2 border-bottom">
+<div class="row mb-2">
     <div class="col-md-12">
         <h1>Add Items to Order</h1>
     </div>
@@ -27,14 +27,14 @@ $delivery_time = str_replace(' ', 'T', Carbon\Carbon::parse('tomorrow 9 AM')->to
     <div class="row">
         <div class="col-md-3"></div>
         <div class="col-md-6">
-            <div class="card">
+            <div class="card my-3 bg-transparent">
                 <div class="card-header">
                     Add Item to Order {{ $order->id }}
                 </div>
                 <div class="card-body">
                     <div class="row mb-3">
                         <div class="col-md-12 text-center">
-                            <select name="service_id" class="form-control">
+                            <select name="service_id" class="form-control bg-transparent">
                                 <option value="">Please select a Service</option>
                                     @foreach (App\Service::all() as $service)
                                         <option value="{{ $service->id }}">{{ $service->title }}</option>
@@ -45,7 +45,7 @@ $delivery_time = str_replace(' ', 'T', Carbon\Carbon::parse('tomorrow 9 AM')->to
 
                     <div class="row mb-3">
                         <div class="col-md-12 text-center">
-                            <select name="vendor_id" class="form-control">
+                            <select name="vendor_id" class="form-control bg-transparent">
                                 <option value="">Please select a Vendor</option>
                                     @foreach (App\Vendor::all() as $vendor)
                                         <option value="{{ $vendor->id }}">{{ $vendor->company_name }}</option>
@@ -56,33 +56,33 @@ $delivery_time = str_replace(' ', 'T', Carbon\Carbon::parse('tomorrow 9 AM')->to
 
                     <div class="row mb-3">
                         <div class="col-md-12">
-                            <input type="number" name="service_price" value="{{old('service_price')}}" class="form-control" placeholder="Price">
+                            <input type="number" name="service_price" value="{{old('service_price')}}" class="form-control bg-transparent" placeholder="Price">
                         </div>
                     </div>
 
                     <div class="row mb-3">
                         <div class="col-md-12">
-                            <input type="number" name="service_commission" value="{{old('service_commission')}}" class="form-control" placeholder="Commission">
+                            <input type="number" name="service_commission" value="{{old('service_commission')}}" class="form-control bg-transparent" placeholder="Commission">
                         </div>
                     </div>
 
                     <div class="row mb-3">
                         <div class="col-md-12">
                             Delivery Time: <br>
-                            <input type="datetime-local" name="delivery_time" class="form-control" value="{{ old('delivery_time') === null ? $delivery_time : old('delivery_time')  }}" placeholder="Delivery Time">
+                            <input type="datetime-local" name="delivery_time" class="form-control bg-transparent" value="{{ old('delivery_time') === null ? $delivery_time : old('delivery_time')  }}" placeholder="Delivery Time">
                         </div>
                     </div>
 
                     <div class="row mb-3">
                         <div class="col-md-12">
                             Booking Time: <br>
-                            <input type="datetime-local" name="booked_at" class="form-control" value="{{ old('booked_at') === null ? $booking_time : old('booked_at') }}" placeholder="Booked At">
+                            <input type="datetime-local" name="booked_at" class="form-control bg-transparent" value="{{ old('booked_at') === null ? $booking_time : old('booked_at') }}" placeholder="Booked At">
                         </div>
                     </div>
 
                     <div class="row mb-3">
                         <div class="col-md-12">
-                            <select name="type" class="form-control">
+                            <select name="type" class="form-control bg-transparent">
                                 @if(old('type') == "household")
                                     <option value="household" selected>Household</option>
                                     <option value="corporate customer">Corporate Customer</option>
@@ -96,7 +96,7 @@ $delivery_time = str_replace(' ', 'T', Carbon\Carbon::parse('tomorrow 9 AM')->to
 
                     <div class="row mb-3">
                         <div class="col-md-12 text-center">
-                            <select name="reference_id" class="form-control">
+                            <select name="reference_id" class="form-control bg-transparent">
                                 <option value="">Please select a Reference</option>
                                 @foreach ($references as $reference)
                                     <option value="{{ $reference->id }}">{{ $reference->name }}</option>
@@ -107,7 +107,7 @@ $delivery_time = str_replace(' ', 'T', Carbon\Carbon::parse('tomorrow 9 AM')->to
 
                     <div class="row mb-3">
                         <div class="col-md-12 text-center">
-                            <select name="category_manager" class="form-control">
+                            <select name="category_manager" class="form-control bg-transparent">
                                 <option value="">Please select a category manager</option>
                                 @foreach ($users as $user)
                                     <option value="{{ $user->id }}">{{ $user->name }}</option>
@@ -117,9 +117,11 @@ $delivery_time = str_replace(' ', 'T', Carbon\Carbon::parse('tomorrow 9 AM')->to
                     </div>
 
                     <div class="row mb-2">
-                        <div class="col-md-12">
-                            <button type="submit" class="btn btn-primary w-50 float-left" id="submit-btn">Add More Items</button>
-                            <a href="#" class="btn btn-danger w-50 float-left" onclick="noContinue()">Done</a>
+                        <div class="col-md-6">
+                            <button type="submit" class="btn btn-primary w-100 mb-2" id="submit-btn">Add More Items</button>
+                        </div>
+                        <div class="col-md-6">
+                            <a href="#" class="btn btn-danger w-100" onclick="noContinue()">Done</a>
                         </div>
                     </div>
                 </div>

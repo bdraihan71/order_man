@@ -6,14 +6,14 @@
         <div class="row">
             <div class="col-md-3"></div>
             <div class="col-md-6">
-                <div class="card">
+                <div class="card bg-transparent my-3">
                     <div class="card-header">
                         Action for Order no: {{ $order->id }}
                     </div>
                     <div class="card-body">
                         <div class="row mb-3">
                             <div class="col-md-12">
-                                <select name="action" class="form-control">
+                                <select name="action" class="form-control bg-transparent">
                                     @if ($order->action > 0)
                                         <option value="1">Completed</option>
                                         <option value="-1">Cancelled</option>
@@ -30,13 +30,13 @@
                         </div>
                         <div class="row mb-4">
                             <div class="col-md-12">
-                                <textarea name="action_note" class="form-control" cols="30" rows="5">{{ $order->action == null ? "Action Comment" : ($order->action_note == null ? "Action note not provided" : $order->action_note) }}</textarea>
+                                <textarea name="action_note" class="form-control bg-transparent" cols="30" rows="5">{{ $order->action == null ? "Action Comment" : ($order->action_note == null ? "Action note not provided" : $order->action_note) }}</textarea>
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col-md-12">
-                                <button class="btn btn-primary w-100" type="submit">Submit Action</button>
+                                <button class="btn btn-info w-100" type="submit">Submit Action</button>
                             </div>
                         </div>
                     </div>
