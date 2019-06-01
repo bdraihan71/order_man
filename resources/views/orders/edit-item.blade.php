@@ -91,7 +91,7 @@
                     <div class="row mb-3">
                         <div class="col-md-12 text-center">
                             <select name="reference_id" class="form-control bg-transparent">
-                                <option value="{{ $item->reference->id  }}">{{ $item->reference->name }}</option>
+                                <option value="{{ $item->reference->id  }}">{{ $item->reference == null ? 'No References' : $item->reference->name }}</option>
                                 @foreach (App\Reference::all() as $reference)
                                     @if ($item->reference->id != $reference->id)
                                         <option value="{{ $reference->id }}">{{ $reference->name  }}</option>

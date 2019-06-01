@@ -67,7 +67,7 @@
                     <td>{{ $item->type }}</td>
                     <td>{{ $item->user == null ? 'No Manager' : $item->user->name }}</td>
                     <td>{{ $item->comment_by_category_manager }}</td>
-                    <td>{{ $item->reference->name }}</td>
+                    <td>{{ $item->reference == null ? 'No References' : $item->reference->name }}</td>
                     <td>{{ $item->vendor->company_name }}</td>
                     <td>{{ $item->review }}</td>
                     <td>
