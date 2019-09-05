@@ -9,7 +9,7 @@
                     <div class="card-body">
                     <form method="post" action="{{route('subcategories.store')}}">
                             @csrf
-                            <label>Name</label>
+                            <label class="star">Name</label>
                             <input class="form-control bg-transparent" type="text" name="name" value="{{old('name')}}"></input>
                             
 

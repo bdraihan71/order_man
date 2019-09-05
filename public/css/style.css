@@ -152,3 +152,8 @@ body{
   padding: 10px;
   line-height: 30px;
 }
+
+.star:after { 
+  content:"*";
+  color:red;
+}

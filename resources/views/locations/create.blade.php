@@ -8,13 +8,13 @@
                     <div class="card-header">Location</div>
                     <div class="card-body">
                     <form method="post" action="{{route('locations.store')}}">
-                            @csrf
-                            <label>Name</label>
-                            <input class="form-control bg-transparent" type="text" name="name" value="{{old('name')}}"></input>
-                            <br>
+                        @csrf
+                        <label class="star">Name</label>
+                        <input class="form-control bg-transparent" type="text" name="name" value="{{old('name')}}"></input>
+                        <br>
 
-                            <button class="btn btn-info" type="submit">Create Location</button>
-                        </form>
+                        <button class="btn btn-info" type="submit">Create Location</button>
+                    </form>
                     </div>
                 </div>
             </div>
