@@ -80,13 +80,14 @@
     <script src="/js/jquery-3.4.0.slim.min.js"></script>
     <script src="/js/popper.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-139875940-1"></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-145375324-2"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-  
-      gtag('config', 'UA-139875940-1');
+
+      gtag('config', 'UA-145375324-2');
     </script>
     @yield('scripts')
     
