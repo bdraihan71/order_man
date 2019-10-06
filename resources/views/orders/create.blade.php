@@ -7,8 +7,8 @@
         </div>
     </div> --}}
 
-    <form action="{{ route('orders.store') }}" method="POST">
-        @csrf
+    {{-- <form action="{{ route('orders.store') }}" method="POST">
+        @csrf --}}
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-8">
@@ -22,7 +22,7 @@
             
             
                         <label class="star">Name</label>
-                        <input class="form-control bg-transparent" type="number" name="price" value=""></input>
+                        <input class="form-control bg-transparent" type="text" name="price" value=""></input>
                         <br>
 
                         <label class="star">Area</label>
@@ -44,19 +44,19 @@
                         <br>
 
                         <label class="star">Reference</label>
-                        <input class="form-control bg-transparent" type="number" name="price" value=""></input>
+                        <input class="form-control bg-transparent" type="text" name="price" value=""></input>
                         <br>
 
                         <label class="star">Service</label>
-                        <input class="form-control bg-transparent" type="number" name="price" value=""></input>
+                        <input class="form-control bg-transparent" type="text" name="price" value=""></input>
                         <br>
 
                         <label class="star">Price Range</label>
-                        <input class="form-control bg-transparent" type="number" name="price" value=""></input>
+                        <input class="form-control bg-transparent" type="text" name="price" value=""></input>
                         <br>
             
-                        <button class="btn btn-info" type="submit">Pending</button>
-                        <button class="btn btn-info" type="submit">Book</button>
+                        <button class="btn btn-info" type="" data-toggle="modal" data-target="#exampleModal1">Pending</button>
+                        <button class="btn btn-info" type="" data-toggle="modal" data-target="#exampleModal2">Book</button>
                     </div>
                 </div>
                 </div>
@@ -87,5 +87,70 @@
                 <button class="btn btn-primary w-100">Create Order</button>
             </div>
         </div> --}}
-    </form>
+    {{-- </form> --}}
+
+        <!-- Pending Modal -->
+        <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Pending</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    </div>
+                    <div class="modal-body">
+                    <label class="star">Follow Up Time</label>
+                    <input class="form-control bg-transparent" type="text" name="price" value=""></input>
+                    <br>
+                    <label class="star">Note</label>
+                    <input class="form-control bg-transparent" type="text" name="price" value=""></input>
+                    <br>
+                    </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-primary">Pending</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Book Modal -->
+        <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Book</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    </div>
+                    <div class="modal-body">
+                    <label class="star">Delivery Time</label>
+                    <input class="form-control bg-transparent" type="text" name="price" value=""></input>
+                    <br>
+                    <label class="star">Address</label>
+                    <input class="form-control bg-transparent" type="text" name="price" value=""></input>
+                    <br>
+                    <label class="star">Note</label>
+                    <input class="form-control bg-transparent" type="text" name="price" value=""></input>
+                    <br>
+                    </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-primary">Book</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+@endsection
+
+@section('scripts')
+  <script type="text/javascript">
+    $('#pendingModal').on('shown.bs.modal', function () {
+     $('#myInput').trigger('focus')
+    });
+
+    $('#bookModal').on('shown.bs.modal', function () {
+     $('#myInput').trigger('focus')
+    });
+  </script>
 @endsection
