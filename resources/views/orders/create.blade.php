@@ -1,15 +1,68 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="row mb-2">
+    {{-- <div class="row mb-2">
         <div class="col-md-12">
             <h1>Create Order</h1>
         </div>
-    </div>
+    </div> --}}
 
     <form action="{{ route('orders.store') }}" method="POST">
         @csrf
-        <div class="row mb-2">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                <div class="card bg-transparent my-3">
+                    <div class="card-header">Create Order</div>
+                    <div class="card-body">
+            
+                        <label class="star">Mobile No.</label>
+                        <input class="form-control bg-transparent" type="text" name="title" value=""></input>
+                        <br>
+            
+            
+                        <label class="star">Name</label>
+                        <input class="form-control bg-transparent" type="number" name="price" value=""></input>
+                        <br>
+
+                        <label class="star">Area</label>
+                        <select class="form-control bg-transparent" name="subcategory_id">
+                            <option value="">Please Select Area</option>
+                            <option value="">Mohammadpur</option>
+                            <option value="">Dhanmondi</option>
+                            <option value="">Gulshan</option>
+                        </select>
+                        <br>
+
+                        <label class="star">Type</label>
+                        <select class="form-control bg-transparent" name="subcategory_id">
+                            <option value="">Please Select Type</option>
+                            <option value="">Household</option>
+                            <option value="">Corporate</option>
+                            <option value="">Other</option>
+                        </select>
+                        <br>
+
+                        <label class="star">Reference</label>
+                        <input class="form-control bg-transparent" type="number" name="price" value=""></input>
+                        <br>
+
+                        <label class="star">Service</label>
+                        <input class="form-control bg-transparent" type="number" name="price" value=""></input>
+                        <br>
+
+                        <label class="star">Price Range</label>
+                        <input class="form-control bg-transparent" type="number" name="price" value=""></input>
+                        <br>
+            
+                        <button class="btn btn-info" type="submit">Pending</button>
+                        <button class="btn btn-info" type="submit">Book</button>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+        {{-- <div class="row mb-2">
             <div class="col-md-12">
                 <select name="customer_id" class="form-control bg-transparent">
                     <option value="">Please select a customer</option>
@@ -33,6 +86,6 @@
             <div class="col-md-6 text-center">
                 <button class="btn btn-primary w-100">Create Order</button>
             </div>
-        </div>
+        </div> --}}
     </form>
 @endsection
