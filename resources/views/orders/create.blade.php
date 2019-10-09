@@ -44,11 +44,21 @@
                         <br>
 
                         <label class="star">Reference</label>
-                        <input class="form-control bg-transparent" type="text" name="price" value=""></input>
+                        <select class="form-control bg-transparent" name="subcategory_id">
+                            <option value="">Please Select Type</option>
+                            <option value="">Mr. X</option>
+                            <option value="">Mr. Y</option>
+                            <option value="">Mr. Z</option>
+                        </select>
                         <br>
 
                         <label class="star">Service</label>
-                        <input class="form-control bg-transparent" type="text" name="price" value=""></input>
+                        <select class="form-control bg-transparent" name="subcategory_id">
+                            <option value="">Please Select Type</option>
+                            <option value="">Household</option>
+                            <option value="">Corporate</option>
+                            <option value="">Other</option>
+                        </select>
                         <br>
 
                         <label class="star">Price Range</label>
