@@ -21,12 +21,12 @@
   </head>
 
   <body>
+      @auth
       <nav class="navbar navbar-expand-lg navbar-light nav-bg m-3">
           <a class="navbar-brand text-info display-1" href="/home">Order Man</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-          @auth
             <div class="collapse navbar-collapse" id="navbarNav">
               <ul class="navbar-nav ml-auto">
                 <li class="nav-item my-auto">
@@ -69,9 +69,9 @@
                 </li>
               </ul>
             </div>
-          @endauth
         </nav>
     <hr>
+    @endauth
     <div class="container-fluid">
         
       @include('layouts.messages')
