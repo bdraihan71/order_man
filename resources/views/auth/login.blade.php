@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-5">
+        <div class="col-md-5 mt-5">
             <div class="text-center">
                 <img class="img-fluid w-50 mt-5" src="/img/logo.png">
             </div>
@@ -36,15 +36,15 @@
                         </div>
                     </div>
 
-                    <div class="form-group row mb-0">
-                        <div class="col-md-6">
+                    <div class="form-group row">
+                        <div class="col-6">
                             @if (Route::has('password.request'))
                                 <a class="btn btn-link forgot-password" href="{{ route('password.request') }}">
                                     {{ __('Forgot it?') }}
                                 </a>
                             @endif
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-6">
                             <div class="form-check remember-me text-right">
                                 <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
 
