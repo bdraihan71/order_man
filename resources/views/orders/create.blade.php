@@ -12,63 +12,71 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-8">
-                <div class="card bg-transparent my-3">
-                    <div class="card-header">Create Order</div>
-                    <div class="card-body">
-            
-                        <label class="star">Mobile No.</label>
-                        <input class="form-control bg-transparent" type="text" name="title" value=""></input>
-                        <br>
-            
-            
-                        <label class="star">Name</label>
-                        <input class="form-control bg-transparent" type="text" name="price" value=""></input>
-                        <br>
+                    <div class="card bg-transparent my-3">
+                        <div class="card-header">Create Order</div>
+                        <div class="card-body">
+                
+                            <label class="star">Mobile No.</label>
+                            <input class="form-control bg-transparent" type="text" name="title" value=""></input>
+                            <br>
+                
+                
+                            <label class="star">Name</label>
+                            <input class="form-control bg-transparent" type="text" name="price" value=""></input>
+                            <br>
 
-                        <label class="star">Area</label>
-                        <select class="form-control bg-transparent" name="subcategory_id">
-                            <option value="">Please Select Area</option>
-                            <option value="">Mohammadpur</option>
-                            <option value="">Dhanmondi</option>
-                            <option value="">Gulshan</option>
-                        </select>
-                        <br>
+                            <label class="star">Area</label>
+                            <select class="form-control bg-transparent" name="subcategory_id">
+                                <option value="">Please Select Area</option>
+                                <option value="">Mohammadpur</option>
+                                <option value="">Dhanmondi</option>
+                                <option value="">Gulshan</option>
+                            </select>
+                            <br>
 
-                        <label class="star">Type</label>
-                        <select class="form-control bg-transparent" name="subcategory_id">
-                            <option value="">Please Select Type</option>
-                            <option value="">Household</option>
-                            <option value="">Corporate</option>
-                            <option value="">Other</option>
-                        </select>
-                        <br>
+                            <label class="star">Type</label>
+                            <select class="form-control bg-transparent" name="subcategory_id">
+                                <option value="">Please Select Type</option>
+                                <option value="">Household</option>
+                                <option value="">Corporate</option>
+                                <option value="">Other</option>
+                            </select>
+                            <br>
 
-                        <label class="star">Reference</label>
-                        <select class="form-control bg-transparent" name="subcategory_id">
-                            <option value="">Please Select Type</option>
-                            <option value="">Mr. X</option>
-                            <option value="">Mr. Y</option>
-                            <option value="">Mr. Z</option>
-                        </select>
-                        <br>
+                            <label class="star">Reference</label>
+                            <select class="form-control bg-transparent" name="subcategory_id">
+                                <option value="">Please Select Type</option>
+                                <option value="">Mr. X</option>
+                                <option value="">Mr. Y</option>
+                                <option value="">Mr. Z</option>
+                            </select>
+                            <br>
 
-                        <label class="star">Service</label>
-                        <select class="form-control bg-transparent" name="subcategory_id">
-                            <option value="">Please Select Type</option>
-                            <option value="">Household</option>
-                            <option value="">Corporate</option>
-                            <option value="">Other</option>
-                        </select>
-                        <br>
+                            <label class="star">Service</label>
+                            <select class="form-control bg-transparent" name="subcategory_id">
+                                <option value="">Please Select Type</option>
+                                <option value="">Household</option>
+                                <option value="">Corporate</option>
+                                <option value="">Other</option>
+                            </select>
+                            <br>
 
-                        <label class="star">Price Range</label>
-                        <input class="form-control bg-transparent" type="text" name="price" value=""></input>
-                        <br>
-            
-                        <button class="btn btn-info" type="" data-toggle="modal" data-target="#exampleModal1">Pending</button>
-                        <button class="btn btn-info" type="" data-toggle="modal" data-target="#exampleModal2">Book</button>
+                            <div class="row justify-content-center">
+                                <div class="col-md-8">
+                                    <label class="star">Price Range</label>
+                                    <input class="form-control bg-transparent" type="text" name="price" value=""></input>
+                                </div>
+                                <div class="col-md-4">
+                                    <label></label>
+                                    <p class="border rounded p-2 mt-2 text-center">1100 to 2500</p>
+                                </div>
+                            </div>
+                            <br>
+                
+                            <button class="btn btn-info" type="" data-toggle="modal" data-target="#exampleModal1">Pending</button>
+                            <button class="btn btn-info" type="" data-toggle="modal" data-target="#exampleModal2">Book</button>
+                        </div>
                     </div>
-                </div>
                 </div>
             </div>
         </div>
