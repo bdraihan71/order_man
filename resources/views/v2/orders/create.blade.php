@@ -1,15 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    {{-- <div class="row mb-2">
-        <div class="col-md-12">
-            <h1>Create Order</h1>
-        </div>
-    </div> --}}
-
-    {{-- <form action="{{ route('orders.store') }}" method="POST">
-        @csrf --}}
-        <div class="container">
+        <div class="container" id="app">
             <div class="row justify-content-center">
                 <div class="col-md-8">
                     <div class="card bg-transparent my-3">
@@ -17,12 +9,12 @@
                         <div class="card-body">
                 
                             <label class="star">Mobile No.</label>
-                            <input class="form-control bg-transparent" type="text" name="title" value=""></input>
+                            <input @change="fetchCustomer" v-model="mobile" class="form-control bg-transparent" type="text" name="title" value=""></input>
                             <br>
                 
                 
                             <label class="star">Name</label>
-                            <input class="form-control bg-transparent" type="text" name="price" value=""></input>
+                            <input v-model="name" class="form-control bg-transparent" type="text" name="price" value=""></input>
                             <br>
 
                             <label class="star">Area</label>
@@ -85,32 +77,6 @@
                 </div>
             </div>
         </div>
-        {{-- <div class="row mb-2">
-            <div class="col-md-12">
-                <select name="customer_id" class="form-control bg-transparent">
-                    <option value="">Please select a customer</option>
-                    @foreach ($customers as $customer)
-                        <option value="{{ $customer->id }}">{{ $customer->name }} {{$customer->primary_contact_number}}</option>
-                    @endforeach
-                </select>
-            </div>
-        </div>
-
-        <div class="row mb-3">
-            <div class="col-md-12">
-                <textarea name="booking_note" class="form-control bg-transparent" cols="30" rows="5" placeholder="Booking Comment"></textarea>
-            </div>
-        </div>
-
-        <div class="row mb-2">
-            <div class="col-md-6 text-center">
-                <a href="{{ route('customers.create') }}" target="_blank" class="btn btn-success w-100 mb-2">Create Customer</a>
-            </div>
-            <div class="col-md-6 text-center">
-                <button class="btn btn-primary w-100">Create Order</button>
-            </div>
-        </div> --}}
-    {{-- </form> --}}
 
         <!-- Pending Modal -->
         <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -176,4 +142,48 @@
      $('#myInput').trigger('focus')
     });
   </script>
+
+    <!-- development version, includes helpful console warnings -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data() {
+                return{
+                    customer: null,
+                    mobile: null,
+                    name: null,
+                }
+            },
+            watch: {
+                customer: function(val, oldVal){
+                    if(val != null && val.success == true){
+                        this.name = val.data.name;
+                    }else{
+                        this.name = null;
+                    }
+                },
+
+                mobile: function(val, oldVal){
+                    if(val.length == 11){
+                        console.log('hi');
+                        this.fetchCustomer();
+                    }else{
+                        console.log("bye");
+                        this.customer = null;
+                    }
+                }
+            },
+            methods: {
+                fetchCustomer: function(){
+                    console.log("fetching customer");
+                    fetch('/api/customer/' + this.mobile)
+                    .then(stream => stream.json())
+                    .then(response => (this.customer = response))
+                }
+            }
+        })
+    </script>
 @endsection
