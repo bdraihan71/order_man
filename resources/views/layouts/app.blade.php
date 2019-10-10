@@ -30,7 +30,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
               <ul class="navbar-nav ml-auto">
                 <li class="nav-item my-auto">
-                    <a class="nav-link" href="{{ route('orders.create') }}"><i class="fas fa-plus-circle fa-2x"></i></a>
+                    <a class="nav-link" href="{{ route('create-order') }}"><i class="fas fa-plus-circle fa-2x"></i></a>
                 </li>
                 <li class="nav-item my-auto">
                     <a class="nav-link" href="/customers">Customer</a>
