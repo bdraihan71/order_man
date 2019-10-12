@@ -23,15 +23,23 @@
             <br>
 
             <label>Title</label>
-            <input class="form-control bg-transparent" type="text" name="title" value="{{$service->title}}"></input>
+              <input class="form-control bg-transparent" type="text" name="title" value="{{$service->title}}">
             <br>
 
             <label>Description</label>
-            <textarea class="form-control bg-transparent" id="exampleFormControlTextarea1" name="description" rows="3">{{$service->description}}</textarea>
+              <textarea class="form-control bg-transparent" id="exampleFormControlTextarea1" name="description" rows="3">{{$service->description}}</textarea>
             <br>
 
             <label>Price</label>
-            <input class="form-control bg-transparent" type="number" name="price" value="{{$service->price}}"></input>
+              <input class="form-control bg-transparent" type="number" name="price" value="{{$service->price}}">
+            <br>
+
+            <label>Minimum Price</label>
+              <input class="form-control bg-transparent" type="number" name="min_price" value="{{$service->min_price}}">
+            <br>
+
+            <label>Maximum Price</label>
+              <input class="form-control bg-transparent" type="number" name="max_price" value="{{$service->max_price}}">
             <br>
 
             <button class="btn btn-info" type="submit">Update Service</button>

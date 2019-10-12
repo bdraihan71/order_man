@@ -14,7 +14,9 @@
                         <tr>
                             <td>Title</td>
                             <td>Subcategory</td>
-                            <td>price</td>
+                            <td>Price</td>
+                            <td>Minimum Price</td>
+                            <td>Maximum Price</td>
                             <td>Actions</td>
                         </tr>
                         @foreach ($services as $service)
@@ -22,6 +24,8 @@
                             <td>{{ $service->title }}</td>
                             <td>{{ $service->subcategory->name }}</td>
                             <td>{{ $service->price/100 }}</td>
+                            <td>{{ $service->min_price/100 }}</td>
+                            <td>{{ $service->max_price/100 }}</td>
                             <td>
                                 <a class="btn btn-primary my-2" href="{{route('services.show', ['service' => $service->id])}}">View</a>
                                 <a class="btn btn-info my-2" href="{{route('services.edit', ['service' => $service->id])}}">Edit</a>

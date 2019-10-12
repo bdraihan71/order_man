@@ -32,6 +32,18 @@
           <P>{{$service->price}}</P>
           <br>
 
+          <span>
+            <h5>Minimum Price:</h5>
+          </span>
+          <P>{{$service->min_price}}</P>
+          <br>
+
+          <span>
+            <h5>Maximum Price:</h5>
+          </span>
+          <P>{{$service->max_price}}</P>
+          <br>
+
           <a href="{{route('services.index')}}" class="btn btn-info">Service List</a>
 
         </div>

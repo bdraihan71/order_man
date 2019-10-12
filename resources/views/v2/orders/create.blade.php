@@ -12,37 +12,24 @@
                             <input @change="fetchCustomer" v-model="mobile" class="form-control bg-transparent" type="text" name="title" value=""></input>
                             <br>
                 
-                
                             <label class="star">Name</label>
                             <input v-model="name" class="form-control bg-transparent" type="text" name="price" value=""></input>
                             <br>
 
                             <label class="star">Area</label>
-                            <select class="form-control bg-transparent" name="subcategory_id">
-                                <option value="">Please Select Area</option>
-                                <option value="">Mohammadpur</option>
-                                <option value="">Dhanmondi</option>
-                                <option value="">Gulshan</option>
+                            <select class="form-control bg-transparent" name="subcategory_id" v-model="selected_location">
+                                <option value="9999">Where are you from?</option>
+                                <option v-for="location in locations" v-bind:value="location.id">@{{ location.name }}</option>
                             </select>
                             <br>
 
-                            <label class="star">Type</label>
-                            <select class="form-control bg-transparent" name="subcategory_id">
-                                <option value="">Please Select Type</option>
-                                <option value="">Household</option>
-                                <option value="">Corporate</option>
-                                <option value="">Other</option>
+                            <label class="star">Channel</label>
+                            <select class="form-control bg-transparent" name="subcategory_id" v-model="selected_channel">
+                                <option value="9999">How did you know about us?</option>
+                                <option v-for="channel in channels" v-bind:value="channel.id">@{{ channel.name }}</option>
                             </select>
                             <br>
-
-                            <label class="star">Reference</label>
-                            <select class="form-control bg-transparent" name="subcategory_id">
-                                <option value="">Please Select Type</option>
-                                <option value="">Mr. X</option>
-                                <option value="">Mr. Y</option>
-                                <option value="">Mr. Z</option>
-                            </select>
-                            <br></div>
+                        </div>
                     </div>
 
                     <div class="card bg-transparent my-3">
@@ -50,8 +37,15 @@
                         <div class="card-body">
                 
                             <label class="star">Service</label>
+                            <select @change="fetchService" class="form-control bg-transparent" name="subcategory_id" v-model="selected_service">
+                                <option value="9999">Which service do you want?</option>
+                                <option v-for="service in services"  v-bind:value="service.id">@{{ service.title }}</option>
+                            </select>
+                            <br>
+
+                            <label class="star">Type</label>
                             <select class="form-control bg-transparent" name="subcategory_id">
-                                <option value="">Please Select Type</option>
+                                <option value="">What type of service do you want?</option>
                                 <option value="">Household</option>
                                 <option value="">Corporate</option>
                                 <option value="">Other</option>
@@ -59,13 +53,13 @@
                             <br>
 
                             <div class="row justify-content-center">
-                                <div class="col-md-8">
-                                    <label class="star">Price Range</label>
+                                <div class="col-md-6">
+                                    <label class="star">Final Price (BDT)</label>
                                     <input class="form-control bg-transparent" type="text" name="price" value=""></input>
                                 </div>
-                                <div class="col-md-4">
-                                    <label></label>
-                                    <p class="border rounded p-2 mt-2 text-center">1100 to 2500</p>
+                                <div class="col-md-6">
+                                    <label>Asking Price Range (BDT):</label>
+                                    <p class="border rounded p-2 text-center">@{{ this.service.data.min_price}} to @{{ this.service.data.max_price}}</p>
                                 </div>
                             </div>
                             <br>
@@ -153,16 +147,32 @@
             data() {
                 return{
                     customer: null,
+                    service: {
+                        data: {
+                            "min_price":0,
+                            "max_price":0
+                        }
+                    },
                     mobile: null,
                     name: null,
+                    channels: {!! json_encode($channels) !!},
+                    locations: {!! json_encode($locations) !!},
+                    selected_channel: 9999,
+                    selected_location: 9999,
+                    selected_service: 9999,
+                    services: {!! json_encode($services) !!}
                 }
             },
             watch: {
                 customer: function(val, oldVal){
                     if(val != null && val.success == true){
                         this.name = val.data.name;
+                        this.selected_channel = val.data.channel_id ? val.data.channel_id : 9999;
+                        this.selected_location = val.data.location_id;
                     }else{
                         this.name = null;
+                        this.selected_channel = 9999;
+                        this.selected_location = 9999;
                     }
                 },
 
@@ -174,6 +184,17 @@
                         console.log("bye");
                         this.customer = null;
                     }
+                },
+
+                selected_service: function(val, oldVal){
+                    if(val == 9999){
+                        this.service = {
+                        data: {
+                            "min_price":0,
+                            "max_price":0
+                        }
+                    }
+                    }
                 }
             },
             methods: {
@@ -182,6 +203,13 @@
                     fetch('/api/customer/' + this.mobile)
                     .then(stream => stream.json())
                     .then(response => (this.customer = response))
+                },
+
+                fetchService: function(){
+                    console.log("fetching service");
+                    fetch('/api/service/' + this.selected_service)
+                    .then(stream => stream.json())
+                    .then(response => (this.service = response))
                 }
             }
         })

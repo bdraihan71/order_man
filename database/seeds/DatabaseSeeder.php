@@ -24,6 +24,7 @@ class DatabaseSeeder extends Seeder
             OrdersTableSeeder::class,
             OrderItemsTableSeeder::class,
             RefTableSeeder::class,
+            ChannelTableSeeder::class,
             ]);
     }
 }

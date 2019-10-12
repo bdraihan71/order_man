@@ -27,6 +27,8 @@ class ServiceController extends Controller
             'title' => 'required',
             'description' => 'required',
             'price' => 'required|numeric',
+            'min_price' => 'required|numeric',
+            'max_price' => 'required|numeric',
         ]);
 
         Service::create([
@@ -34,6 +36,8 @@ class ServiceController extends Controller
             'title' => $request->get('title'),
             'description' => $request->get('description'),
             'price' => 100 * $request->get('price'),
+            'min_price' => 100 * $request->get('min_price'),
+            'max_price' => 100 * $request->get('max_price'),
         ]);
 
         return redirect(route('services.index'));
@@ -60,6 +64,8 @@ class ServiceController extends Controller
             'title' => 'required',
             'description' => 'required',
             'price' => 'required|numeric',
+            'min_price' => 'required|numeric',
+            'max_price' => 'required|numeric',
         ]);
 
         $service = Service::find($id);
@@ -67,6 +73,8 @@ class ServiceController extends Controller
         $service->title = $request->get('title');
         $service->description = $request->get('description');
         $service->price = 100 * $request->get('price');
+        $service->min_price = 100 * $request->get('min_price');
+        $service->max_price = 100 * $request->get('max_price');
         $service->save();
 
         return redirect(route('services.index'));

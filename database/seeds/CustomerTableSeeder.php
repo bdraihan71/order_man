@@ -15,11 +15,12 @@ class CustomerTableSeeder extends Seeder
         ]);
 
         DB::table('customers')->insert([
-            'name' => 'Moba',
-            'primary_contact_number' =>'56789',
-            'secondary_contact_number' => '45678',
-            'profession' => 'SE',
+            'name' => 'Prince',
+            'primary_contact_number' =>'01708517954',
+            'secondary_contact_number' => '01674983245',
+            'profession' => 'Student',
             'location_id'=> 1,
+            'channel_id' => 1,
         ]);
     }
 }

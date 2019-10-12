@@ -34,6 +34,14 @@
             <input class="form-control bg-transparent" type="number" name="price" value="{{old('price')}}"></input>
             <br>
 
+            <label class="star">Minimum Price</label>
+            <input class="form-control bg-transparent" type="number" name="min_price" value="{{old('min_price')}}"></input>
+            <br>
+
+            <label class="star">Maximum Price</label>
+            <input class="form-control bg-transparent" type="number" name="max_price" value="{{old('max_price')}}"></input>
+            <br>
+
             <button class="btn btn-info" type="submit">Create Service</button>
           </form>
         </div>

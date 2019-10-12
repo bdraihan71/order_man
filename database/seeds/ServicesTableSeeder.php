@@ -16,6 +16,8 @@ class ServicesTableSeeder extends Seeder
             'description' => 'We are offering innovative business management solutions that help you spend more time growing your business in Bangladesh. ',
             'subcategory_id' => 1,
             'price' => '70000',
+            'min_price' => '100',
+            'max_price' => '500',
         ]);
 
         DB::table('services')->insert([
@@ -23,6 +25,8 @@ class ServicesTableSeeder extends Seeder
             'description' => 'Helps you understand your customers so that you can focus on your potential customers and give them the best customer service.',
             'subcategory_id' => 1,
             'price' => '80000',
+            'min_price' => '10940',
+            'max_price' => '50055',
         ]);
     }
 }

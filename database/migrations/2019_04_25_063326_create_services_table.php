@@ -20,6 +20,8 @@ class CreateServicesTable extends Migration
             $table->text('title');
             $table->text('description')->nullable();
             $table->integer('price');
+            $table->integer('min_price');
+            $table->integer('max_price');
             $table->timestamps();
         });
     }

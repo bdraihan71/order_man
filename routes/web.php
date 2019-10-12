@@ -41,5 +41,5 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('reference', 'ReferenceController');
 
     Route::get('/v2/orders/create', 'OrderV2Controller@create')->name('create-order');
-
+    Route::resource('channels', 'ChannelController');
 });

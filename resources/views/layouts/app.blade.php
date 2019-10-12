@@ -57,6 +57,9 @@
                     <a class="nav-link" href="/locations">Location</a>
                 </li>
                 <li class="nav-item my-auto">
+                  <a class="nav-link" href="/channels">Channel</a>
+              </li>
+                <li class="nav-item my-auto">
                     <a class="nav-link" href="/reference">Reference</a>
                 </li>
                 <li class="nav-item my-auto">
