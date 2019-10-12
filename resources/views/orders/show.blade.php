@@ -68,7 +68,7 @@
                     <td>{{ $item->user == null ? 'No Manager' : $item->user->name }}</td>
                     <td>{{ $item->comment_by_category_manager }}</td>
                     <td>{{ $item->reference == null ? 'No References' : $item->reference->name }}</td>
-                    <td>{{ $item->vendor->company_name }}</td>
+                    <td>{{ $item->vendor ? $item->vendor->company_name : 'Unassigned'}}</td>
                     <td>{{ $item->review }}</td>
                     <td>
                         <a href="{{ route('edit-order-item', ['item' => $item->id]) }}"><i class='far fa-edit'></i></a>
