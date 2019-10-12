@@ -25,6 +25,8 @@ class OrderItemsTableSeeder extends Seeder
                     'reference_id' => 1,
                     'category_manager' => 2,
                     'delivery_time'=> Carbon\Carbon::now(),
+                    'delivery_date'=> Carbon\Carbon::now(),
+                    'delivery_address' => "My address",
                     'comment_by_category_manager'=> 'djcvjdsh',
                     'type' => 'household',
                 ]);

@@ -163,6 +163,7 @@
             el: '#app',
             data() {
                 return{
+                    user_id: {!! auth()->user()->id !!},
                     customer: null,
                     service: {
                         data: {
@@ -243,10 +244,11 @@
                 },
 
                 book: function(){
-                    console.log(this.mobile, this.name,
+                    console.log(this.mobile, this.name, this.user_id,
                      this.selected_location, this.selected_channel, this.selected_service, this.selected_type,
                      this.price, this.date, this.time, this.address, this.note );
                      fetch('/api/order?selected_location=' + this.selected_location + 
+                     '&user_id=' + this.user_id + 
                      '&mobile=' + this.mobile + 
                      '&name=' + this.name + 
                      '&selected_channel=' + this.selected_channel + 
@@ -262,7 +264,7 @@
                 },
 
                 pending: function(){
-                    console.log(this.mobile, this.name,
+                    console.log(this.mobile, this.name, this.user_id,
                     this.selected_location, this.selected_channel, this.selected_service, this.selected_type,
                     this.price, this.date, this.time, this.note );
                 }
