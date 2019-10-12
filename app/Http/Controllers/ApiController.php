@@ -139,7 +139,7 @@ class ApiController extends Controller
             'customer_id' => $customer->id,
             'booked_at' => Carbon::now()->toDateTimeString(),
             'booked_by' => $request->user_id,
-            'booking_note' => $request->note
+            'booking_note' => $request->note == 'null'?'': $request->note
         ]);
 
 
