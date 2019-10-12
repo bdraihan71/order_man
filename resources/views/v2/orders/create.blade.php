@@ -1,7 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-        <div class="container" id="app">
+    <div id="app">
+        <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-8">
                     <div class="card bg-transparent my-3">
@@ -44,18 +45,18 @@
                             <br>
 
                             <label class="star">Type</label>
-                            <select class="form-control bg-transparent" name="subcategory_id">
-                                <option value="">What type of service do you want?</option>
-                                <option value="">Household</option>
-                                <option value="">Corporate</option>
-                                <option value="">Other</option>
+                            <select class="form-control bg-transparent" name="subcategory_id" v-model="selected_type">
+                                <option value="9999">What type of service do you want?</option>
+                                <option value="Household">Household</option>
+                                <option value="Corporate">Corporate</option>
+                                <option value="Other">Other</option>
                             </select>
                             <br>
 
                             <div class="row justify-content-center">
                                 <div class="col-md-6">
                                     <label class="star">Final Price (BDT)</label>
-                                    <input class="form-control bg-transparent" type="text" name="price" value=""></input>
+                                    <input class="form-control bg-transparent" type="text" name="price" v-model="price"></input>
                                 </div>
                                 <div class="col-md-6">
                                     <label>Asking Price Range (BDT):</label>
@@ -83,15 +84,18 @@
                     </button>
                     </div>
                     <div class="modal-body">
-                    <label class="star">Follow Up Time</label>
-                    <input class="form-control bg-transparent" type="text" name="price" value=""></input>
+                    <label class="star">Followup Date</label>
+                    <input class="form-control bg-transparent" type="date" v-model="date">
+                    <br>
+                    <label class="star">Followup Time</label>
+                    <input class="form-control bg-transparent" type="time" v-model="time">
                     <br>
                     <label class="star">Note</label>
-                    <input class="form-control bg-transparent" type="text" name="price" value=""></input>
+                    <input class="form-control bg-transparent" type="text" name="price" v-model="note"></input>
                     <br>
                     </div>
                     <div class="modal-footer">
-                    <button type="button" class="btn btn-primary">Pending</button>
+                    <button type="button" class="btn btn-primary" @click="pending">Pending</button>
                     </div>
                 </div>
             </div>
@@ -108,22 +112,35 @@
                     </button>
                     </div>
                     <div class="modal-body">
+                    <label class="star">Delivery Date</label>
+                    <input class="form-control bg-transparent" type="date" v-model="date">
+                    <br>
                     <label class="star">Delivery Time</label>
-                    <input class="form-control bg-transparent" type="text" name="price" value=""></input>
+                    <input class="form-control bg-transparent" type="time" v-model="time">
                     <br>
                     <label class="star">Address</label>
-                    <input class="form-control bg-transparent" type="text" name="price" value=""></input>
+                    <input class="form-control bg-transparent" type="text" name="price" v-model="address"></input>
                     <br>
                     <label class="star">Note</label>
-                    <input class="form-control bg-transparent" type="text" name="price" value=""></input>
+                    <input class="form-control bg-transparent" type="text" name="price" v-model="note"></input>
                     <br>
                     </div>
+                    <div v-if="this.response.success">
+                        <p>All Good: @{{ this.response.data }}</p>
+                    </div>
+                    <div v-if="!this.response.success">
+                        <p>Sorry!</p>
+                        <ul>
+                            <li v-for="data in this.response.data">@{{ data[0] }}</li>
+                        </ul>
+                    </div>
                     <div class="modal-footer">
-                    <button type="button" class="btn btn-primary">Book</button>
+                        <button class="btn btn-primary"  @click="book">Book</button>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 @endsection
 
 @section('scripts')
@@ -160,7 +177,19 @@
                     selected_channel: 9999,
                     selected_location: 9999,
                     selected_service: 9999,
-                    services: {!! json_encode($services) !!}
+                    selected_type: 9999,
+                    services: {!! json_encode($services) !!},
+                    price: null,
+                    time: '16:00',
+                    note: null,
+                    address: null,
+                    date: '2019-10-26',
+                    response: {
+                        success: true,
+                        data: {
+                            
+                        }
+                    },
                 }
             },
             watch: {
@@ -178,10 +207,8 @@
 
                 mobile: function(val, oldVal){
                     if(val.length == 11){
-                        console.log('hi');
                         this.fetchCustomer();
                     }else{
-                        console.log("bye");
                         this.customer = null;
                     }
                 },
@@ -189,20 +216,23 @@
                 selected_service: function(val, oldVal){
                     if(val == 9999){
                         this.service = {
-                        data: {
-                            "min_price":0,
-                            "max_price":0
+                            data: {
+                                "min_price":0,
+                                "max_price":0
+                            }
                         }
-                    }
                     }
                 }
             },
             methods: {
                 fetchCustomer: function(){
-                    console.log("fetching customer");
-                    fetch('/api/customer/' + this.mobile)
-                    .then(stream => stream.json())
-                    .then(response => (this.customer = response))
+                    if(this.mobile !== undefined && this.mobile !== null  && this.mobile !== ""){
+                        console.log("fetching customer");
+                        fetch('/api/customer/' + this.mobile)
+                            .then(stream => stream.json())
+                            .then(response => (this.customer = response))
+                    }
+                    
                 },
 
                 fetchService: function(){
@@ -210,6 +240,31 @@
                     fetch('/api/service/' + this.selected_service)
                     .then(stream => stream.json())
                     .then(response => (this.service = response))
+                },
+
+                book: function(){
+                    console.log(this.mobile, this.name,
+                     this.selected_location, this.selected_channel, this.selected_service, this.selected_type,
+                     this.price, this.date, this.time, this.address, this.note );
+                     fetch('/api/order?selected_location=' + this.selected_location + 
+                     '&mobile=' + this.mobile + 
+                     '&name=' + this.name + 
+                     '&selected_channel=' + this.selected_channel + 
+                     '&selected_service=' + this.selected_service + 
+                     '&selected_type=' + this.selected_type + 
+                     '&price=' + this.price + 
+                     '&date=' + this.date + 
+                     '&time=' + this.time + 
+                     '&address=' + this.address + 
+                     '&note=' + this.note)
+                        .then(stream => stream.json())
+                        .then(response => (this.response = response))
+                },
+
+                pending: function(){
+                    console.log(this.mobile, this.name,
+                    this.selected_location, this.selected_channel, this.selected_service, this.selected_type,
+                    this.price, this.date, this.time, this.note );
                 }
             }
         })

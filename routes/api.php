@@ -18,3 +18,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 Route::get('/customer/{mobile}', 'ApiController@getCustomer');
 Route::get('/service/{service}', 'ApiController@getService');
+Route::get('/order', 'ApiController@order');
