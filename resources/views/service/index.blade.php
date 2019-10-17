@@ -23,9 +23,9 @@
                         <tr>
                             <td>{{ $service->title }}</td>
                             <td>{{ $service->subcategory->name }}</td>
-                            <td>{{ $service->price/100 }}</td>
-                            <td>{{ $service->min_price/100 }}</td>
-                            <td>{{ $service->max_price/100 }}</td>
+                            <td>{{ $service->price }}</td>
+                            <td>{{ $service->min_price }}</td>
+                            <td>{{ $service->max_price }}</td>
                             <td>
                                 <a class="btn btn-primary my-2" href="{{route('services.show', ['service' => $service->id])}}">View</a>
                                 <a class="btn btn-info my-2" href="{{route('services.edit', ['service' => $service->id])}}">Edit</a>

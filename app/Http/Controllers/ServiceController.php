@@ -35,9 +35,9 @@ class ServiceController extends Controller
             'subcategory_id' => $request->get('subcategory_id'),
             'title' => $request->get('title'),
             'description' => $request->get('description'),
-            'price' => 100 * $request->get('price'),
-            'min_price' => 100 * $request->get('min_price'),
-            'max_price' => 100 * $request->get('max_price'),
+            'price' => $request->get('price'),
+            'min_price' => $request->get('min_price'),
+            'max_price' => $request->get('max_price'),
         ]);
 
         return redirect(route('services.index'));
