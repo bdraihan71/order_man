@@ -16,7 +16,7 @@ class Service extends Model
         return $value/100;
     }
 
-    public function setPriceAttribute()
+    public function setPriceAttribute($value)
     {
         $this->attributes['price'] = $value * 100;
     }
@@ -26,7 +26,7 @@ class Service extends Model
         return $value/100;
     }
 
-    public function setMinPriceAttribute()
+    public function setMinPriceAttribute($value)
     {
         $this->attributes['min_price'] = $value * 100;
     }
