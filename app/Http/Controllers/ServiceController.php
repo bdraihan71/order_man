@@ -72,9 +72,9 @@ class ServiceController extends Controller
         $service->subcategory_id = $request->get('subcategory_id');
         $service->title = $request->get('title');
         $service->description = $request->get('description');
-        $service->price = 100 * $request->get('price');
-        $service->min_price = 100 * $request->get('min_price');
-        $service->max_price = 100 * $request->get('max_price');
+        $service->price = $request->get('price');
+        $service->min_price = $request->get('min_price');
+        $service->max_price = $request->get('max_price');
         $service->save();
 
         return redirect(route('services.index'));
