@@ -26,6 +26,7 @@ class ServiceController extends Controller
             'subcategory_id' => 'required',
             'title' => 'required',
             'description' => 'required',
+            'unit' => 'required',
             'price' => 'required|numeric',
             'min_price' => 'required|numeric',
             'max_price' => 'required|numeric',
@@ -35,6 +36,7 @@ class ServiceController extends Controller
             'subcategory_id' => $request->get('subcategory_id'),
             'title' => $request->get('title'),
             'description' => $request->get('description'),
+            'unit' => $request->get('unit'),
             'price' => $request->get('price'),
             'min_price' => $request->get('min_price'),
             'max_price' => $request->get('max_price'),
@@ -63,6 +65,7 @@ class ServiceController extends Controller
             'subcategory_id' => 'required',
             'title' => 'required',
             'description' => 'required',
+            'unit' => 'required',
             'price' => 'required|numeric',
             'min_price' => 'required|numeric',
             'max_price' => 'required|numeric',
@@ -72,6 +75,7 @@ class ServiceController extends Controller
         $service->subcategory_id = $request->get('subcategory_id');
         $service->title = $request->get('title');
         $service->description = $request->get('description');
+        $service->unit = $request->get('unit');
         $service->price = $request->get('price');
         $service->min_price = $request->get('min_price');
         $service->max_price = $request->get('max_price');

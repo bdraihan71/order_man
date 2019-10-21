@@ -55,7 +55,7 @@
 
                             <div class="row justify-content-center">
                                 <div class="col-md-4">
-                                    <label>Quantity:</label>
+                                    <label>Quantity (@{{ this.service.data.unit}}):</label>
                                     <input class="form-control bg-transparent" type="text" name="quantity" v-model="quantity"></input>
                                 </div>
                                 <div class="col-md-4">

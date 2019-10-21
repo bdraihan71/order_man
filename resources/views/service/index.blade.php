@@ -14,6 +14,7 @@
                         <tr>
                             <td>Title</td>
                             <td>Subcategory</td>
+                            <td>Unit</td>
                             <td>Price</td>
                             <td>Minimum Price</td>
                             <td>Maximum Price</td>
@@ -26,6 +27,11 @@
                                 <td>{{ $service->subcategory->name }}</td>
                             @else
                                 <td class="red">No subcategory found!</td>
+                            @endif
+                            @if($service->unit)
+                                <td>{{ $service->unit }}</td>
+                            @else
+                                <td class="red">No unit found!</td>
                             @endif
                             <td>{{ $service->price }}</td>
                             <td>{{ $service->min_price }}</td>

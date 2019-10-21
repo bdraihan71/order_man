@@ -30,6 +30,11 @@
               <textarea class="form-control bg-transparent" id="exampleFormControlTextarea1" name="description" rows="3">{{$service->description}}</textarea>
             <br>
 
+            
+            <label>Unit</label>
+              <input class="form-control bg-transparent" type="text" name="unit" value="@if($service->unit){{$service->unit}}@endif">
+            <br>
+
             <label>Price</label>
               <input class="form-control bg-transparent" type="number" name="price" value="{{$service->price}}">
             <br>

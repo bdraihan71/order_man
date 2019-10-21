@@ -30,6 +30,10 @@
             <textarea class="form-control bg-transparent" id="exampleFormControlTextarea1" name="description" rows="3">{{old('description')}}</textarea>
             <br>
 
+            <label class="star">Unit</label>
+            <input class="form-control bg-transparent" type="text" name="unit" value="{{old('unit')}}"></input>
+            <br>
+
             <label class="star">Price</label>
             <input class="form-control bg-transparent" type="number" name="price" value="{{old('price')}}"></input>
             <br>

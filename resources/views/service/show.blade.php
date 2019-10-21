@@ -11,37 +11,47 @@
           <span>
             <h5>Title:</h5>
           </span>
-          <P>{{$service->title}}</P>
+          <p>{{$service->title}}</p>
           <br>
 
           <span>
             <h5>Description:</h5>
           </span>
-          <P>{{$service->description}}</P>
+          <p>{{$service->description}}</p>
           <br>
 
           <span>
             <h5>Subcategory:</h5>
           </span>
-          <P>{{$service->subcategory->name}}</P>
+          <p>{{$service->subcategory->name}}</p>
           <br>
 
           <span>
+              <h5>Unit:</h5>
+          </span>
+          @if($service->unit)
+            <p>{{$service->unit}}</p>
+          @else
+            <p class="red">No unit found</p>
+          @endif
+          <br>
+          
+          <span>
             <h5>Price:</h5>
           </span>
-          <P>{{$service->price}}</P>
+          <p>{{$service->price}}</p>
           <br>
 
           <span>
             <h5>Minimum Price:</h5>
           </span>
-          <P>{{$service->min_price}}</P>
+          <p>{{$service->min_price}}</p>
           <br>
 
           <span>
             <h5>Maximum Price:</h5>
           </span>
-          <P>{{$service->max_price}}</P>
+          <p>{{$service->max_price}}</p>
           <br>
 
           <a href="{{route('services.index')}}" class="btn btn-info">Service List</a>
