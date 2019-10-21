@@ -21,7 +21,7 @@
                 <tr>
                     <th scope="col" colspan="4" class="text-info">Order No: {{ $order->id }} for {{ $order->customer->name }}</th>
                     <th scope="col" colspan="1">{{ $order->action == null ? "Booked" : ($order->action < 0 ? "Cancelled" : "Provided") }}</th>
-                    <th scope="col" colspan="1"><a href="{{ route('orders.show', ['order' => $order->id]) }}" class="btn btn-info">Show</a></th>
+                    <th scope="col" colspan="3"><a href="{{ route('orders.show', ['order' => $order->id]) }}" class="btn btn-info">Show</a></th>
                 </tr>
             </thead>
             <thead>

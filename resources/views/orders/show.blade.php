@@ -46,6 +46,8 @@
                 <tr>
                 <th scope="col">Service</th>
                 <th scope="col">Price</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Total</th>
                 <th scope="col">Commission</th>
                 <th scope="col">Delivery Time</th>
                 <th scope="col">Type</th>
@@ -62,6 +64,16 @@
                 <tr>
                     <td>{{ $item->service->title }}</td>
                     <td>{{ $item->service_price }}</td>
+                    @if($item->quantity)
+                        <td>{{ $item->quantity }}</td>
+                    @else
+                        <td class="red">No quantity found</td>
+                    @endif
+                    @if($item->total)
+                        <td>{{ $item->total }}</td>
+                    @else
+                        <td class="red">No total found</td>
+                    @endif
                     <td>{{ $item->service_commission }}</td>
                     <td>{{ $item->delivery_time }}</td>
                     <td>{{ $item->type }}</td>
