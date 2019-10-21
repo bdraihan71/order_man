@@ -37,13 +37,6 @@
                         <div class="card-header">Order</div>
                         <div class="card-body">
                 
-                            <label class="star">Service</label>
-                            <select @change="fetchService" class="form-control bg-transparent" name="subcategory_id" v-model="selected_service">
-                                <option value="9999">Which service do you want?</option>
-                                <option v-for="service in services"  v-bind:value="service.id">@{{ service.title }}</option>
-                            </select>
-                            <br>
-
                             <label class="star">Type</label>
                             <select class="form-control bg-transparent" name="subcategory_id" v-model="selected_type">
                                 <option value="9999">What type of service do you want?</option>
@@ -52,6 +45,14 @@
                                 <option value="Other">Other</option>
                             </select>
                             <br>
+
+                            <label class="star">Service</label>
+                            <select @change="fetchService" class="form-control bg-transparent" name="subcategory_id" v-model="selected_service">
+                                <option value="9999">Which service do you want?</option>
+                                <option v-for="service in services"  v-bind:value="service.id">@{{ service.title }}</option>
+                            </select>
+                            <br>
+
 
                             <div class="row justify-content-center">
                                 <div class="col-md-4">
