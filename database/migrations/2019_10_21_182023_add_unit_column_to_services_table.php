@@ -14,7 +14,7 @@ class AddUnitColumnToServicesTable extends Migration
     public function up()
     {
         Schema::table('services', function (Blueprint $table) {
-            $table->integer('unit')->nullable();
+            $table->text('unit')->nullable();
         });
     }
 
