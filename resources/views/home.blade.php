@@ -35,7 +35,11 @@
                                 @foreach($order->items as $item)
                                     <li class="list-group-item  bg-warning">
                                         {{$item->service->title}} <br>
-                                        ‎৳ {{$item->service_price}}
+                                        @if($item->quantity && $item->total)
+                                        ‎   ৳ {{$item->service_price}} X {{$item->quantity}} = ‎৳ {{$item->total}}
+                                        @else
+                                            ৳ {{$item->service_price}}
+                                        @endif
                                         <i class="far fa-calendar-alt"></i> {{$item->delivery_date}}
                                         <i class="far fa-clock"></i> {{$item->delivery_time}}
                                         <i class="fas fa-map-marker-alt"></i> {{$item->delivery_address}} <span class="badge badge-secondary">{{$item->type}}</span>

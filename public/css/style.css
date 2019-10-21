@@ -181,3 +181,8 @@ a.nostyle:visited {
   text-decoration: inherit;
   color: inherit;
 }
+
+.red {
+  background-color: red;
+  color: white;
+}

@@ -99,6 +99,8 @@ class ApiController extends Controller
 
         $validator = Validator::make($request->all(), [
            'price' => 'required|numeric|min:'. $service->min_price . '|max:' . $service->max_price . '',
+           'quantity' => 'required|numeric|min:1',
+           'total' => 'required|numeric|min:1',
         ]);
 
         if($validator->fails()){
@@ -147,6 +149,8 @@ class ApiController extends Controller
             'order_id' => $order->id,
             'service_id' => $request->selected_service,
             'service_price' => $request->price,
+            'quantity' => $request->quantity,
+            'total' => $request->total,
             'delivery_date' => $request->date,
             'delivery_time' => $request->time,
             'delivery_address' => $request->address,

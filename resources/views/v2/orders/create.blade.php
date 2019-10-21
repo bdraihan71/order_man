@@ -54,14 +54,21 @@
                             <br>
 
                             <div class="row justify-content-center">
-                                <div class="col-md-6">
+                                <div class="col-md-4">
+                                    <label>Quantity:</label>
+                                    <input class="form-control bg-transparent" type="text" name="quantity" v-model="quantity"></input>
+                                </div>
+                                <div class="col-md-4">
                                     <label class="star">Final Price (BDT)</label>
                                     <input class="form-control bg-transparent" type="text" name="price" v-model="price"></input>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-4">
                                     <label>Asking Price Range (BDT):</label>
                                     <p class="border rounded p-2 text-center">@{{ this.service.data.min_price}} to @{{ this.service.data.max_price}}</p>
                                 </div>
+                            </div>
+                            <div class="text-center">
+                                <h4>Total Price: BDT @{{ this.total}}</h4>
                             </div>
                             <br>
                 
@@ -181,6 +188,8 @@
                     selected_type: 9999,
                     services: {!! json_encode($services) !!},
                     price: null,
+                    quantity: 1,
+                    total: 0,
                     time: '16:00',
                     note: null,
                     address: null,
@@ -212,6 +221,14 @@
                     }else{
                         this.customer = null;
                     }
+                },
+
+                quantity: function(val, oldVal){
+                    this.total = val * this.price
+                },
+
+                price: function(val, oldVal){
+                    this.total = val * this.quantity
                 },
 
                 selected_service: function(val, oldVal){
@@ -251,6 +268,8 @@
                      '&user_id=' + this.user_id + 
                      '&mobile=' + this.mobile + 
                      '&name=' + this.name + 
+                     '&quantity=' + this.quantity + 
+                     '&total=' + this.total + 
                      '&selected_channel=' + this.selected_channel + 
                      '&selected_service=' + this.selected_service + 
                      '&selected_type=' + this.selected_type + 
@@ -266,7 +285,7 @@
                 pending: function(){
                     console.log(this.mobile, this.name, this.user_id,
                     this.selected_location, this.selected_channel, this.selected_service, this.selected_type,
-                    this.price, this.date, this.time, this.note );
+                    this.price, this.date, this.time, this.note, this.quantity, this.total );
                 }
             }
         })

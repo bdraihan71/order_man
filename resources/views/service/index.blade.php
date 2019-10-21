@@ -22,7 +22,11 @@
                         @foreach ($services as $service)
                         <tr>
                             <td>{{ $service->title }}</td>
-                            <td>{{ $service->subcategory->name }}</td>
+                            @if($service->subcategory)
+                                <td>{{ $service->subcategory->name }}</td>
+                            @else
+                                <td class="red">No subcategory found!</td>
+                            @endif
                             <td>{{ $service->price }}</td>
                             <td>{{ $service->min_price }}</td>
                             <td>{{ $service->max_price }}</td>
