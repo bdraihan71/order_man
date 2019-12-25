@@ -6,7 +6,6 @@
         <h1>Add Items to Order</h1>
     </div>
 </div>
-
 <form action="{{ route('update-order-item', ['item' => $item->id]) }}" method="POST">
     @csrf
 
@@ -21,7 +20,9 @@
                     <div class="row mb-3">
                         <div class="col-md-12 text-center">
                             <select name="service_id" class="form-control bg-transparent">
-                                <option value="{{ $item->service_id }}">{{ $item->service->title }}</option>
+                                @if($item->service == null)
+                                    <option value="">No Service</option>
+                                @endif    
                                 @foreach (App\Service::all() as $service)
                                     @if ($item->service_id != $service->id)
                                         <option value="{{ $service->id }}">{{ $service->title }}</option>
@@ -34,7 +35,9 @@
                     <div class="row mb-3">
                         <div class="col-md-12 text-center">
                             <select name="vendor_id" class="form-control bg-transparent">
-                                <option value="{{ $item->vendor_id }}">{{ $item->vendor->company_name }}</option>
+                                @if($item->vendor == null)
+                                    <option value="">No Vendor</option>
+                                @endif
                                     @foreach (App\Vendor::all() as $vendor)
                                         @if ($item->vendor_id != $vendor->id)
                                             <option value="{{ $vendor->id }}">{{ $vendor->company_name }}</option>
@@ -91,9 +94,11 @@
                     <div class="row mb-3">
                         <div class="col-md-12 text-center">
                             <select name="reference_id" class="form-control bg-transparent">
-                                <option value="{{ $item->reference->id  }}">{{ $item->reference == null ? 'No References' : $item->reference->name }}</option>
+                                @if($item->reference == null)
+                                    <option value="">No References</option>
+                                @endif    
                                 @foreach (App\Reference::all() as $reference)
-                                    @if ($item->reference->id != $reference->id)
+                                    @if ($item->reference_id != $reference->id)
                                         <option value="{{ $reference->id }}">{{ $reference->name  }}</option>
                                     @endif
                                 @endforeach
@@ -104,9 +109,11 @@
                     <div class="row mb-3">
                         <div class="col-md-12 text-center">
                             <select name="category_manager" class="form-control bg-transparent">
-                                <option value="{{ $item->user->id }}">{{ $item->user == null ? 'No Manager' : $item->user->name }}</option>
+                                @if($item->user == null)
+                                    <option value="">No Manager</option>
+                                @endif    
                                 @foreach (App\User::where('role_id', 2)->get() as $user)
-                                    @if ($item->user->id != $user->id)
+                                    @if ($item->category_manager != $user->id)
                                         <option value="{{ $user->id }}">{{ $user->name }}</option>
                                     @endif
                                 @endforeach
