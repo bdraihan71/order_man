@@ -25,15 +25,19 @@
                 </tr>
             </thead>
             <thead>
-                <tr>
+               <tr>
                     <th scope="col">Service</th>
                     <th scope="col">Price</th>
                     <th scope="col">Quantity</th>
                     <th scope="col">Total</th>
                     <th scope="col">Commission</th>
-                    <th scope="col">Customer Type</th>
-                    <th scope="col">Time</th>
+                    <th scope="col">Delivery Time</th>
+                    <th scope="col">Type</th>
+                    <th scope="col">Category Manager</th>
+                    <th scope="col">Comment By Category Manager</th>
+                    <th scope="col">Reference</th>
                     <th scope="col">Vendor</th>
+                    <th scope="col">Review</th>
                 </tr>
             </thead>
             <tbody>
@@ -46,23 +50,27 @@
                 @else
                 @foreach ($order->items as $item)
                     <tr>
-                        <td>{{ $item->service->title }}</td>
-                        <td>{{ $item->service_price }}</td>
-                        @if($item->quantity)
-                            <td>{{ $item->quantity }}</td>
-                        @else
-                            <td class="red">No quantity found</td>
-                        @endif
-                        @if($item->total)
-                            <td>{{ $item->total }}</td>
-                        @else
-                            <td class="red">No total found</td>
-                        @endif
-                        <td> {{ $item->service_commission }}</td>
-                        <td>{{ ucfirst($item->type) }}</td>
-                        <td>{{ $item->delivery_time }}</td>
-                        <td>{{ $item->vendor != null ? $item->vendor->company_name : '' }}</td>
-                    </tr>
+                    <td>{{ $item->service->title }}</td>
+                    <td>{{ $item->service_price }}</td>
+                    @if($item->quantity)
+                        <td>{{ $item->quantity }}</td>
+                    @else
+                        <td class="red">No quantity found</td>
+                    @endif
+                    @if($item->total)
+                        <td>{{ $item->total }}</td>
+                    @else
+                        <td class="red">No total found</td>
+                    @endif
+                    <td>{{ $item->service_commission }}</td>
+                    <td>{{ $item->delivery_time }}</td>
+                    <td>{{ $item->type }}</td>
+                    <td>{{ $item->user == null ? 'No Manager' : $item->user->name }}</td>
+                    <td>{{ $item->comment_by_category_manager }}</td>
+                    <td>{{ $item->reference == null ? 'No References' : $item->reference->name }}</td>
+                    <td>{{ $item->vendor ? $item->vendor->company_name : 'Unassigned'}}</td>
+                    <td>{{ $item->review }}</td>
+                </tr>
                 @endforeach
                 @endif
             </tbody>
