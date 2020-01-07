@@ -151,9 +151,11 @@ $delivery_time = str_replace(' ', 'T', Carbon\Carbon::parse('tomorrow 9 AM')->to
         <div class="col-md-2">
             {{ $item->delivery_time }}
         </div>
-        <div class="col-md-2">
-            {{ $item->vendor->company_name }}
-        </div>
+        @if($item->vendor != null)
+            <div class="col-md-2">
+                {{ $item->vendor->company_name }}
+            </div>
+        @endif 
         <div class="col-md-1">
             <a onclick="return confirm('Are you sure you want to delete this item?');" href="{{ route('delete-item', ['item' => $item->id]) }}"><i class='fa fas fa-trash'></i></a>
         </div>
