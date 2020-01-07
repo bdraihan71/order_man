@@ -16,7 +16,9 @@ class OrderController extends Controller
     public function index(Request $request)
     {
         if ($request->item == null) {
-            $orders = Order::orderBy('created_at', 'DESC')->paginate(10);
+            $booked_orders = Order::orderBy('created_at', 'DESC')->where('action', null)->paginate(10);
+            $completed_orders = Order::orderBy('created_at', 'DESC')->where('action', 1)->paginate(10);
+            $cancelled_orders = Order::orderBy('created_at', 'DESC')->where('action', -1)->paginate(10);
         } else {
             $customers_name = Customer::where('name', 'like', '%'.$request->item.'%')->get()->pluck('id')->toArray();
             $customers_p_phone = Customer::where('primary_contact_number', $request->item)->get()->pluck('id')->toArray();
@@ -29,11 +31,13 @@ class OrderController extends Controller
             $service_orders = Order::whereIn('id', $order_items)->orderBy('created_at', 'DESC')->get();
 
             $orders = $service_orders->merge($cust_orders);
-            $orders = Order::whereIn('id', $orders->pluck('id')->toArray())->orderBy('created_at', 'DESC')->paginate(10);
+            $booked_orders = Order::whereIn('id', $orders->pluck('id')->toArray())->where('action', null)->orderBy('created_at', 'DESC')->paginate(10);
+            $completed_orders = Order::whereIn('id', $orders->pluck('id')->toArray())->where('action', 1)->orderBy('created_at', 'DESC')->paginate(10);
+            $cancelled_orders = Order::whereIn('id', $orders->pluck('id')->toArray())->where('action', -1)->orderBy('created_at', 'DESC')->paginate(10);
         }
 
 
-        return view('orders.index', compact('orders'));
+        return view('orders.index', compact('booked_orders', 'completed_orders', 'cancelled_orders'));
     }
 
     public function create()
