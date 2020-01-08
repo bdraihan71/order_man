@@ -15,18 +15,18 @@
         </div>
     </div>
 
-    <ul class="nav nav-tabs" id="myTab" role="tablist">
+    <ul class="nav nav-tabs justify-content-center" id="myTab" role="tablist">
         <li class="nav-item">
-            <a class="nav-item nav-link active" id="nav-booked-tab" data-toggle="tab" href="#nav-booked" role="tab" aria-controls="nav-booked" aria-selected="true">Booked</a>
+            <a class="nav-item nav-link active text-dark" id="nav-booked-tab" data-toggle="tab" href="#nav-booked" role="tab" aria-controls="nav-booked" aria-selected="true">Booked</a>
         </li>
         <li class="nav-item">
-            <a class="nav-item nav-link" id="nav-pending-tab" data-toggle="tab" href="#nav-pending " role="tab" aria-controls="nav-pending " aria-selected="true">Pending </a>
+            <a class="nav-item nav-link text-dark" id="nav-pending-tab" data-toggle="tab" href="#nav-pending " role="tab" aria-controls="nav-pending " aria-selected="true">Pending </a>
         </li>
         <li class="nav-item">
-            <a class="nav-item nav-link" id="nav-completed-tab" data-toggle="tab" href="#nav-completed" role="tab" aria-controls="nav-completed" aria-selected="false">Completed</a>
+            <a class="nav-item nav-link text-dark" id="nav-completed-tab" data-toggle="tab" href="#nav-completed" role="tab" aria-controls="nav-completed" aria-selected="false">Completed</a>
         </li>
         <li class="nav-item">
-            <a class="nav-item nav-link" id="nav-cancelled-tab" data-toggle="tab" href="#nav-cancelled" role="tab" aria-controls="nav-cancelled" aria-selected="false">Cancelled</a>
+            <a class="nav-item nav-link text-dark" id="nav-cancelled-tab" data-toggle="tab" href="#nav-cancelled" role="tab" aria-controls="nav-cancelled" aria-selected="false">Cancelled</a>
         </li>
     </ul>
     <div class="tab-content" id="myTabContent">
