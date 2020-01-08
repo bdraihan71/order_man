@@ -27,7 +27,7 @@
     <div class="tab-pane fade show active" id="nav-booked" role="tabpanel" aria-labelledby="nav-booked-tab">
         @include('orders.partials.booked')
     </div>
-     <div class="tab-pane fade show active" id="nav-pending" role="tabpanel" aria-labelledby="nav-pending-tab">
+     <div class="tab-pane fade show " id="nav-pending" role="tabpanel" aria-labelledby="nav-pending-tab">
         @include('orders.partials.pending')
     </div>
     <div class="tab-pane fade" id="nav-completed" role="tabpanel" aria-labelledby="nav-completed-tab">
