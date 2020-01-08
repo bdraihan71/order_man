@@ -18,6 +18,7 @@
     <nav>
     <div class="nav nav-tabs justify-content-center" id="nav-tab" role="tablist">
         <a class="nav-item nav-link active" id="nav-booked-tab" data-toggle="tab" href="#nav-booked" role="tab" aria-controls="nav-booked" aria-selected="true">Booked</a>
+        <a class="nav-item nav-link" id="nav-pending-tab" data-toggle="tab" href="#nav-pending " role="tab" aria-controls="nav-pending " aria-selected="true">Pending </a>
         <a class="nav-item nav-link" id="nav-completed-tab" data-toggle="tab" href="#nav-completed" role="tab" aria-controls="nav-completed" aria-selected="false">Completed</a>
         <a class="nav-item nav-link" id="nav-cancelled-tab" data-toggle="tab" href="#nav-cancelled" role="tab" aria-controls="nav-cancelled" aria-selected="false">Cancelled</a>
     </div>
@@ -25,6 +26,9 @@
     <div class="tab-content" id="nav-tabContent">
     <div class="tab-pane fade show active" id="nav-booked" role="tabpanel" aria-labelledby="nav-booked-tab">
         @include('orders.partials.booked')
+    </div>
+     <div class="tab-pane fade show active" id="nav-pending" role="tabpanel" aria-labelledby="nav-pending-tab">
+        @include('orders.partials.pending')
     </div>
     <div class="tab-pane fade" id="nav-completed" role="tabpanel" aria-labelledby="nav-completed-tab">
         @include('orders.partials.completed')
