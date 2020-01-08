@@ -102,8 +102,18 @@
                     <input class="form-control bg-transparent" type="text" name="price" v-model="note"></input>
                     <br>
                     </div>
+                    <div v-if="this.response.success">
+                        <p>All Good: @{{ this.response.data }}</p>
+                    </div>
+                    <div v-if="!this.response.success">
+                        <p>Sorry!</p>
+                        <ul>
+                            <li v-for="data in this.response.data">@{{ data[0] }}</li>
+                        </ul>
+                    </div>
                     <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" @click="pending">Pending</button>
+                     <button v-if="this.response.button === true" class="btn btn-primary"  data-dismiss="modal" aria-label="Close">Close</button>
+                    <button v-else="this.response.button !=== true" type="button" class="btn btn-primary" @click="pending">Pending</button>
                     </div>
                 </div>
             </div>
@@ -143,7 +153,8 @@
                         </ul>
                     </div>
                     <div class="modal-footer">
-                        <button class="btn btn-primary"  @click="book">Book</button>
+                        <button v-if="this.response.button === true" class="btn btn-primary"  data-dismiss="modal" aria-label="Close">Close</button>
+                        <button v-else="this.response.button !=== true" class="btn btn-primary"  @click="book">Book</button>
                     </div>
                 </div>
             </div>
@@ -194,6 +205,7 @@
                     time: '16:00',
                     note: null,
                     address: null,
+                    action: 2,
                     date: '2019-10-26',
                     response: {
                         success: true,
@@ -286,7 +298,23 @@
                 pending: function(){
                     console.log(this.mobile, this.name, this.user_id,
                     this.selected_location, this.selected_channel, this.selected_service, this.selected_type,
-                    this.price, this.date, this.time, this.note, this.quantity, this.total );
+                    this.price, this.date, this.time, this.note, this.quantity, this.total, this.action );
+                     fetch('/api/pending_order?selected_location=' + this.selected_location + 
+                     '&user_id=' + this.user_id + 
+                     '&mobile=' + this.mobile + 
+                     '&name=' + this.name + 
+                     '&quantity=' + this.quantity + 
+                     '&total=' + this.total + 
+                     '&selected_channel=' + this.selected_channel + 
+                     '&selected_service=' + this.selected_service + 
+                     '&selected_type=' + this.selected_type + 
+                     '&price=' + this.price + 
+                     '&date=' + this.date + 
+                     '&time=' + this.time + 
+                     '&action=' + this.action + 
+                     '&note=' + this.note)
+                        .then(stream => stream.json())
+                        .then(response => (this.response = response))
                 }
             }
         })
