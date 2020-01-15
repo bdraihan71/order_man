@@ -33,13 +33,13 @@
                     <a class="nav-link" href="{{ route('create-order') }}"><i class="fas fa-plus-circle fa-2x"></i></a>
                 </li>
                 <li class="nav-item my-auto">
+                    <a class="nav-link" href="/orders">Order</a>
+                </li>
+                <li class="nav-item my-auto">
                     <a class="nav-link" href="/customers">Customer</a>
                 </li>
                 <li class="nav-item my-auto">
                     <a class="nav-link" href="/vendors">Vendor</a>
-                </li>
-                <li class="nav-item my-auto">
-                    <a class="nav-link" href="/orders">Order</a>
                 </li>
                 <li class="nav-item my-auto">
                     <a class="nav-link" href="/services">Service</a>
