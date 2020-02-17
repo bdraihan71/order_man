@@ -216,7 +216,7 @@
                     address: null,
                     vendor_id: null,
                     action: 2,
-                    date: '2019-10-26',
+                    date: {!! json_encode(Carbon\Carbon::now()->format('Y-m-d')) !!},
                     response: {
                         success: true,
                         data: {
