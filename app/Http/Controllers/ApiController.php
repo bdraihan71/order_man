@@ -9,7 +9,7 @@ use Validator;
 use App\Order;
 use App\OrderItem;
 use Carbon\Carbon;
-
+use App\Vendor;
 class ApiController extends Controller
 {
     public function getCustomer($mobile){
@@ -155,6 +155,7 @@ class ApiController extends Controller
             'delivery_date' => $request->date,
             'delivery_time' => $request->time,
             'delivery_address' => $request->address,
+            'vendor_id' => $request->vendor_id ? $request->vendor_id : '',
             'type' => $request->selected_type,
         ]);
 
@@ -245,5 +246,15 @@ class ApiController extends Controller
         ]);
 
         return $order;
+    }
+    public function vendor(){
+        $vendors = Vendor::orderBy('company_name')->get();
+
+        return response()->json(
+            [
+                'success' => true,
+                'data' => $vendors
+            ]
+        );
     }
 }

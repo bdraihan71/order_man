@@ -139,6 +139,14 @@
                     <label class="star">Address</label>
                     <input class="form-control bg-transparent" type="text" name="price" v-model="address"></input>
                     <br>
+
+                    <label>Choose Vendor</label>
+                    <select class="form-control" v-if="vendors" v-model="vendor_id">
+                        <option value="">Unassigned</option>
+                        <option :value="vendor.id" v-for="vendor in vendors">@{{vendor.company_name}}</option>
+                    </select>
+
+                    <br>
                     <label class="star">Note</label>
                     <input class="form-control bg-transparent" type="text" name="price" v-model="note"></input>
                     <br>
@@ -184,6 +192,7 @@
                 return{
                     user_id: {!! auth()->user()->id !!},
                     customer: null,
+                    vendors: [],
                     service: {
                         data: {
                             "min_price":0,
@@ -205,6 +214,7 @@
                     time: '16:00',
                     note: null,
                     address: null,
+                    vendor_id: null,
                     action: 2,
                     date: '2019-10-26',
                     response: {
@@ -214,6 +224,9 @@
                         }
                     },
                 }
+            },
+            mounted(){
+                this.fetchVendors();
             },
             watch: {
                 customer: function(val, oldVal){
@@ -273,10 +286,18 @@
                     .then(response => (this.service = response))
                 },
 
+                fetchVendors: function(){
+                    
+                    console.log("fetching vendor");
+                    fetch('/api/vendor')
+                        .then(stream => stream.json())
+                        .then(response => (this.vendors = response.data))
+                    
+                },
                 book: function(){
                     console.log(this.mobile, this.name, this.user_id,
                      this.selected_location, this.selected_channel, this.selected_service, this.selected_type,
-                     this.price, this.date, this.time, this.address, this.note );
+                     this.price, this.date, this.time, this.address, this.note, this.vendor_id );
                      fetch('/api/order?selected_location=' + this.selected_location + 
                      '&user_id=' + this.user_id + 
                      '&mobile=' + this.mobile + 
@@ -290,6 +311,7 @@
                      '&date=' + this.date + 
                      '&time=' + this.time + 
                      '&address=' + this.address + 
+                     '&vendor_id=' + this.vendor_id + 
                      '&note=' + this.note)
                         .then(stream => stream.json())
                         .then(response => (this.response = response))
