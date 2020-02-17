@@ -144,16 +144,16 @@ class OrderController extends Controller
 
     public function updateItem(Request $request, OrderItem $item)
     {
-        $this->validate($request, [
-            'service_id' => 'required|exists:services,id',
-            'service_price' => 'required|integer',
-            'service_commission' => 'required|integer',
-            'vendor_id' => 'required|exists:vendors,id',
-            'delivery_time' => 'required',
-            'category_manager' => 'required',
-            'reference_id' => 'required',
-            'type' => 'required'
-        ]);
+        // $this->validate($request, [
+        //     'service_id' => 'required|exists:services,id',
+        //     'service_price' => 'required|integer',
+        //     'service_commission' => 'required|integer',
+        //     'vendor_id' => 'required|exists:vendors,id',
+        //     'delivery_time' => 'required',
+        //     'category_manager' => 'required',
+        //     'reference_id' => 'required',
+        //     'type' => 'required'
+        // ]);
 
         $item->service_id = $request->service_id;
         $item->vendor_id = $request->vendor_id;
