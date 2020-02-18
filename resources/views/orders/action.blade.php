@@ -14,17 +14,11 @@
                         <div class="row mb-3">
                             <div class="col-md-12">
                                 <select name="action" class="form-control bg-transparent">
-                                    @if ($order->action > 0)
-                                        <option value="1">Completed</option>
-                                        <option value="-1">Cancelled</option>
-                                    @elseif ($order->action < 0)
-                                        <option value="-1">Cancelled</option>
-                                        <option value="1">Completed</option>
-                                    @else
-                                        <option value="">Please select an action</option>
-                                        <option value="-1">Cancelled</option>
-                                        <option value="1">Completed</option>
-                                    @endif
+                                    {{-- TODO:: Must change this to more readable format --}}
+                                    <option value="-1" {{$order->action == '-1' ? 'selected': ''}}>Cancelled</option>
+                                    <option value="1" {{$order->action == '1' ? 'selected': ''}}>Completed</option>
+                                    <option value="2" {{$order->action == '2' ? 'selected': ''}}>Pending</option>
+                                    <option value="" {{$order->action == '' ? 'selected': ''}}>Booked</option>
                                 </select>
                             </div>
                         </div>

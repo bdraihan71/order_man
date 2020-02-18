@@ -3,7 +3,7 @@
         <table class="table table-bordered">
             <thead>
                 <tr>
-                    <th scope="col" colspan="4" class="text-info">Order No: {{ $order->id }} for {{ $order->customer->name }}</th>
+                    <th scope="col" colspan="4" class="text-info">Order No: {{ $order->id }} for {{ $order->customer->name }} {{ $order->customer->primary_contact_number }}</th>
                     <th scope="col" colspan="1">{{ $order->action == null ? "Booked" : ($order->action == -1 ? "Cancelled" : ($order->action == 1 ? "Provided" : "pending")) }}</th>
                     <th scope="col" colspan="3"><a href="{{ route('orders.show', ['order' => $order->id]) }}" class="btn btn-info">Show</a></th>
                 </tr>
