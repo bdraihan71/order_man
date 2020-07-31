@@ -98,7 +98,7 @@
                     <label class="star">Followup Time</label>
                     <input class="form-control bg-transparent" type="time" v-model="time">
                     <br>
-                    <label class="star">Note</label>
+                    <label>Note</label>
                     <input class="form-control bg-transparent" type="text" name="price" v-model="note"></input>
                     <br>
                     </div>
@@ -147,7 +147,7 @@
                     </select>
 
                     <br>
-                    <label class="star">Note</label>
+                    <label>Note</label>
                     <input class="form-control bg-transparent" type="text" name="price" v-model="note"></input>
                     <br>
                     </div>

@@ -81,6 +81,13 @@
       @yield('content')
     </div>
 
+    <script>
+      function clearParamsAndReload(){
+          window.history.replaceState(null, null, window.location.pathname);
+          location.reload();
+        }
+
+    </script>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="/js/jquery-3.4.0.slim.min.js"></script>

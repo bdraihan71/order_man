@@ -186,3 +186,11 @@ a.nostyle:visited {
   background-color: red;
   color: white;
 }
+
+.thin-th {
+  font-size: .8em;
+  font-weight: 400;
+  padding: 0;
+  vertical-align: top;
+  border-top: 0px solid #dee2e6;
+}
