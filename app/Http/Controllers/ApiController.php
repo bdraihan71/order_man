@@ -30,6 +30,24 @@ class ApiController extends Controller
         }
     }
 
+    public function getCustomerFromEmail($email){
+        $customer = Customer::where('email', $email)->orWhere('email_secondary', $email)->first();
+        if($customer != null){
+            return response()->json(
+                [
+                    'success' => true,
+                    'data' => $customer
+                ]
+            );
+        }else{
+            return response()->json(
+                [
+                    'success' => false
+                ]
+            );
+        }
+    }
+
     public function getService(Service $service){
         
         if($service != null){
@@ -69,7 +87,8 @@ class ApiController extends Controller
             [
                 'success' => true,
                 'button' => true,
-                'data' => "Successfully created order # " . $order->id
+                'data' => "Successfully created order # " . $order->id,
+                'redirect' => route('orders.show', $order->id)
             ]
         );
     }
@@ -77,11 +96,13 @@ class ApiController extends Controller
     public function validateRequest($request){
         $validator = Validator::make($request->all(), [
             'mobile' => 'required|digits:11',
+            'email' => 'required|email',
             'name' => 'required|not_in:null',
             'user_id' => 'required|exists:users,id',
             'selected_location' => 'required|not_in:9999|exists:locations,id',
             'selected_channel' => 'required|not_in:9999|exists:channels,id',
             'selected_service' => 'required|not_in:9999|exists:services,id',
+            'vendor_id' => 'required|not_in:9999|exists:vendors,id',
             'selected_type' => 'required|not_in:9999',
             'date' => 'required|not_in:null',
             'time' => 'required|not_in:null',
@@ -122,12 +143,14 @@ class ApiController extends Controller
 
         if($customer){
             $customer->name = $request->name;
+            $customer->email = $request->email;
             $customer->channel_id = $request->selected_channel;
             $customer->location_id = $request->selected_location;
             $customer->save();
         }else{
             $customer = Customer::create([
                 'name' => $request->name,
+                'email' => $request->email,
                 'primary_contact_number' => $request->mobile,
                 'location_id' => $request->selected_location,
                 'channel_id' => $request->selected_channel,
@@ -178,7 +201,8 @@ class ApiController extends Controller
             [
                 'success' => true,
                 'button' => true,
-                'data' => "Successfully created order # " . $order->id
+                'data' => "Successfully created order # " . $order->id,
+                'redirect' => route('orders.show', $order->id)
             ]
         );
     }
@@ -186,6 +210,7 @@ class ApiController extends Controller
     public function validateRequestPending($request){
         $validator = Validator::make($request->all(), [
             'mobile' => 'required|digits:11',
+            'email' => 'required|email',
             'name' => 'required|not_in:null',
             'user_id' => 'required|exists:users,id',
             'selected_location' => 'required|not_in:9999|exists:locations,id',

@@ -12,6 +12,10 @@
                             <label class="star">Mobile No.</label>
                             <input @change="fetchCustomer" v-model="mobile" class="form-control bg-transparent" type="text" name="title" value=""></input>
                             <br>
+
+                            <label class="star">Email</label>
+                            <input @change="fetchCustomer" v-model="email" class="form-control bg-transparent" type="text" name="email" value=""></input>
+                            <br>
                 
                             <label class="star">Name</label>
                             <input v-model="name" class="form-control bg-transparent" type="text" name="price" value=""></input>
@@ -200,6 +204,7 @@
                         }
                     },
                     mobile: null,
+                    email: null,
                     name: null,
                     channels: {!! json_encode($channels) !!},
                     locations: {!! json_encode($locations) !!},
@@ -232,6 +237,7 @@
                 customer: function(val, oldVal){
                     if(val != null && val.success == true){
                         this.name = val.data.name;
+                        this.email = val.data.email;
                         this.selected_channel = val.data.channel_id ? val.data.channel_id : 9999;
                         this.selected_location = val.data.location_id;
                     }else{
@@ -257,6 +263,13 @@
                     this.total = val * this.quantity
                 },
 
+                response: function(val, oldVal){
+                    console.log(val);
+                    if(val.redirect != null){
+                        window.location.href = val.redirect; 
+                    }
+                },
+
                 selected_service: function(val, oldVal){
                     this.fetchVendors();
                     if(val == 9999){
@@ -274,6 +287,13 @@
                     if(this.mobile !== undefined && this.mobile !== null  && this.mobile !== ""){
                         console.log("fetching customer");
                         fetch('/api/customer/' + this.mobile)
+                            .then(stream => stream.json())
+                            .then(response => (this.customer = response))
+                    }
+
+                    if(this.email !== undefined && this.email !== null  && this.email !== ""){
+                        console.log("fetching customer");
+                        fetch('/api/customer/email/' + this.email)
                             .then(stream => stream.json())
                             .then(response => (this.customer = response))
                     }
@@ -298,10 +318,11 @@
                 book: function(){
                     console.log(this.mobile, this.name, this.user_id,
                      this.selected_location, this.selected_channel, this.selected_service, this.selected_type,
-                     this.price, this.date, this.time, this.address, this.note, this.vendor_id );
+                     this.price, this.date, this.time, this.address, this.note, this.vendor_id, this.email );
                      fetch('/api/order?selected_location=' + this.selected_location + 
                      '&user_id=' + this.user_id + 
                      '&mobile=' + this.mobile + 
+                     '&email=' + this.email + 
                      '&name=' + this.name + 
                      '&quantity=' + this.quantity + 
                      '&total=' + this.total + 
@@ -321,10 +342,11 @@
                 pending: function(){
                     console.log(this.mobile, this.name, this.user_id,
                     this.selected_location, this.selected_channel, this.selected_service, this.selected_type,
-                    this.price, this.date, this.time, this.note, this.quantity, this.total, this.action );
+                    this.price, this.date, this.time, this.note, this.quantity, this.total, this.action, this.email );
                      fetch('/api/pending_order?selected_location=' + this.selected_location + 
                      '&user_id=' + this.user_id + 
                      '&mobile=' + this.mobile + 
+                     '&email=' + this.email + 
                      '&name=' + this.name + 
                      '&quantity=' + this.quantity + 
                      '&total=' + this.total + 
