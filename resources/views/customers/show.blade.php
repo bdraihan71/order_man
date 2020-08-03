@@ -44,6 +44,54 @@
           <P>{{$customer->location->name}}</P>
           <br>
 
+          <span>
+            <h5>Email:</h5>
+          </span>
+          <P>{{$customer->email}}</P>
+          <br>
+
+          <span>
+            <h5>Email (Secondary):</h5>
+          </span>
+          <P>{{$customer->email_secondary}}</P>
+          <br>
+
+          <span>
+            <h5>Website:</h5>
+          </span>
+          <P>{{$customer->website}}</P>
+          <br>
+
+          <span>
+            <h5>City:</h5>
+          </span>
+          <P>{{$customer->city}}</P>
+          <br>
+
+          <span>
+            <h5>Country:</h5>
+          </span>
+          <P>{{$customer->country}}</P>
+          <br>
+
+          <span>
+            <h5>Address:</h5>
+          </span>
+          <P>{{$customer->address}}</P>
+          <br>
+
+          <span>
+            <h5>Postal Code:</h5>
+          </span>
+          <P>{{$customer->postal_code}}</P>
+          <br>
+
+          <span>
+            <h5>Note:</h5>
+          </span>
+          <P>{{$customer->note}}</P>
+          <br>
+          
           <a href="{{route('customers.index')}}" class="btn btn-info">Customer List</a>
 
         </div>

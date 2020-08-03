@@ -29,7 +29,8 @@ class CustomerController extends Controller
         $request->validate([
             'name' => 'required',
             'location_id' => 'required|exists:locations,id',
-            'primary_contact_number' => 'required'
+            'primary_contact_number' => 'required',
+            'email' => 'required'
         ]);
 
         Customer::create([
@@ -38,6 +39,15 @@ class CustomerController extends Controller
             'secondary_contact_number' => $request->secondary_contact_number,
             'profession'  => $request->profession,
             'location_id' => $request->location_id,
+            'email' => $request->email,
+            'email_secondary' => $request->email_secondary,
+            'company' => $request->company,
+            'website' => $request->website,
+            'city' => $request->city,
+            'country' => $request->country,
+            'address' => $request->address,
+            'postal_code' => $request->postal_code,
+            'note' => $request->note,
         ]);
 
         return redirect(route('customers.index'));
@@ -62,6 +72,7 @@ class CustomerController extends Controller
             'name' => 'required',
             'primary_contact_number' => 'required',
             'location_id' => 'required|exists:locations,id',
+            'email' => 'required'
         ]);
 
         $customer->name = $request->name;
@@ -69,6 +80,15 @@ class CustomerController extends Controller
         $customer->secondary_contact_number = $request->secondary_contact_number;
         $customer->profession= $request->profession;
         $customer->location_id = $request->location_id;
+        $customer->email = $request->email;
+        $customer->email_secondary = $request->email_secondary;
+        $customer->company = $request->company;
+        $customer->website = $request->website;
+        $customer->city = $request->city;
+        $customer->country = $request->country;
+        $customer->address = $request->address;
+        $customer->postal_code = $request->postal_code;
+        $customer->note = $request->note;
         $customer->save();
 
         return redirect(route('customers.index'));

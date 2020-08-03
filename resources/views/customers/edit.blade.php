@@ -41,6 +41,43 @@
                             </select>
                             <br>
 
+
+                            <label>Email</label>
+                            <input class="form-control bg-transparent" type="email" name="email" value="{{$customer->email}}"></input>
+                            <br>
+
+                            <label>Email Secondary</label>
+                            <input class="form-control bg-transparent" type="email" name="email_secondary" value="{{$customer->email_secondary}}"></input>
+                            <br>
+
+                            <label>Company</label>
+                            <input class="form-control bg-transparent" type="email" name="company" value="{{$customer->company}}"></input>
+                            <br>
+
+                            <label>Website</label>
+                            <input class="form-control bg-transparent" type="text" name="website" value="{{$customer->website}}"></input>
+                            <br>
+                            
+                            <label>City</label>
+                            <input class="form-control bg-transparent" type="text" name="city" value="{{$customer->city}}"></input>
+                            <br>
+                            
+                            <label>Country</label>
+                            <input class="form-control bg-transparent" type="text" name="country" value="{{$customer->country}}"></input>
+                            <br>
+
+                            <label>Address</label>
+                            <input class="form-control bg-transparent" type="text" name="address" value="{{$customer->address}}"></input>
+                            <br>
+
+                            <label>Postal Code</label>
+                            <input class="form-control bg-transparent" type="text" name="postal_code" value="{{$customer->postal_code}}"></input>
+                            <br>
+
+                            <label>Note</label>
+                            <input class="form-control bg-transparent" type="text" name="note" value="{{$customer->note}}"></input>
+                            <br>
+
                             <button class="btn btn-primary" type="submit">Save</button>
                         </form>
 
