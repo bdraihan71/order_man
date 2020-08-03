@@ -247,8 +247,13 @@ class ApiController extends Controller
 
         return $order;
     }
-    public function vendor(){
-        $vendors = Vendor::orderBy('company_name')->get();
+    public function vendor(Request $request){
+        if($request->selected_service && $request->selected_service != 9999){
+            $vendors = Vendor::where('category_id', Service::find($request->selected_service)->subcategory->category->id )->orderBy('company_name')->get();
+        }else{
+            $vendors = Vendor::orderBy('company_name')->get();
+        }
+        
 
         return response()->json(
             [

@@ -258,6 +258,7 @@
                 },
 
                 selected_service: function(val, oldVal){
+                    this.fetchVendors();
                     if(val == 9999){
                         this.service = {
                             data: {
@@ -289,7 +290,7 @@
                 fetchVendors: function(){
                     
                     console.log("fetching vendor");
-                    fetch('/api/vendor')
+                    fetch('/api/vendor?selected_service=' + this.selected_service)
                         .then(stream => stream.json())
                         .then(response => (this.vendors = response.data))
                     

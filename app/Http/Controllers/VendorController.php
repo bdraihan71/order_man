@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Vendor;
 use App\User;
+use App\Category;
 
 class VendorController extends Controller
 {
@@ -17,7 +18,8 @@ class VendorController extends Controller
     public function create()
     {
         $users = User::all();
-        return view('vendor.create', compact('users'));
+        $categories = Category::all();
+        return view('vendor.create', compact('users', 'categories'));
     }
 
     public function store(Request $request)
@@ -25,6 +27,7 @@ class VendorController extends Controller
         $request->validate([
             'company_name' => 'required',
             'office_address' => 'required',
+            'category_id' => 'required',
             'owner_contact_number_primary' => 'required',
             'primary_contact_person_position' => 'required',
             'primary_contact_person_number_primary' => 'required',
@@ -35,6 +38,7 @@ class VendorController extends Controller
         Vendor::create([
             'company_name' => $request->get('company_name'),
             'office_address' => $request->get('office_address'),
+            'category_id' => $request->get('category_id'),
             'trade_license_number' => $request->get('trade_license_number'),
             'owner_name' => $request->get('owner_name'),
             'owner_nid_number' => $request->get('owner_nid_number'),
@@ -70,8 +74,9 @@ class VendorController extends Controller
     public function edit($id)
     {
         $users = User::all();
+        $categories = Category::all();
         $vendor = Vendor::find($id);
-        return view('vendor.edit', compact('vendor', 'users'));
+        return view('vendor.edit', compact('vendor', 'users', 'categories'));
     }
 
     public function update(Request $request, $id)
@@ -79,6 +84,7 @@ class VendorController extends Controller
         $request->validate([
             'company_name' => 'required',
             'office_address' => 'required',
+            'category_id' => 'required',
             'owner_contact_number_primary' => 'required',
             'primary_contact_person_position' => 'required',
             'primary_contact_person_number_primary' => 'required',
@@ -88,6 +94,7 @@ class VendorController extends Controller
         
         $vendor = Vendor::find($id);
         $vendor->company_name = $request->get('company_name');
+        $vendor->category_id = $request->get('category_id');
         $vendor->office_address = $request->get('office_address');
         $vendor->trade_license_number = $request->get('trade_license_number');
         $vendor->owner_name = $request->get('owner_name');

@@ -22,4 +22,8 @@ class Vendor extends Model
     public function creator(){
         return $this->belongsTo('App\User', 'added_by');
     }
+
+    public function category(){
+        return $this->belongsTo('App\Category');
+    }
 }

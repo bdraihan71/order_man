@@ -13,6 +13,18 @@
             <input class="form-control bg-transparent" type="text" name="company_name" value="{{old('company_name')}}"></input>
             <br>
 
+            <label>Category</label>
+            <select class="form-control bg-transparent" name="category_id">
+              @foreach($categories as $category)
+                @if(old('category_id') == $category->id)
+                  <option selected value="{{$category->id}}">{{$category->name}}</option>
+                @else
+                  <option value="{{$category->id}}">{{$category->name}}</option>
+                @endif
+              @endforeach
+            </select>
+            <br>
+
             <label class="star">Office Address</label>
             <input class="form-control bg-transparent" type="text" name="office_address" value="{{old('office_address')}}"></input>
             <br>

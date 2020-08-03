@@ -15,6 +15,16 @@
           <br>
 
           <span>
+            <h5>Category Name:</h5>
+          </span>
+          @if($vendor->category)
+          <P>{{$vendor->category->name}}</P>
+          @else
+          <a class="red" target="_blank" href="{{ route('vendors.edit', $vendor->id) }}">Please assign a category</a>
+          @endif
+          <br>
+
+          <span>
             <h5>Office Address:</h5>
           </span>
           <P>{{$vendor->office_address}}</P>

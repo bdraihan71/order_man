@@ -13,6 +13,7 @@
                     <table class="table table-bordered">
                         <tr>
                             <td>Company Name</td>
+                            <td>Category</td>
                             <td>Owner Name</td>
                             <td>Number</td>
                             <td>Address</td>
@@ -21,6 +22,11 @@
                         @foreach ($vendors as $vendor)
                         <tr>
                             <td>{{ $vendor->company_name }}</td>
+                            @if($vendor->category)
+                            <td>{{ $vendor->category->name }}</td>
+                            @else
+                            <td class="red">Assign a category</td>
+                            @endif
                             <td>{{ $vendor->owner_name }}</td>
                             <td>{{ $vendor->owner_contact_number_primary }}</td>
                             <td>{{ $vendor->office_address }}</td>
