@@ -9,8 +9,13 @@
         <div class="col-md-1 my-auto">
                 <span class="border border-warning h4">{{ $order->action == null ? "Booked" : ($order->action < 0 ? "Cancelled" : "Provided") }}</span>
         </div>
+
         <div class="col-md-2 my-auto">
-            Customer: {{ $order->customer->name }}
+            @if($order->customer)
+                Customer: {{ $order->customer->name }}
+            @else
+                <p class="red">No customer found for this order</p>
+            @endif
         </div>
         <div class="col-md-2 my-auto">
             Booked at: {{ $order->booked_at }}

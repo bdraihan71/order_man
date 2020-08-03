@@ -35,6 +35,11 @@
               <input class="form-control bg-transparent" type="text" name="unit" value="@if($service->unit){{$service->unit}}@endif">
             <br>
 
+                
+            <label>Stock Available</label>
+            <input class="form-control bg-transparent" type="number" name="stock_available" value="{{$service->stock_available}}"></input>
+            <br>
+
             <label>Price</label>
               <input class="form-control bg-transparent" type="number" name="price" value="{{$service->price}}">
             <br>

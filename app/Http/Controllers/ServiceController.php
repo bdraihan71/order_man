@@ -38,6 +38,7 @@ class ServiceController extends Controller
             'description' => $request->get('description'),
             'unit' => $request->get('unit'),
             'price' => $request->get('price'),
+            'stock_available' => $request->get('stock_available'),
             'min_price' => $request->get('min_price'),
             'max_price' => $request->get('max_price'),
         ]);
@@ -77,6 +78,7 @@ class ServiceController extends Controller
         $service->description = $request->get('description');
         $service->unit = $request->get('unit');
         $service->price = $request->get('price');
+        $service->stock_available = $request->get('stock_available');
         $service->min_price = $request->get('min_price');
         $service->max_price = $request->get('max_price');
         $service->save();

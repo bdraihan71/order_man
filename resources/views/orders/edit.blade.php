@@ -11,6 +11,7 @@
         @csrf
         <div class="row mb-2">
             <div class="col-md-12">
+                @if($order->customer)
                 <select name="customer_id" class="form-control bg-transparent">
                     <option value="{{ $order->customer_id }}">{{ $order->customer->name }} {{ $order->customer->primary_contact_number }}</option>
                     @foreach ($customers as $customer)
@@ -19,6 +20,9 @@
                         @endif
                     @endforeach
                 </select>
+                @else
+                    <p class="red">No customer found</p>
+                @endif
             </div>
         </div>
 

@@ -24,8 +24,13 @@
                         <div class="card text-white bg-warning mb-3" style="max-width: 35rem;">
                             <div class="card-header">
                                 # {{$order->id}}   
-                                <i class="far fa-user"></i> {{$order->customer->name}}  
+                                @if($order->customer)
+                                <i class="far fa-user"></i> {{$order->customer->name}}
                                 <i class="fas fa-phone"></i> {{$order->customer->primary_contact_number}}
+                                @else
+                                    <p class="red">No customer found for this order</p>
+                                @endif
+                                
                             </div>
                             <div class="card-body">
                                 <h5 class="card-title">Booked</h5>

@@ -35,6 +35,12 @@
             <p class="red">No unit found</p>
           @endif
           <br>
+
+          <span>
+            <h5>Stock Available:</h5>
+          </span>
+          <p>{{$service->stock_available}}</p>
+          <br>
           
           <span>
             <h5>Price:</h5>
