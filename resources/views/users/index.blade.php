@@ -23,12 +23,12 @@
                                 <td>{{ $user->role->display_name }}</td>
                                 <td>{{ $user->email }}</td>
                                 <td>
-                                <a class="btn btn-primary my-1" href="{{route('users.show', ['user' => $user->id])}}">View</a>
-                                <a class="btn btn-info my-1" href="{{route('users.edit', ['user' => $user->id])}}">Edit</a>
+                                <a class="my-1" href="{{route('users.show', ['user' => $user->id])}}"><i class="fas fa-eye"></i></a>
+                                <a class="my-1" href="{{route('users.edit', ['user' => $user->id])}}"><i class="fas fa-edit"></i></a>
                                 <form action="{{ route('users.destroy', $user->id)}}" onclick="return confirm('Are you sure?')" method="post" style="display: inline;">
                                     @csrf
                                     @method('delete')
-                                    <button class="btn btn-danger my-1" type="submit">delete</button>
+                                    <button class="btn btn-outline my-1" type="submit"><i class="fas fa-trash"></i></button>
                                 </form>
                                 </td>
                             </tr>

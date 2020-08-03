@@ -4,7 +4,7 @@
 <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
-                <a class="btn btn-info my-2" href="/customers">Customers</a>
+                <a class="my-2" href="/customers">Customers</a>
                 <div class="card bg-transparent my-3">
                     <div class="card-header">Edit Customer</div>
 
@@ -47,7 +47,7 @@
                         <form method="POST" action="{{route('customers.destroy', ['customer'=>$customer->id])}}">
                             @csrf
                             <input type="hidden" name="_method" value="delete"></input><br>
-                            <button class="btn btn-danger" type="submit">Delete</button>
+                            <button class="btn btn-danger" type="submit"><i class="fas fa-trash"></i></button>
                         </form>
 
                     </div>

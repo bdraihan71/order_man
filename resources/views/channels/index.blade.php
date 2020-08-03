@@ -19,12 +19,12 @@
                             <tr>
                                 <td>{{ $channel->name }}</td>
                                 <td>
-                                    <a class="btn btn-primary my-1" href="{{route('channels.show', ['channel' => $channel->id])}}">View</a>
-                                    <a class="btn btn-info my-1" href="{{route('channels.edit', ['channel' => $channel->id])}}">Edit</a>
+                                    <a class="my-1" href="{{route('channels.show', ['channel' => $channel->id])}}"><i class="fas fa-eye"></i></a>
+                                    <a class="my-1" href="{{route('channels.edit', ['channel' => $channel->id])}}"><i class="fas fa-edit"></i></a>
                                     <form action="{{ route('channels.destroy', $channel->id)}}" onclick="return confirm('Are you sure?')" method="post" style="display: inline;">
                                     @csrf
                                     @method('delete')
-                                    <button class="btn btn-danger my-1" type="submit">delete</button>
+                                    <button class="btn btn-outline my-1" type="submit"><i class="fas fa-trash"></i></button>
                                 </form>
                                 </td>
                             </tr>

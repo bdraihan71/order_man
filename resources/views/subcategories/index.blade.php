@@ -23,12 +23,12 @@
                                 <td>{{ $subcategory->category->name }}</td>
                                 <td>{{ $subcategory->description }}</td>
                                 <td>
-                                <a class="btn btn-primary my-1" href="{{route('subcategories.show', ['subcategory' => $subcategory->id])}}">View</a>
-                                <a class="btn btn-info my-1" href="{{route('subcategories.edit', ['subcategory' => $subcategory->id])}}">Edit</a>
+                                <a class="my-1" href="{{route('subcategories.show', ['subcategory' => $subcategory->id])}}"><i class="fas fa-eye"></i></a>
+                                <a class="my-1" href="{{route('subcategories.edit', ['subcategory' => $subcategory->id])}}"><i class="fas fa-edit"></i></a>
                                 <form action="{{ route('subcategories.destroy', $subcategory->id)}}" onclick="return confirm('Are you sure?')" method="post" style="display: inline;">
                                     @csrf
                                     @method('delete')
-                                    <button class="btn btn-danger my-1" type="submit">delete</button>
+                                    <button class="btn btn-outline my-1" type="submit"><i class="fas fa-trash"></i></button>
                                 </form>
                                 </td>
                             </tr>

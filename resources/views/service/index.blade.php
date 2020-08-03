@@ -37,12 +37,12 @@
                             <td>{{ $service->min_price }}</td>
                             <td>{{ $service->max_price }}</td>
                             <td>
-                                <a class="btn btn-primary my-2" href="{{route('services.show', ['service' => $service->id])}}">View</a>
-                                <a class="btn btn-info my-2" href="{{route('services.edit', ['service' => $service->id])}}">Edit</a>
+                                <a class="my-2" href="{{route('services.show', ['service' => $service->id])}}"><i class="fas fa-eye"></i></a>
+                                <a class="my-2" href="{{route('services.edit', ['service' => $service->id])}}"><i class="fas fa-edit"></i></a>
                                 <form action="{{ route('services.destroy', $service->id)}}" onclick="return confirm('Are you sure?')" method="post" style="display: inline;">
                                     @csrf
                                     @method('delete')
-                                    <button class="btn btn-danger my-2" type="submit">delete</button>
+                                    <button class="btn btn-outline my-2" type="submit"><i class="fas fa-trash"></i></button>
                                 </form>
                             </td>
                         </tr>

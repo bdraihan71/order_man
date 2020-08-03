@@ -49,6 +49,12 @@
           <br>
 
           <span>
+            <h5>Email:</h5>
+          </span>
+          <P>{{$vendor->email}}</P>
+          <br>
+
+          <span>
             <h5>Owner Current House Address:</h5>
           </span>
           <P>{{$vendor->owner_current_house_address}}</P>

@@ -41,6 +41,10 @@
             <input class="form-control bg-transparent" type="text" name="owner_nid_number" value="{{old('owner_nid_number')}}"></input>
             <br>
 
+            <label>Email</label>
+            <input class="form-control bg-transparent" type="email" name="email" value="{{old('email')}}"></input>
+            <br>
+
             <label>Current Address</label>
             <textarea class="form-control bg-transparent" id="exampleFormControlTextarea1" name="owner_current_house_address" rows="3">{{old('owner_current_house_address')}}</textarea>
             <br>

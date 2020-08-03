@@ -40,6 +40,7 @@ class VendorController extends Controller
             'office_address' => $request->get('office_address'),
             'category_id' => $request->get('category_id'),
             'trade_license_number' => $request->get('trade_license_number'),
+            'email' => $request->get('email'),
             'owner_name' => $request->get('owner_name'),
             'owner_nid_number' => $request->get('owner_nid_number'),
             'owner_current_house_address' => $request->get('owner_current_house_address'),
@@ -98,6 +99,7 @@ class VendorController extends Controller
         $vendor->office_address = $request->get('office_address');
         $vendor->trade_license_number = $request->get('trade_license_number');
         $vendor->owner_name = $request->get('owner_name');
+        $vendor->email = $request->get('email');
         $vendor->owner_nid_number = $request->get('owner_nid_number');
         $vendor->owner_current_house_address = $request->get('owner_current_house_address');
         $vendor->owner_contact_number_primary = $request->get('owner_contact_number_primary');

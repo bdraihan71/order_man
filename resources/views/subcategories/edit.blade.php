@@ -38,7 +38,7 @@
                         <form method="POST" action="{{route('subcategories.destroy', ['subcategory'=>$subcategory->id])}}">
                             @csrf
                             <input type="hidden" name="_method" value="delete"></input><br>
-                            <button class="btn btn-danger" type="submit">Delete</button>
+                            <button class="btn btn-danger" type="submit"><i class="fas fa-trash"></i></button>
                         </form>
 
                     </div>

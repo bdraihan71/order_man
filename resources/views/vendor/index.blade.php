@@ -31,12 +31,12 @@
                             <td>{{ $vendor->owner_contact_number_primary }}</td>
                             <td>{{ $vendor->office_address }}</td>
                             <td>
-                            <a class="btn btn-primary my-1" href="{{route('vendors.show', ['vendor' => $vendor->id])}}">View</a>
-                                <a class="btn btn-info my-1" href="{{route('vendors.edit', ['vendor' => $vendor->id])}}">Edit</a>
+                            <a class="my-1" href="{{route('vendors.show', ['vendor' => $vendor->id])}}"><i class="fas fa-eye"></i></a>
+                                <a class="my-1" href="{{route('vendors.edit', ['vendor' => $vendor->id])}}"><i class="fas fa-edit"></i></a>
                                 <form action="{{ route('vendors.destroy', $vendor->id)}}" onclick="return confirm('Are you sure?')" method="post" style="display: inline;">
                                     @csrf
                                     @method('delete')
-                                    <button  class="btn btn-danger my-1" type="submit">delete</button>
+                                    <button  class="btn btn-outline my-1" type="submit"><i class="fas fa-trash"></i></button>
                                 </form>
                             </td>
                         </tr>

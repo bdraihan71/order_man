@@ -52,7 +52,7 @@
                             </ul>
                             <div class="card-body text-right">
                                 <p class="card-text"><small>created {{$order->created_at->diffForHumans()}}</small></p>
-                                {{-- <a href="#" class="card-link">Edit</a>
+                                {{-- <a href="#" class="card-link"><i class="fas fa-edit"></i></a>
                                 <a href="#" class="card-link">Another link</a> --}}
                             </div>
                         </div>

@@ -55,6 +55,11 @@
             <input class="form-control bg-transparent" type="text" name="owner_name" value="{{$vendor->owner_name}}"></input>
             <br>
 
+            <label>Email</label>
+            <input class="form-control bg-transparent" type="email" name="email" value="{{$vendor->email}}"></input>
+            <br>
+
+
             <label>Nid Number</label>
             <input class="form-control bg-transparent" type="text" name="owner_nid_number" value="{{$vendor->owner_nid_number}}"></input>
             <br>

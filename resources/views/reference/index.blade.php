@@ -19,12 +19,12 @@
                             <tr>
                                 <td>{{ $reference->name }}</td>
                                 <td>
-                                <a class="btn btn-primary my-1" href="{{route('reference.show', ['reference' => $reference->id])}}">View</a>
-                                <a class="btn btn-info my-1" href="{{route('reference.edit', $reference->id)}}">Edit</a>
+                                <a class="my-1" href="{{route('reference.show', ['reference' => $reference->id])}}"><i class="fas fa-eye"></i></a>
+                                <a class="my-1" href="{{route('reference.edit', $reference->id)}}"><i class="fas fa-edit"></i></a>
                                 <form action="{{route('reference.destroy', $reference->id)}}" onclick="return confirm('Are you sure?')" method="post" style="display: inline;">
                                     @csrf
                                     @method('delete')
-                                    <button class="btn btn-danger my-1" type="submit">Delete</button>
+                                    <button class="btn btn-outline my-1" type="submit"><i class="fas fa-trash"></i></button>
                                 </form>
                                 </td>
                             </tr>
