@@ -121,7 +121,7 @@ class ApiController extends Controller
 
         $validator = Validator::make($request->all(), [
            'price' => 'required|numeric|min:'. $service->min_price . '|max:' . $service->max_price . '',
-           'quantity' => 'required|numeric|min:1',
+           'quantity' => 'required|numeric|min:1|max:' . $service->stock_available,
            'total' => 'required|numeric|min:1',
         ]);
 
@@ -168,6 +168,9 @@ class ApiController extends Controller
             'booking_note' => $request->note == 'null'?'': $request->note
         ]);
 
+        $service = Service::find($request->selected_service);
+        $service->stock_available = $service->stock_available - $request->quantity;
+        $service->save();
 
         $item = OrderItem::create([
             'order_id' => $order->id,

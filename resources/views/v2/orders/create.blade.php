@@ -59,15 +59,21 @@
 
 
                             <div class="row justify-content-center">
-                                <div class="col-md-4">
-                                    <label>Quantity (@{{ this.service.data.unit}}):</label>
+                                <div class="col-md-6">
+                                    <label>Quantity Available(@{{ this.service.data.unit}}):</label>
+                                    <input class="form-control bg-transparent" type="text" disabled v-model="this.service.data.stock_available"></input>
+                                </div>
+                                <div class="col-md-6">
+                                    <label>Quantity Ordered(@{{ this.service.data.unit}}):</label>
                                     <input class="form-control bg-transparent" type="text" name="quantity" v-model="quantity"></input>
                                 </div>
-                                <div class="col-md-4">
+                            </div>
+                            <div class="row justify-content-center">
+                                <div class="col-md-6">
                                     <label class="star">Final Price (BDT)</label>
                                     <input class="form-control bg-transparent" type="text" name="price" v-model="price"></input>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-6">
                                     <label>Asking Price Range (BDT):</label>
                                     <p class="border rounded p-2 text-center">@{{ this.service.data.min_price}} to @{{ this.service.data.max_price}}</p>
                                 </div>
@@ -215,6 +221,7 @@
                     services: {!! json_encode($services) !!},
                     price: null,
                     quantity: 1,
+                    quantity_available: 0,
                     total: 0,
                     time: '16:00',
                     note: null,
