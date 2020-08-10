@@ -96,7 +96,7 @@ class ApiController extends Controller
     public function validateRequest($request){
         $validator = Validator::make($request->all(), [
             'mobile' => 'required|digits:11',
-            'email' => 'required|email',
+            'email' => 'email',
             'name' => 'required|not_in:null',
             'user_id' => 'required|exists:users,id',
             'selected_location' => 'required|not_in:9999|exists:locations,id',
@@ -106,7 +106,7 @@ class ApiController extends Controller
             'selected_type' => 'required|not_in:9999',
             'date' => 'required|not_in:null',
             'time' => 'required|not_in:null',
-            'address' => 'required|not_in:null',
+            'address' => '',
         ]);
 
         if($validator->fails()){
@@ -213,7 +213,7 @@ class ApiController extends Controller
     public function validateRequestPending($request){
         $validator = Validator::make($request->all(), [
             'mobile' => 'required|digits:11',
-            'email' => 'required|email',
+            'email' => 'email',
             'name' => 'required|not_in:null',
             'user_id' => 'required|exists:users,id',
             'selected_location' => 'required|not_in:9999|exists:locations,id',

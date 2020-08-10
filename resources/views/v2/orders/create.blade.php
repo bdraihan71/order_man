@@ -13,7 +13,7 @@
                             <input @change="fetchCustomer" v-model="mobile" class="form-control bg-transparent" type="text" name="title" value=""></input>
                             <br>
 
-                            <label class="star">Email</label>
+                            <label>Email</label>
                             <input @change="fetchCustomer" v-model="email" class="form-control bg-transparent" type="text" name="email" value=""></input>
                             <br>
                 
@@ -146,7 +146,7 @@
                     <label class="star">Delivery Time</label>
                     <input class="form-control bg-transparent" type="time" v-model="time">
                     <br>
-                    <label class="star">Address</label>
+                    <label>Address</label>
                     <input class="form-control bg-transparent" type="text" name="price" v-model="address"></input>
                     <br>
 
