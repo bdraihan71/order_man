@@ -96,7 +96,6 @@ class ApiController extends Controller
     public function validateRequest($request){
         $validator = Validator::make($request->all(), [
             'mobile' => 'required|digits:11',
-            'email' => 'email',
             'name' => 'required|not_in:null',
             'user_id' => 'required|exists:users,id',
             'selected_location' => 'required|not_in:9999|exists:locations,id',
@@ -213,7 +212,6 @@ class ApiController extends Controller
     public function validateRequestPending($request){
         $validator = Validator::make($request->all(), [
             'mobile' => 'required|digits:11',
-            'email' => 'email',
             'name' => 'required|not_in:null',
             'user_id' => 'required|exists:users,id',
             'selected_location' => 'required|not_in:9999|exists:locations,id',
