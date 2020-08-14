@@ -90,13 +90,17 @@ class OrderController extends Controller
         if ($request->delivery_time != null) {
             $delivery = Carbon::parse($request->delivery_time)->toDateTimeString();
         }
+        $delivery_date = Carbon::parse($request->delivery_time)->toDateString();
+        $delivery_time = Carbon::parse($request->delivery_time)->toTimeString();
+
         $item = OrderItem::create([
             'order_id' => $request->order_id,
             'service_id' => $request->service_id,
             'service_price' => $request->service_price,
             'service_commission' => $request->service_commission,
             'review' => $request->review,
-            'delivery_time' => $request->delivery_time,
+            'delivery_time' => $delivery_time,
+            'delivery_date' => $delivery_date,
             'vendor_id' => $request->vendor_id,
             'category_manager' => $request->category_manager,
             'reference_id' => $request->reference_id,
